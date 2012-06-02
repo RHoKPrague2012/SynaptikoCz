@@ -12,7 +12,7 @@ dibi::connect(array(
 ));
 
 $result = dibi::query('SELECT * FROM produkt WHERE je_kategorie = "ano"');
-$insertCategoryPattern = "INSERT INTO category (rowid, name) VALUES (%s, '%s');\n";
+$insertCategoryPattern = "INSERT INTO category (_id, name) VALUES (%s, '%s');\n";
 
 foreach ($result as $n => $row) {
   printf($insertCategoryPattern, $row['id'], $row['nazev']);
@@ -20,7 +20,7 @@ foreach ($result as $n => $row) {
 echo "\n";
 
 $result = dibi::query('SELECT * FROM produkt WHERE NOT je_kategorie = "ano"');
-$insertProductPattern = "INSERT INTO product (rowid, name) VALUES (%s, '%s');\n";
+$insertProductPattern = "INSERT INTO product (_id, name) VALUES (%s, '%s');\n";
 
 foreach ($result as $n => $row) {
   printf($insertProductPattern, $row['id'], $row['nazev']);
@@ -28,7 +28,7 @@ foreach ($result as $n => $row) {
 echo "\n";
 
 $result = dibi::query('SELECT divize_id, producent.nazev, latitude, longtitude, divize.poznamka, divize.typ FROM divize, producent, kontakt WHERE producent.id = divize.producent_id AND kontakt.divize_id = divize.id AND latitude IS NOT NULL ORDER BY divize.id');
-$insertFarmPattern = "INSERT INTO farm (rowid, name, gps_lat, gps_long, desc, type) VALUES (%s, '%s', %s, %s, %s, '%s');\n";
+$insertFarmPattern = "INSERT INTO farm (_id, name, gps_lat, gps_long, desc, type) VALUES (%s, '%s', %s, %s, %s, '%s');\n";
 foreach ($result as $n => $row) {
   $poznamka = trim($row['poznamka']);
   printf($insertFarmPattern, $row['divize_id'], $row['nazev'], $row['latitude'], $row['longtitude'], (empty($poznamka) ? 'NULL' : "'$poznamka'"), $row['typ']);

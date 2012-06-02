@@ -5,9 +5,9 @@ DROP TABLE contact;
 DROP TABLE farm_category;
 DROP TABLE farm_product;
 
-CREATE TABLE category (name TEXT PRIMARY KEY);
-CREATE TABLE product (name TEXT PRIMARY KEY, category_id);
-CREATE TABLE farm (name TEXT, gps_lat REAL NOT NULL, gps_long REAL NOT NULL, desc TEXT, type TEXT);
-CREATE TABLE contact (farm_id INTEGER, type TEXT, contact TEXT, UNIQUE (farm_id, type, contact));
-CREATE TABLE farm_category (farm_id INTEGER, category_id INTEGER, PRIMARY KEY (farm_id, category_id));
-CREATE TABLE farm_product (farm_id INTEGER, product_id INTEGER, PRIMARY KEY (farm_id, product_id));
+CREATE TABLE category (_id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT UNIQUE);
+CREATE TABLE product (_id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT UNIQUE, category_id);
+CREATE TABLE farm (_id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, gps_lat REAL NOT NULL, gps_long REAL NOT NULL, desc TEXT, type TEXT);
+CREATE TABLE contact (_id INTEGER PRIMARY KEY AUTOINCREMENT, farm_id INTEGER, type TEXT, contact TEXT, UNIQUE (farm_id, type, contact));
+CREATE TABLE farm_category (_id INTEGER PRIMARY KEY AUTOINCREMENT, farm_id INTEGER, category_id INTEGER, UNIQUE (farm_id, category_id));
+CREATE TABLE farm_product (_id INTEGER PRIMARY KEY AUTOINCREMENT, farm_id INTEGER, product_id INTEGER, UNIQUE (farm_id, product_id));
