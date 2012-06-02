@@ -1,12 +1,8 @@
 package cz.duha.bioadresar;
 
-import java.io.IOException;
-
 import android.app.TabActivity;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.database.Cursor;
-import android.database.SQLException;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TabHost;
@@ -42,6 +38,7 @@ public class MainTabbedActivity extends TabActivity {
 	    //tabHost.setCurrentTab(2);
 	}
 	
+	/*
 	private void initDbHelper()
 	{
 		DatabaseHelper dbHelper = new DatabaseHelper(this);
@@ -95,6 +92,6 @@ public class MainTabbedActivity extends TabActivity {
 
 
 	}
-	
+	*/
 	
 }

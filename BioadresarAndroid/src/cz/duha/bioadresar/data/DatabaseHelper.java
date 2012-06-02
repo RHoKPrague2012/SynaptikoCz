@@ -1,9 +1,10 @@
-package cz.duha.bioadresar;
+package cz.duha.bioadresar.data;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Hashtable;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -127,9 +128,33 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		return db.rawQuery("SELECT name FROM farm", null);
 	}
 	
-	public Cursor getFarmCursorInArea(double lat1, double long1, double lat2, double long2) {
-		return db.rawQuery("SELECT name, gps_lat, gps_long FROM farm WHERE gps_lat >= ? AND gps_long >= ? AND gps_lat <= ? AND gps_long <= ?",
+	public void setFilter(DataFilter filter)
+	{
+		//TODO: implement this
+	}
+	
+	public void clearFilter()
+	{
+		//TODO: implement this
+	}
+	
+	public Hashtable<Long, FarmInfo> getFarmCursorInRectangle(double lat1, double long1, double lat2, double long2) {
+		//TODO: implement this
+		return null;
+		/* return db.rawQuery("SELECT name, gps_lat, gps_long FROM farm WHERE gps_lat >= ? AND gps_long >= ? AND gps_lat <= ? AND gps_long <= ?",
 				new String[] { Double.toString(lat1), Double.toString(long1), Double.toString(lat2), Double.toString(long2) });
+				*/
+	}
+	
+	public Hashtable<Long, FarmInfo> getFarmInDistance(double lat, double lon, int distanceInKm)
+	{
+		//TODO: implement this
+		return null;
+	}
+	
+	public void fillDetails(FarmInfo info)
+	{
+		// TODO: implement this
 	}
 
 }
