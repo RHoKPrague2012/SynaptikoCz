@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.List;
 import java.util.TreeSet;
 
 import android.content.Context;
@@ -171,7 +172,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 			farmInfo.lat = c.getDouble(2);
 			farmInfo.lon = c.getDouble(3);
 			
-			Log.d("farm info", farmInfo.id + "; " + farmInfo.name + "; " + farmInfo.lat + "; " + farmInfo.lon);
+			//Log.d("farm info", farmInfo.id + "; " + farmInfo.name + "; " + farmInfo.lat + "; " + farmInfo.lon);
 			result.put(farmInfo.id, farmInfo);
 			c.moveToNext();
 		}
@@ -204,6 +205,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		String[] args = new String[] { Long.toString(info.id) };
 		Cursor c = db.query("farm", columns, selection, args, null, null, null);
 		FarmContact farmContact = new FarmContact();
+		List<String> categories = new ArrayList<String>();
+		List<String> products = new ArrayList<String>();
 		
 		c.moveToNext();
 		if (!c.isAfterLast()) {
@@ -213,37 +216,54 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		c.close();
 		
 		farmContact.phoneNumbers = new ArrayList<String>();
-		
 		columns = new String[] { "type", "contact" };
 		selection = "farm_id = ?";
 		c = db.query("contact", columns, selection, args, null, null, null);
 		c.moveToNext();
-		if (!c.isAfterLast()) {
+		while (!c.isAfterLast()) {
 			String type = c.getString(0);
 			String contact = c.getString(1);
 			
-			if (type == "city") {
+			if (type.equals("city")) {
 				farmContact.city = contact;
 			}
-			else if (type == "email") {
+			else if (type.equals("email")) {
 				farmContact.email = contact;
 			}
-			else if (type == "eshop") {
+			else if (type.equals("eshop")) {
 				farmContact.eshop = contact;
 			}
-			else if (type == "phone") {
+			else if (type.equals("phone")) {
 				farmContact.phoneNumbers.add(contact);
 			}
-			else if (type == "street") {
+			else if (type.equals("street")) {
 				farmContact.street = contact;
 			}
-			else if (type == "web") {
+			else if (type.equals("web")) {
 				farmContact.web = contact;
 			}
+			c.moveToNext();
 		}
 		c.close();
-		
 		info.contact = farmContact;
+		
+		c = db.rawQuery("SELECT category.name FROM category, farm_category WHERE category._id = farm_category.category_id AND farm_category.farm_id = ? ORDER BY category.name", args);
+		c.moveToNext();
+		while (!c.isAfterLast()) {
+			categories.add(c.getString(0));
+			c.moveToNext();
+		}
+		c.close();
+		info.categories = categories;
+		
+		c = db.rawQuery("SELECT product.name FROM product, farm_product WHERE product._id = farm_product.product_id AND farm_product.farm_id = ? ORDER BY product.name", args);
+		c.moveToNext();
+		while (!c.isAfterLast()) {
+			products.add(c.getString(0));
+			c.moveToNext();
+		}
+		c.close();
+		info.products = products;
 	}
 
 }
