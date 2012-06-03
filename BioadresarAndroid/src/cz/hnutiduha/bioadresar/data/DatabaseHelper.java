@@ -167,23 +167,38 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 				Double.toString(Math.min(lat1, lat2)), Double.toString(Math.min(lon1, lon2)),
 				Double.toString(Math.max(lat1, lat2)), Double.toString(Math.max(lon1, lon2))
 		};
-		Cursor c = db.query("farm", columns, selection, args, null, null, "gps_lat, gps_long");
+		Cursor farmCur = db.query("farm", columns, selection, args, null, null, "gps_lat, gps_long");
 		Hashtable<Long, FarmInfo> result = new Hashtable<Long, FarmInfo>();
+		Cursor categoryCur;
+		String[] categoryColumns = new String[] { "category_id" };
 		
-		c.moveToNext();
-		while (!c.isAfterLast()) {
+		farmCur.moveToNext();
+		while (!farmCur.isAfterLast()) {
 			FarmInfo farmInfo = new FarmInfo();
 
-			farmInfo.id = c.getLong(0);
-			farmInfo.name = c.getString(1);
-			farmInfo.lat = c.getDouble(2);
-			farmInfo.lon = c.getDouble(3);
+			farmInfo.id = farmCur.getLong(0);
+			farmInfo.name = farmCur.getString(1);
+			farmInfo.lat = farmCur.getDouble(2);
+			farmInfo.lon = farmCur.getDouble(3);
 			
-			//Log.d("farm info", farmInfo.id + "; " + farmInfo.name + "; " + farmInfo.lat + "; " + farmInfo.lon);
+			// TODO add category "Others" (164) and join with products (and find by products too - because product has category assigned too)
+			List<Long> categories = new ArrayList<Long>();
+			categoryCur = db.query("farm_category", categoryColumns,
+					"farm_id = ?", new String[] { (farmInfo.id + "") },
+					null, null, "category_id"
+			);
+			categoryCur.moveToNext();
+			while (!categoryCur.isAfterLast()) {
+				categories.add(categoryCur.getLong(0));
+				categoryCur.moveToNext();
+			}
+			categoryCur.close();
+			farmInfo.categories = categories;
+			
 			result.put(farmInfo.id, farmInfo);
-			c.moveToNext();
+			farmCur.moveToNext();
 		}
-		c.close();
+		farmCur.close();
 		
 		return result;
 	}
@@ -212,8 +227,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		String[] args = new String[] { Long.toString(info.id) };
 		Cursor c = db.query("farm", columns, selection, args, null, null, null);
 		FarmContact farmContact = new FarmContact();
-		List<String> categories = new ArrayList<String>();
-		List<String> products = new ArrayList<String>();
+		List<Long> products = new ArrayList<Long>();
 		
 		c.moveToNext();
 		if (!c.isAfterLast()) {
@@ -254,19 +268,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		c.close();
 		info.contact = farmContact;
 		
-		c = db.rawQuery("SELECT category.name FROM category, farm_category WHERE category._id = farm_category.category_id AND farm_category.farm_id = ? ORDER BY category.name", args);
+		columns = new String[] { "product_id" };
+		c = db.query("farm_product", columns, "farm_id = ?", args, null, null, "product_id");
 		c.moveToNext();
 		while (!c.isAfterLast()) {
-			categories.add(c.getString(0));
-			c.moveToNext();
-		}
-		c.close();
-		info.categories = categories;
-		
-		c = db.rawQuery("SELECT product.name FROM product, farm_product WHERE product._id = farm_product.product_id AND farm_product.farm_id = ? ORDER BY product.name", args);
-		c.moveToNext();
-		while (!c.isAfterLast()) {
-			products.add(c.getString(0));
+			products.add(c.getLong(0));
 			c.moveToNext();
 		}
 		c.close();
