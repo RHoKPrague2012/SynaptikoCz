@@ -12,9 +12,11 @@ import android.text.SpannableString;
 import android.text.method.LinkMovementMethod;
 import android.text.util.Linkify;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.widget.TextView;
 
 import com.google.android.maps.ItemizedOverlay;
+import com.google.android.maps.MapView;
 import com.google.android.maps.OverlayItem;
 
 import cz.hnutiduha.bioadresar.data.FarmInfo;
@@ -22,6 +24,7 @@ import cz.hnutiduha.bioadresar.data.FarmInfo;
 public class FarmsOverlay extends ItemizedOverlay<OverlayItem>{
 	private ArrayList<OverlayItem> overlays = new ArrayList<OverlayItem>();
 	private Context context;
+	private boolean isPinch;
 	
 	public FarmsOverlay(Drawable defaultMarker, Context context) {
 		super(boundCenterBottom(defaultMarker));
@@ -51,10 +54,11 @@ public class FarmsOverlay extends ItemizedOverlay<OverlayItem>{
 	
 	@Override
 	protected boolean onTap(int index) {
+		// don't show detail on pinch
+		if (isPinch)
+			return false;
+		
 		TextView message = new TextView(context);
-		final SpannableString s = new SpannableString("http://google.com\n tel: 776 319 314\n");
-		Linkify.addLinks(s, Linkify.ALL);
-		message.setText(s);
 		
 		OverlayItem item = overlays.get(index);
 		AlertDialog.Builder dialog = new AlertDialog.Builder(context);
@@ -67,10 +71,24 @@ public class FarmsOverlay extends ItemizedOverlay<OverlayItem>{
 		return true;
 	}
 	
+	@Override
+	public boolean onTouchEvent(MotionEvent e, MapView mapView)
+	{
+		// detect pinch to prevent firing baloons on it
+	    int fingers = e.getPointerCount();
+	    if( e.getAction()==MotionEvent.ACTION_DOWN ){
+	        isPinch=false;  // Touch DOWN, don't know if it's a pinch yet
+	    }
+	    if( e.getAction()==MotionEvent.ACTION_MOVE && fingers==2 ){
+	        isPinch=true;   // Two fingers, def a pinch
+	    }
+	    return super.onTouchEvent(e,mapView);
+	}
+	
 	protected void setVisiblePoints(Hashtable<Long, FarmInfo> farms)
 	{
 		Log.d("gui", "starting redraw of visible points");
-		/*Iterator<OverlayItem> overlaysIterator = overlays.iterator();
+		Iterator<OverlayItem> overlaysIterator = overlays.iterator();
 		OverlayItem last;
 		// remove existing from hashtable
 		while (overlaysIterator.hasNext())
@@ -98,7 +116,7 @@ public class FarmsOverlay extends ItemizedOverlay<OverlayItem>{
 		}
 		Log.d("gui", "done adding new");
 		
-		populate();*/
+		populate();
 	}
 
 }
