@@ -3,5 +3,6 @@
 
     <string name="hello">Hello World, BioadresarAndroidActivity!</string>
     <string name="app_name">BioadresarAndroid</string>
+    <string name="contact">Kontakt</string>
 
 </resources>
