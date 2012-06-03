@@ -21,4 +21,13 @@ public class FarmInfo {
 	{
 		return new GeoPoint((int)(farm.lat * 1E6), (int)(farm.lon * 1E6));
 	}
+		
+	public boolean isInDistance(double targetLat, double targetLon, int distanceInKm) {
+		return false;
+	}
+	
+	public float getDistanceInKm(double targetLat, double targetLon) {
+		return 0;
+	}
+
 }

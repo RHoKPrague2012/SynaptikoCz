@@ -60,8 +60,11 @@ foreach ($result as $n => $row) {
       printf($insertContactPattern, $row['divize_id'], 'phone', $match[0]);
     }
   }
-  if (!empty($row['ulice']) && !empty($row['mesto'])) {
-    printf($insertContactPattern, $row['divize_id'], 'address', $row['ulice'] . ', ' . $row['mesto']);
+  if (!empty($row['ulice'])) {
+    printf($insertContactPattern, $row['divize_id'], 'street', $row['ulice']);
+  }
+  if (!empty($row['mesto'])) {
+    printf($insertContactPattern, $row['divize_id'], 'city', $row['mesto']);
   }
   // we don't need it now :-)
   /*if (!empty($row['nazev'])) {
