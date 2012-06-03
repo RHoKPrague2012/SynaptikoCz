@@ -2,6 +2,8 @@ package cz.hnutiduha.bioadresar.data;
 
 import java.util.List;
 
+import android.location.Location;
+
 import com.google.android.maps.GeoPoint;
 
 public class FarmInfo {
@@ -17,17 +19,25 @@ public class FarmInfo {
 	public FarmContact contact;
 	public List<Long> products;
 	
-	public static GeoPoint getGeoPoint(FarmInfo farm)
-	{
+	private Location location = null;
+	
+	public static GeoPoint getGeoPoint(FarmInfo farm) {
 		return new GeoPoint((int)(farm.lat * 1E6), (int)(farm.lon * 1E6));
 	}
-		
-	public boolean isInDistance(double targetLat, double targetLon, int distanceInKm) {
-		return false;
+	
+	public float getDistance(Location targetLocation) {
+		Location destLocation = getLocation();
+		return targetLocation.distanceTo(destLocation);
 	}
 	
-	public float getDistanceInKm(double targetLat, double targetLon) {
-		return 0;
+	public Location getLocation() {
+		if (location == null) {
+			location = new Location("");
+			location.setLatitude(lat);
+			location.setLongitude(lon);
+		}
+		
+		return location;
 	}
 
 }

@@ -16,6 +16,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.location.Location;
 import android.util.Log;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
@@ -172,60 +173,70 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 				Double.toString(Math.min(lat1, lat2)), Double.toString(Math.min(lon1, lon2)),
 				Double.toString(Math.max(lat1, lat2)), Double.toString(Math.max(lon1, lon2))
 		};
-		Cursor farmCur = db.query("farm", columns, selection, args, null, null, "gps_lat, gps_long");
+		Cursor c = db.query("farm", columns, selection, args, null, null, "gps_lat, gps_long");
 		Hashtable<Long, FarmInfo> result = new Hashtable<Long, FarmInfo>();
-		Cursor categoryCur;
-		String[] categoryColumns = new String[] { "category_id" };
 		
-		farmCur.moveToNext();
-		while (!farmCur.isAfterLast()) {
+		c.moveToNext();
+		while (!c.isAfterLast()) {
 			FarmInfo farmInfo = new FarmInfo();
 
-			farmInfo.id = farmCur.getLong(0);
-			farmInfo.name = farmCur.getString(1);
-			farmInfo.lat = farmCur.getDouble(2);
-			farmInfo.lon = farmCur.getDouble(3);
-			
-			// TODO add category "Others" (164) and join with products (and find by products too - because product has category assigned too)
-			List<Long> categories = new ArrayList<Long>();
-			categoryCur = db.query("farm_category", categoryColumns,
-					"farm_id = ?", new String[] { (farmInfo.id + "") },
-					null, null, "category_id"
-			);
-			categoryCur.moveToNext();
-			while (!categoryCur.isAfterLast()) {
-				categories.add(categoryCur.getLong(0));
-				categoryCur.moveToNext();
-			}
-			categoryCur.close();
-			farmInfo.categories = categories;
+			farmInfo.id = c.getLong(0);
+			farmInfo.name = c.getString(1);
+			farmInfo.lat = c.getDouble(2);
+			farmInfo.lon = c.getDouble(3);
+			farmInfo.categories = getCategoriesByFarmId(farmInfo.id);
 			
 			result.put(farmInfo.id, farmInfo);
-			farmCur.moveToNext();
+			c.moveToNext();
 		}
-		farmCur.close();
+		c.close();
 		
 		return result;
 	}
 	
-	public TreeSet<FarmInfo> getFarmInfoInDistance(double lat, double lon, int distanceInKm) {
-		FarmInfoComparator comparator = new FarmInfoComparator();
-		double[] point1 = new double[2];
-		double[] point2 = new double[2];
-		Hashtable<Long, FarmInfo> farms;
+	public TreeSet<FarmInfo> getAllFarmsSortedByDistance(Location location) {
+		String[] columns = new String[] { "_id", "name", "gps_lat", "gps_long" };
+		Cursor c = db.query("farm", columns, null, null, null, null, "gps_lat, gps_long");
+		FarmInfoDistanceComparator comparator = new FarmInfoDistanceComparator(location);
 		TreeSet<FarmInfo> result = new TreeSet<FarmInfo>(comparator);
-		
-		// TODO implement comparator and isInDistance methods
-		farms = getFarmsInRectangle(point1[0], point1[1], point2[0], point2[1]);
-		for (FarmInfo farm : farms.values()) {
-			if (farm.isInDistance(lat, lon, distanceInKm)) {
-				result.add(farm);
-			}
+
+		c.moveToNext();
+		while (!c.isAfterLast()) {
+			FarmInfo farmInfo = new FarmInfo();
+
+			farmInfo.id = c.getLong(0);
+			farmInfo.name = c.getString(1);
+			farmInfo.lat = c.getDouble(2);
+			farmInfo.lon = c.getDouble(3);
+			farmInfo.categories = getCategoriesByFarmId(farmInfo.id);
+			
+			result.add(farmInfo);
+			c.moveToNext();
 		}
+		c.close();
 		
 		return result;
 	}
 	
+	private List<Long> getCategoriesByFarmId(long id) {
+		String[] columns = new String[] { "category_id" };
+		List<Long> categories = new ArrayList<Long>();
+		// TODO add category "Others" (164) and join with products (and find by products too - because product has category assigned too)
+		Cursor c = db.query("farm_category", columns,
+				"farm_id = ?", new String[] { (id + "") },
+				null, null, "category_id"
+		);
+		
+		c.moveToNext();
+		while (!c.isAfterLast()) {
+			categories.add(c.getLong(0));
+			c.moveToNext();
+		}
+		c.close();
+		
+		return categories;
+	}
+
 	public void fillDetails(FarmInfo info) {
 		String[] columns = new String[] { "type", "desc" };
 		String selection = "_id = ?";
