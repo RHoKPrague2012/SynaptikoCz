@@ -36,15 +36,6 @@ public class MapActivity extends com.google.android.maps.MapActivity {
         mapView.getController().setZoom(10);
     }
     
-    /*
-    @Override
-    public void onConfigurationChanged(Configuration newConfig)
-    {
-    	super.onConfigurationChanged(newConfig);
-    	refreshPoints();
-    }
-    */
-    
 	@Override
 	protected boolean isRouteDisplayed() {
 		// NOTE: we don't have time to research this topic :)

@@ -53,6 +53,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		}
 		return defaultDb; 
 	}
+	
+	public static void closeDefaultDb()
+	{
+		if (defaultDb != null)
+			defaultDb.close();
+		defaultDb = null;
+	}
 
 	/**
 	 * Creates a empty database on the system and rewrites it with your own
