@@ -1,0 +1,510 @@
+2;"Magda Svobodová";"eshop";"49.20033";"16.58229";"Brno";"Lerchova 98";123456;"www.orwen.org";
+4;"Lída Vitoušová";"farma";"49.57124";"16.49922";"Křetín";"Prostřední Poříčí 11";"732 339 131,  516 470 572";;"lida.vitousova@quick.cz "
+5;"Marie Wagnerová";"farma";"49.38429";"16.8093";"Blansko";"Lipovec 15";"516 445 122, 720 323 472";"http://www.ekofa.vyrobce.cz ";"ekofa@centrum.cz "
+6;"František Čejka";"farma";"49.5243";"16.6162";"Letovice";"Míchov 55";775808816;;
+7;"Ekofarma Deblín";"farma";"49.32037";"16.3413";"Deblín";"Deblín 50";549430241;"http://www.ekofarmadeblin.cz ";"ekofarmadeblin@volny.cz "
+8;"Alois Kaláb";"farma";"49.16789";"16.78405";" Blažkovice";"Kozí 322";544243821;;"akalab@seznam.cz "
+9;"Ekofarma Nelepeč";"farma";"49.34251";"16.37548";"Tišnov";"Nelepeč 3";"549 418 228, 608 034 003";;"r.kropacek@mybox.cz "
+10;"Ing. Slavík Jan";"farma";"49.11532";"16.47093";"Prštice";"Hlavní 72";547225565;;"slavik.prstice@centrum.cz "
+11;"Ekologické hospodářství rodiny Abrlových Pavlov";"farma";"48.87152";"16.66654";" Pavlov";"Rudolfa Gajdoše 191";519515394;"http://www.bio-produkty.cz ";"josef.abrle@tiscali.cz "
+12;"Ekofarma Domu na půl cesty";"farma";"48.96042";"16.53361";"Pohořelice";"Velký Dvůr 134";731507403;;"dum@centrum.cz "
+13;"Jan Hlaváč";"farma";"48.81681";"16.56371";"Březí";"Pohraniční 356";" 519 514 263, 723 330 837";;
+14;"Vinný sklep EBEN";"farma";"48.797";"16.80138";" Lednice na Moravě";"Zámek 2, provoz: Valtická 649";" 519 340 250";;"perinova@mpo.cz "
+15;"Vinselekt Michlovský, a. s.";"farma";"48.85473";"16.80754";"Rakvice";"Luční 858";"519 360 870, 777 569 618";"http://www.michlovsky.com";"michlovsky@michlovsky.com "
+16;"ZVOS Hustopeče, a. s.";"farma";"48.93506";"16.72569";"Hustopeče u Brna";"Javorová 1A/788";519411254;;"reditel@zvos.cz  "
+17;"Agromoravia a.s.";"farma";"48.79996";"17.00865";"Moravská Nová Ves";" Anenská 1006";"519 444 411-2";"http://www.agromoravia.cz ";"agromoravia@agromoravia.cz "
+18;"ALT PRERAU";"farma";;;"Novosedly";"Nový Přerov 54";"775 335 340, 775 335 343";;"Alt-prerau@aon.at, kalmus@mbox"
+19;"Bohuslav Kadrnka";"farma";"48.94196";"16.72501";"Hustopeče";"Polní 4";" 519 411 553";;"bkadrnka@centrum.cz "
+20;"Hanka Mádlova, Ing. František Mádl";"farma";"48.8497";"16.89621";"Velké Bílovice";" Na Aleji 148, Provoz: Lúčky 1345";"602 780 364, 602 155 844";;"malyvinar@slunce.cz "
+21;"Michael Piatti, EKOLÁN s.r.o., Landmann s.r.o.";"farma";"48.8155";"16.55774";"Březí u Mikulova";" Nádražní 58";777733054;;"piatti@nanet.cz, trumf@ndc.cz "
+22;"ZENO zemědělská s.r.o.";"farma";"48.80728";"16.49386";"Novosedly";"Nový Přerov 54";"775 335 340, 775 335 343";;"Alt-prerau@aon.at, kalmus@mbox"
+23;"Agro Ž.A.D. a.s.";"farma";"49.04244";"16.96691";"Žarošice";"Žarošice 58";"518 631 311/22, 777 200 133";;"agrozad@quick.cz "
+24;"Josef Balada";"farma";"48.88334";"17.5708";"Nová Lhota";"Suchov – Mlýny Osada 147";"518 383 143, 728 500 591";;"josef.balada@tiscali.cz "
+25;"KVATRO – EKOSTATEK s.r.o.";"farma";"48.89558";"17.50911";"Velká nad Veličkou";"Velká nad Veličkou 877";" 518 329 228, 602 578 542";;"kvatro-statek@cbox.cz "
+26;"Janíček Vít";"farma";"48.91038";"17.41658";"Hroznová Lhota";"Kozojídky 131";518327411;;"janicek.ondra@seznam.cz "
+27;"Kubišová Eva";"farma";"48.91272";"17.4147";" Hroznová Lhota";"Hroznová Lhota 333";" 518 327 545";;
+28;"Malár František";"farma";"48.86176";"17.5927";"Nová Lhota";"Nová Lhota 250";518383049;;
+29;"Pavlica Josef";"farma";"48.90585";"17.41808";"Hroznová Lhota";"Kozojídky 32";" 518 327 527";;
+30;"Zich Josef";"farma";"48.87558";"17.19087";"Rohatec";"Přívoz 23";724265933;;
+31;"KOJÁL Krásensko, družstvo Ekofarma Nové Sady";"farma";"49.36019";"16.83051";" Drnovice";" Krásensko 57";"517 385 223, 602 581 043";;"kojalkras@c-box.cz "
+32;"Agros Vyškov – Dědice a.s.";"farma";"49.29077";"16.98704";"Vyškov 2 – Dědice";"Jízdárenská 590";" 517 350 187, 724 028 066";;"agrosdedice@volny.cz "
+33;"Jalový dvůr, s.r.o.";"farma";"49.14566";"16.99955";"Bučovice";"Heršpice";603849160;;"msedlinsky@volny.cz "
+34;"Agro Alios, s. r. o.";"farma";"48.83888";"16.08882";"Znojmo";" Oblekovice 368";"515 226 375, 602 581 043";;"konecny@agroali.cz "
+35;"Eko Mackovice, s.r.o.";"farma";"48.88411";"16.31007";"Mackovice";"Mackovice 69";" 515 277 274 ";;"statek.mir1@tiscali.cz, eko.ma"
+36;"Farma Trnka";"farma";"48.98705";"16.10116";"Tavíkovice";"Křepčice 52";"515 252 272, 721 010 045";"http://www.farmatrnka.webpark.cz";
+37;"Pavel Hromek";"farma";"49.11026";"17.64086";"Velký Ořechov 763 07 ";"Kelníky 60";"577 996 004, 518 374 207";;
+38;"Josef Košař";"farma";"49.29745";"17.72937";"Lukov 763 17";"Lukov 9";577911542;;
+39;"Vladimír Sluštík";"farma";"49.28816";"17.77529";"Kašava 763 19";"Kašava 33";577467296;;"v.slustik@seznam.cz "
+40;"Tomáš Vrána";"farma";"49.22417";"17.74611";"Zlín";"Lužkovice 63";"605 289 205, 603 521 738";;"biofarmajure@seznam.cz "
+41;"Ekofarma OAZA";"farma";"49.31465";"17.8038";"Kašava 763 19";"Kašava 101";"573 333 457, 603 893 089";;"creationline@quick.cz "
+42;"Agro Březová, s. r. o.";"farma";"48.9279";"17.73761";"Březová u Uherského Brodu 687 67";"Zemědělská farma";572695729;;
+43;"Jan Čaňo";"farma";"48.9079";"17.74425";"Březová u Uherského Brodu 687 67";"Březová 324";572695741;;
+44;"Farma Otmar a Klára DOLEŽALOVI";"farma";"48.98707";"17.90006";"Starý Hrozenkov 687 74";"Žítková 4";572630481;;"klarkad4@seznam.cz "
+45;"Miroslav Habáník";"farma";"48.97065";"17.84803";"Starý Hrozenkov 687 74";"Vápenice 155";"572 696 091, 608 355 864";;
+46;"Eva Macková";"farma";"48.96082";"17.83204";"Starý Hrozenkov 687 74";"Vápenice 73";"606 547 082, 724 118 673";;"umacku@seznam.cz "
+47;"Tradice Bílých Karpat, občanské sdružení + s. r. o.";"farma";"49.05037";"17.87874";"Bojkovice 687 71";"Hostětín 4";572641040;"http://www.tradicebk.cz  ";"tbk@ecn.cz "
+48;"Biozelenina Velehrad ";"farma";"49.10354";"17.40141";"Velehrad 687 06";"Hradišťská 126";602702537;"http://www.biozelenina.eu  ";"biozelenina@lucniudoli.cz"
+49;"ZD Starý Hrozenkov";"farma";"48.96549";"17.86401";"Starý Hrozenkov 687 74";"Starý Hrozenkov 305";"572 696 434, 608 810 901";;"zdsh@centrum.cz "
+50;"HELIAVITA, s. r. o.";"farma";"49.29312";"17.39488";"Kroměříž 767 01 ";"Březinova 2655";"573 365 364, 777 171 174";;"heliavita@volny.cz "
+51;"Josef Vymětal";"farma";"49.3503";"17.4441";"Břest 768 23";"Břest 7";573354026;"http://www.biozelenina.ufouni.cz  ";"biozelenina@post.cz"
+52;"Ovčí farma";"farma";"49.40852";"18.12561";"Valašská Bystřice ";"Valašská Bystřice 607";571646449;;"j.ondruch@tiscali.cz "
+53;"AGRO Šumava, s. r. o.";"farma";"48.77089";"14.04613";"Horní Planá 382 26";"Švermova 161";380738181;;
+54;"Miroslav Brůha";"farma";"48.80698";"14.32443";"Český Krumlov 381 01";"Šumavská 561";380713189;;
+55;"Petr a Gabriela Dostálkovi";"farma";"48.87438";"14.58425";"Trhové Sviny 374 01 ";"Veselka 52";386321617;;
+56;"MANI, spol. s r. o. – Farma Drochov";"farma";"48.97984";"14.47794";"České Budějovice 370 01 ";"Jírovcova 18";607634668;"http://www.highlandcattle.cz  ";"highlandcattel@highlandcattel."
+57;"František Maurer";"farma";"48.58765";"14.32175";"Vyšší Brod 382 73 ";"Studánky 20";721546548;"http://www.penzionnafarme.cz  ";"maurerfa@seznam.cz "
+58;"Jiří Marek";"farma";"48.79723";"14.62931";"Čížkrajice 374 01 ";"Chvalkov 22";"386 323 240, 606 445 391";"http://www.istrom.cz  ";"marek.chvalkov@worldonline.cz "
+59;"Rodinná farma Janova Ves";"farma";"48.73682";"14.48878";"Kaplice 382 41 ";"Janova Ves 30";602148117;;
+60;"AGRO-MAMBAK, s. r. o.";"farma";"48.6043";"14.40369";"Horní Dvořiště 382 93 ";"Horní Dvořiště 72";"380 747 920, 606 913 081 nebo 380 747 051 (M.";;
+61;"Bemagro, a. s.";"farma";"48.68524";"14.57668";"Malonty 382 91 ";"Malonty 101";"380 325 181, 602 224 774 nebo 602 488 232 (P.";;
+62;"Farma Borová";"farma";"48.8777";"14.21776";"Český Krumlov 381 01";"Borová u Chvalšiny 44";380739251;"http://www.farmaborova.cz ";"borova@kamir.cz "
+63;"Pavelec Stanislav";"farma";"48.61616";"14.30794";"Vyšší Brod 382 73 ";"Na Vyhlídce 294";380746523;;"stanislav.pavelec@tiscali.cz  "
+64;"Farma Milná s.r.o.";"farma";"48.67381";"14.12752";"Frymburk 382 79 ";"Milná 7";"380 735 140, 602 463 383";;"farmamilna@iol.cz "
+65;"Konzal Jan – Farma JAKON";"farma";"48.9135";"14.21828";"Křemže 382 03 ";"Rychtářov 5";380745162;;
+66;"Jiří Václavík";"farma";"48.78029";"14.19122";"Český Krumlov 381 01 ";"Skláře 5";"380 737 022, 603 835 216";;"vaclaviksklare@seznam.cz "
+67;"ZITA Kájov s.r.o.";"farma";"48.81178";"14.26266";"Kájov 382 21 ";"Areál statku Kájov 191";"380 731 160/188";;"zitakajov@quick.cz "
+68;"Václav Drábek";"farma";"49.18447";"14.85101";"Kardašova Řečice 378 21 ";"Ratiboř-Holná 54";384382235;;"drabek54@seznam.cz "
+69;"Farma Moudrý ";"farma";"49.11904";"15.44604";"Dačice 380 01";"Velký Pěčín 5";;;"Martin.Senigl@seznam.cz "
+70;"Andrej Helfert";"farma";"48.9748";"14.86325";"Majdalena 378 03 ";"Holičky 12";"384 787 146, 739 404 514";;"helfertova@tiscali.cz "
+71;"Hana Langová";"farma";"49.05466";"15.30923";"Slavonice 378 81 ";"Peníkov 21";602464925;"http://langova.ecn.cz/ ";"hana.penikov@centrum.cz "
+72;"Jan Houška H-Farma";"farma";"49.06702";"14.9033";"Stráž nad Nežárkou 378 02 ";"Jindřichova 207";384389002;;"h-farma@quick.cz "
+73;"Chov koní Václav Smolík";"farma";"48.98553";"14.78076";"Třeboň 379 01 ";"Branná 56";"384 723 905, 723 319 930, 606 206 630";"http://www.mlynsky-dvur.cz  ";"rockers@seznam.cz "
+74;"Bio-rodina, s. r. o.";"farma";"49.06966";"14.00612";"Vlachovo Březí 384 22 ";"Budkov 13";"388 320 118, 724 252 788";;"renata.hrebikova@gmail.com  "
+75;"FARIM, s. r. o.";"farma";"49.12848";"13.65414";"Stachy 384 73 ";"Javorník 1";606708625;"http://www.highland-cattle.eu  ";"farim@centrum.cz "
+76;"Eduard Kraml";"farma";"49.09796";"13.66316";"Stachy 384 73 ";"Jirkalov 57";388428645;;"kramleduard@seznam.cz "
+77;"František Krejsa";"farma";"49.12431";"13.79052";"Čkyně 384 81 ";"Horosedly 13";388423387;"http://krejsa.kotata.com  ";"kyli@kotata.com "
+78;"Ekofarma Branišov";"farma";"49.10205";"13.66647";"Stachy 384 73 ";"Zdíkov-část Branišov 9";388428513;"http://www.highland.cz ";"info@highland.cz "
+79;"Jan Novák";"farma";"49.01755";"13.70936";"Vimperk 385 01 ";"Michlova Huť 7";"388 414 151, 602 122 254 ";;
+80;"Ekofarma Borová Lada";"farma";"48.99051";"13.66084";"Borová Lada 384 92 ";"Borová Lada 7";388434121;"http://www.eko-farma.eu ";"apichl@eko-farma.eu "
+81;"Biofarma Slunečná";"farma";"48.82043";"13.96739";"Volary Želnava 384 51 ";"Slunečná 3";"388 336 108, 604 331 278";"http://www.biofarma-slunecna.cz  ";"sonnberg@quick.cz "
+82;"David Vostrovský";"farma";"48.97043";"13.87618";"Prachatice 383 01 ";"Milešice 19";388323707;;"vostrovsky.david@seznam.cz  "
+83;"ZEFA Nová Pec, s. r. o.";"farma";"49.01646";"13.99756";"Prachatice 383 01 ";"Pivovarská 197";"388 313 240, 602 105 992";;"j.vondruska@zzvpt.cz "
+84;"Jiří Brautferger";"farma";"49.01936";"13.72746";"Vimperk 385 01 ";"Lipka 28";376594171;;
+85;"FAUN BK s.r.o.";"farma";"48.94315";"13.97726";"Zbytiny 384 41 ";"Zbytiny 8";388337224;;
+86;"GW FARMA s.r.o.";"farma";"48.91018";"14.01726";" Prachatice 383 01";"Křišťanov 12";"388 337 235, 388 323 680";;" p.simek@zzvpt.cz, p.vichr@zzv"
+87;"Kristina Ichová";"farma";"48.96959";"13.79654";"Horní Vltavice 384 91";"Horní Vltavice 384 91";388436120;;
+88;"Václav Kovář";"farma";"49.05083";"13.98159";"Husinec 384 21 ";"Husova 261";"388 332 412, 379 030 106";;
+89;"Jaroslav Kovařík";"farma";"49.09495";"13.7343";"Stachy 384 73";"Račov 39";388426920;;
+90;"Zdeněk Krejsa";"farma";"49.01517";"13.76874";"Vimperk 385 01 ";"Korkusova Huť 13";"383 416 152, 775 710 660";;
+91;"Jiří Lasna – Zemědělská farma Benešova Hora";"farma";"49.06067";"13.77684";"Vimperk 385 01 ";"Mírová 423";"388 415 958, 602 107 740";;"lazna@centrum.cz "
+92;"Roman Martínek";"farma";"49.11509";"13.82767";" Čkyně 384 81";"Zálezky 31";388423523;;
+93;"Václav Muška";"farma";"49.01059";"14.18002";"Netolice 384 11 ";"Brusná 278";388321164;;
+94;"MVDr. Jiří Oulický";"farma";"49.05243";"13.77516";"Vimperk 385 01";"Steinbrerenova 49";"388 331 180, 602 122 264";;"oulickyjiri@seznam.cz "
+95;"Ing. Lubomír Pichler";"farma";"49.06024";"13.78371";"Vimperk 385 01";"Náměstí 39";"388 411 500, 603 175 186";"http://www.galloway.cz ";"mtv@galloway.cz "
+96;"SITTER s.r.o.";"farma";"48.73622";"14.04904";"Volary 384 51 ";"Valtrov 41";"380 738 919, 606 862 139";;
+97;"Jaroslav Sova";"farma";"49.08162";"13.83211";"Čkyně 384 41 ";"Záhoří 63";"388 423 679, 724 289 374";;
+98;"Jiří Staněk";"farma";"49.09653";"13.81696";"Čkyně 384 81 ";"Bohumilice 10";723051897;;
+99;"František Steinbrenner";"farma";"49.00449";"13.77548";"Vimperk 385 01";"Arnoštka 5";388411507;;"strby@centrum.cz "
+100;"Zdeněk Škopek";"farma";"49.12606";"13.7894";"Čkyně 384 81 ";"Horosedly 22";"388 423 360, 603 713 683";;"skopek@seznam.cz "
+101;"Josef Šnelcer";"farma";"49.02689";"13.9577";"Prachatice 383 01 ";"Oseky 5";388316185;;
+102;"Zemědělská farma Strážný";"farma";"48.90697";"13.71969";"Strážný 384 43 ";"Strážný 11";"388 437 133, 602 115 065";;
+103;"Jan Janoušek";"farma";"49.19348";"13.90992";"Volyně 387 01 ";"Hoštice 17";383372282;;
+104;"Jiří Kouba";"farma";"49.12744";"14.12443";"Vodňany 389 01";"Vodňanské Svobodné Hory 3";"383 382 002, 607 771 889";;
+105;"Farma KOFA";"farma";"49.15761";"14.06065";"Bavorov 387 73 ";"Bílsko 25";383391791;"http://kofa.ecn.cz ";"nhcfrantisek@quick.cz "
+106;"Šumava, a. s.";"farma";"49.15402";"13.90278";"Volyně 387 01 ";"Nišovice 55";"383 372 522, 602 558 413";;"sumava@mybox.cz "
+107;"Vladimír Michálek";"farma";"49.20547";"13.77408";"Volenice 387 16 ";"Hoslovice, Hodějov 3";383397288;;
+108;"EWE CZ, s. r. o. – FARMA MLÝNEC";"farma";"49.5108";"14.57614";"Jistebnice 391 33 ";"Smrkov 10";"381 273 123, 606 264 732";"http://www.volny.cz/mlynec  ";"mlynec@volny.cz "
+109;"Ekostatek Ludvíkov ";"farma";"49.48415";"14.56412";"Jistebnice 391 33 ";"Ludvíkov 213";381273088;"http://www.ludvikov.estranky.cz  ";"tz73@seznam.cz "
+110;"Karel Hořejší ";"farma";"50.19889";"12.47171";"Skalná 351 34 ";"Kopanina 19";354599854;;
+111;"Farma Arnika";"farma";"50.13383";"12.82695";"Horní Slavkov 357 31 ";"Ležnice 811";"352 698 445, 605 860 432";"http://web.quick.cz/malaekologickazeme/";"josefklein@mujmejl.cz "
+112;"Vlastimil Kříž";"farma";"50.24889";"12.6241";"Dolní Nivy 357 04 ";"Dolní Nivy 25";"352 695 287, 777 842 492";;
+113;"RVES BUBLAVA, s. r. o.";"farma";"50.36701";"12.50112";"Bublava 358 22";"Bublava 174";724345873;;"havlova.d@seznam.cz"
+114;"Skřivánčí vrch";"farma";"50.22349";"12.19458";"Aš 352 01 ";"Skřivánčí vrch";"354 525 852, 607 225 050";;"roman.mastik@volny.cz "
+115;"Pavel Sulan ";"farma";"49.99275";"12.59411";"Mariánské Lázně 353 01 ";"Stará Voda 22";604367296;;"pavel.sulan@seznam.cz "
+116;"Petr Štěpánek";"farma";"50.22063";"12.23439";"Aš 352 01 ";"Vernéřov 152";;;"stepan@seznam.cz "
+117;"Zemědělský dvůr BERBERA, s. r. o.";"farma";"49.9361";"12.60125";"Mariánské Lázně 353 01 ";"Tachovská Huť 20";"354 694 505, 602 834 112";;"berbera@centrum.cz "
+118;"Agro & Kombinát Dolní Žandov s.r.o.";"farma";"50.01226";"12.53998";"Dolní Žandov 354 93 ";"Dolní Žandov 218, 354 93 Dolní Žandov";;"http://www.agro-zandov.cz/";"akdz@seznam.cz "
+119;"Agrowild Nová Ves s.r.o.";"farma";"50.04899";"12.73227";"Mariánské Lázně 353 01 ";"Prameny 20";"354 692 194/5";;"prameny@proactive.cz "
+120;"Alois Zimmermann s.r.o.";"farma";"50.05738";"12.3715";"Cheb 350 02 ";"Šlapanská 3";"354 439 298, 605 556 397";;"marta.misikova@quick.cz "
+121;"Farma Pastviny";"farma";"50.30989";"12.17495";"Hranice u Aše 351 24 ";"Trojmezí 173";"354 595 327, 602 393 703";;"hranice@volny.cz "
+122;"Farma Trojmezí a.s.";"farma";"50.30989";"12.17495";"Hranice u Aše 351 24 ";"Trojmezí 173";"354 595 327, 737 284 218";;
+123;"Petr Jadlovský – Jízdárna Arabian Horses";"farma";"50.0162";"12.5502";"Dolní Žandov 354 91 ";"Dolní Žandov 97";354693559;;"arabian@tiscali.cz "
+124;"NADE, s.r.o.";"farma";"50.10664";"12.79309";"Krásno 357 47 ";"Hlavní 560";352370920;"http://www.nade.cz/";"nade@nade.cz "
+125;"Jiří Kodajek";"farma";"49.94854";"12.73826";"Mariánské Lázně 353 01";"Vlkovice 13";354623741;;"jiri.kodajek@tiscali.cz "
+126;"Ivan Kožíšek";"farma";"49.95279";"12.77867";"Ovesné Kladruby 353 01";"Ovesné Kladruby 18";"354 620 191, 606 284 364";;"i.kozisek@seznam.cz"
+127;"Libor Ludík";"farma";"49.95562";"12.70969";"Mariánské Lázně 353 01";"Palackého 657/52";602128437;;"farma.ok@quick.cz"
+128;"Jaroslav Norek";"farma";"50.269";"12.39015";"Skalná 351 34";"Horní Luby 558";"354 560 101, 602 476 813";;
+129;"Josef Novák";"farma";"49.99309";"12.82545";"Teplá 364 61 ";"Hoštec 27";"353 392 566, 606 109 719";;
+130;"Petr Novotný";"farma";"49.9771";"12.86718";"Teplá 364 61 ";"Pivovarská 567";602938054;;
+131;"Pavel Palivec";"farma";"50.15089";"13.04332";"Bochov 364 71 ";"Mariánská 327";"353 902 118, 606 840 538";;
+132;"PG-Hazlov a.s.";"farma";"50.2175";"12.44534";"Nový Kostel 351 36 ";"Spálená 1";"354 595 205, 737 284 214";;"pg.hazlov@quick.cz "
+133;"Potůčková Jiřina";"farma";"50.00611";"12.6296";"Lázně Kynžvart 354 91 ";"K Pramenům 249";354691298;;
+134;"Rolnická Skalná s.r.o. - farma Starý Rybník";"farma";"50.2175";"12.44534";"Nový Kostel 351 36";"Spálená 1";;;"spozem@volny.cz "
+135;"Štefan Salva";"farma";"50.25323";"12.40278";"Luby u Chebu 351 37 ";"U pily 125";"352 686 862, 724 135 018";;"s.salva@seznam.cz "
+136;"SPO-ZEM Nový Kostel s.r.o.";"farma";"50.21706";"12.44518";"Nový Kostel 351 36";"Nový Kostel čp. 201";354599821;;"spozem@volny.cz "
+137;"Statek Údrč";"farma";"50.12999";"13.08825";"Bochov 364 71";"Údrč 1";"353 902 245, 606 954 614";"http://www.stasak-statekudrc.cz/";"stasak@volny.cz "
+138;"František Suchánek";"farma";"50.294";"12.45027";"Kraslice 358 01 ";"Čirá 32";352687030;;
+139;"Martin Šneiberg";"farma";"50.3696";"12.61665";"Kraslice 358 01 ";"Přebuz 34";352695039;;"sneibergM@seznam.cz "
+140;"Ing. Anna Tůmová - Ekofarma Stanoviště";"farma";"49.95152";"12.72008";"Mariánské Lázně 353 01";"Ke Kostelu 42";"354 624 603, 777 072 745";;"kuralova@tiscali.cz "
+141;"Vladimír Vaňousek";"farma";"50.13362";"12.95943";"Bochov 364 71";"Javorná";353993354;;
+142;"Jiří Zoglauer";"farma";"50.1617";"13.08754";"Bochov  364 71 ";"Těšetice 30";353902054;;"zogfarm@seznam.cz "
+143;"Biofarma EPONA";"farma";"50.09555";"13.13465";"Žlutice 364 52 ";"Verušice 5";"353 393 850, 607 952 125";"http://epona.wz.cz/";"pankovaivana@centrum.cz "
+144;"Farma Fojtov, s. r. o. ";"farma";"50.29825";"12.79566";"Nová Role 362 25 ";"Fojtov 2";603187402;;"kavka.tomas@volny.cz "
+145;"Ekologická farma KOZODOJ";"farma";"50.25696";"12.80951";"Stará Role";"Rolavská 538";"353 561 515, 608 981 814";"http://www.kozodoj.cz/";"info@kozodoj.cz "
+146;"Farma Suchá";"farma";"50.30844";"12.73745";"Nejdek 362 21 ";"Suchá 18";602278421;;
+147;"Horský statek Abertamy, s. r. o.";"farma";"50.36722";"12.80976";"Abertamy 362 35";"Rybniční 482";"353 892 277, 606 709 144";;"karel.bukvar@farmazvirat.cz, f"
+148;"Farma Žalmanov";"farma";"50.15327";"13.01931";"Bochov  364 71";"Stružná 72";603201350;"http://www.kozicky.unas.cz/";"chov.koz.zalmanov@atlas.cz  "
+149;"Jiří Kubernát ";"farma";"50.27237";"12.78865";"Nová Role 362 25 ";"Děpoltice 12";"353 851 047, 602 468 912";;"farma.kubernat@tiscali.cz  "
+150;"Jaroslav Prchal";"farma";"50.01049";"13.0162";"Bezvěrov 330 41 ";"Nežichov 8";602523454;"http://www.cestazmesta.cz/";"prchal@nezichov.cz"
+151;"Rodinná farma KARILO";"farma";"50.33164";"12.87946";"Ostrov nad Ohří 363 01 ";"Oldříš 28";"353 618 611, 728 542 344";"http://web.quick.cz/karilo.oldris/";"karilo.oldris@seznam.cz"
+152;"Kozí farma Jaroslav Šmíd";"farma";"50.0905";"13.16481";"Žlutice 364 52 ";"28. října 277";"353 393 417, 601 266 918, 777 085 663";"http://www.smidovi.wz.cz/";"vitan.smid@seznam.cz "
+153;"Ing. Pavlína Baštová, Ing. Miroslav Bašta - farma Osvinov";"farma";"50.33679";"13.04963";"Stráž nad Ohří 362 74 ";"Stráž nad Ohří 148";"353 893 102, 603 500 242";;"bastamiroslav@seznam.cz "
+154;"Biofarma Bezděkov";"farma";"50.00681";"12.97528";"Toužim 364 01 ";"Bezděkov 3";602414784;;
+155;"Jaroslav Duchan";"farma";"50.3328";"12.719";"Nejdek 362 21 ";"Závodu míru 679";"353 925 893, 606 865 465";;"jaroslav.duchan@seznam.cz  "
+156;"Ekoranč „U Mašků“";"farma";"50.09065";"12.94059";"Toužim 364 01 ";"Přílezy 8";353312035;"http://www.ekoranc.cz/";"info@ekoranc.cz"
+157;" Farma Kozlov";"farma";"50.15077";"13.04725";"Bochov  364 71";"Okružní 360";603840469;;"farmakozlov@seznam.cz "
+158;"Petr Gotz";"farma";"50.18037";"13.00557";"Bochov 364 71";"Stružná 109";353901109;;
+159;"Martin Kováč";"farma";"50.28883";"12.71859";"Černava 362 23 ";"Černava 118";"353 826 776, 605 826 700";;"kovac12@seznam.cz "
+160;"Jaroslav Květoň";"farma";"50.05586";"12.94028";"Toužim 364 01 ";"Sedlo 4";"353 312 023, 604 258 219";;"kvetonova.sedlo@seznam.cz"
+161;"Helena Lahodná – JK Pegas";"farma";"49.26573";"13.21652";"Děpoltice 362 25 ";"Děpoltice 1";"353 851 000, 776 280 541";"http://www.jkpegas.cz/";"jkpegas@jkpegas.cz "
+162;"Aleš Lošťák";"farma";"50.30923";"13.03626";"Vojkovice 36301 ";"Jakubov 49";"353 942 305, 775 157 191";;"ALostak@seznam.cz "
+163;"Pavel Palacký";"farma";"50.34712";"13.01877";"Krásný Les 363 01 Ostrov";"Horní Hrad 1";"274 783 055, 777 028 820";"http://hornihrad.cz/";"pavel.palacky@hornihrad.cz  "
+164;" PROBITAS s.r.o.";"farma";"49.97084";"12.88188";"Karlovy Vary 364 61 ";"Šafářské Domky 500";"353 312 023, 604 258 219";;"probitas@seznam.cz "
+165;"František Sekáč";"farma";"50.03411";"12.9723";"Toužim 364 01";"Kosmová 20";353312286;;
+166;"Střední zemědělská škola Dalovice";"farma";"50.24895";"12.89276";"Dalovice 362 63 ";"Hlavní 27";"353 223 129, 353 226 354, 607 103 244";"http://www.szes-dalovice.cz/";"perlinger@volny.cz "
+167;"Bohumil Šindelka";"farma";"50.35494";"12.68344";"Vysoká Pec 362 21 ";"Rudné 75E";723609524;;"bohumil.sindelka@seznam.cz  "
+168;"Petr Zettl";"farma";"50.35242";"12.69244";"Nejdek 362 21";"Vysoká Pec Rudné 12";"353 826 293, 606 177 644";;
+169;"František Bartoň";"farma";"50.13441";"12.82776";"Horní Slavkov 357 31";"Ležnice 860";"352 698 625, 607 802 151";;"bartonovi@volny.cz "
+170;"Jiří Kolář";"farma";"50.29367";"12.45101";"Kraslice 358 01 ";"Čirá 30";"352 687 705, 608 342 359";;
+171;"Soukromá farma DASO";"farma";"50.14456";"12.64391";"Březová 357 61 ";"Lobzy 4";352699194;;
+172;"Richard Vans";"farma";"50.12135";"12.80299";"Horní Slavkov 357 31 ";"Lánský dvůr 840";352698247;;"vans.farma@seznam.cz "
+173;"Marta Domkářová";"farma";"49.63249";"15.74924";"Havlíčkova Borová 582 23 ";"Železné Horky 12";603224146;;"mdomkarova@seznam.cz "
+174;"Farma Kojetín";"farma";"49.65843";"15.45372";"Pohled 582 21";"Pohled 199";"569 439 159, 608 163 915";;"klement.vladimir@tiscali.cz"
+175;"Jan Dvorský";"farma";"49.54814";"15.76701";"Přibyslav 582 22 ";"Olešenka 10";603360864;;"jan.dvorsky@foa.cz "
+176;"Biofarma Sasov";"farma";"49.38225";"15.60007";"Jihlava 1 586 01 ";"Sasov 2";567312281;"http://www.biofarma.cz/";"info@biofarma.cz "
+177;"František Matoušek";"farma";"49.52639";"15.72631";"Polná 588 13 ";"Brzkov 13";776071799;;
+178;"Luboš Pospíšil ekofarma";"farma";"49.29202";"16.14159";"Velká Bíteš 595 01 ";"Holubí Zhoř 21";608267931;;"lupostol@tiscali.cz "
+179;"Tomáš Křišťan";"farma";"49.48353";"15.14864";"Milotičky u Pelhřimova";"Červená Řečice 2 ";"565 535 154, 565 398 021";"http://www.miloticky.unas.cz/";"ekofarma.kristan@seznam.cz  "
+180;"Dvůr Ratibořice";"farma";"49.13156";"15.90608";"Jaroměřice nad Rokytnou 675 51 ";"Ratibořice 1";568440617;"http://www.kozimleko.cz/";"ratiborice1@volny.cz "
+181;"Ekofarma Baucis";"farma";"49.51165";"16.30269";"Bystřice pod Pernštejnem 593 01 ";"Lesoňovice 5";"566 560 007, 775 045 957";"http://ekofarma.baucis.sweb.cz/";"ekofarma@atlas.cz, ekofarma.ho"
+182;"Žofie Konvalinková ";"farma";"49.64216";"16.09421";"Sněžné na Moravě 592 03 ";"Krátká 10";566664366;;"konvalinka.pavel@seznam.cz  "
+183;"Oldřich Buršík ";"farma";"49.32176";"16.12149";"Velké Meziříčí 594 01 ";"Ruda 24";566536331;;"oldrich.bursik@tiscali.cz  "
+184;"Libor Vařejka";"farma";"49.40811";"16.22224";"Strážek 592 53 ";"Meziboří 47";"566 567 007, 731 476 352";;"l.varejka@tiscali.cz "
+185;"Miroslav Kadeřávek";"farma";"49.61644";"16.16676";"Věcov 592 44 ";"Věcov 25";566562839;;"info@chalupa-vysocina.cz"
+186;"Jiří Blažek";"farma";"49.82384";"15.84142";"Ctětín 539 54 ";"Ekofarma, Vranov,";469679159;;"jirkablazek@quick.cz "
+187;"Farm Projekt";"farma";"49.90978";"15.54168";"Třemošnice 538 42 ";"Tuchov 5";"466 657 509, 602 434 897";;"farmprojekt@volny.cz "
+188;"Jan Kordík";"farma";"49.87523";"16.06994";"Luže 538 54 ";"Bílý Kůň 9";469671160;;"jankordik@centrum.cz"
+189;"Ranč beraní ráj";"farma";"49.86024";"15.85545";"Slatiňany 538 21 ";"Částkov 4, Žumberk";777664636;"http://www.beraniraj.cz/";"qis@seznam.cz "
+190;"Václav Pospíšil";"farma";"49.84531";"15.86255";"Nasavrky 538 25 ";"Miřetice-Švihov 4";469315730;;
+191;"Josef Mládek";"farma";"49.62922";"16.34624";"Bystré, 569 92 ";"Bystré 17";"461 721 086, 728 029 306";;"josefmladek@tiscali.cz "
+192;"Jan Látal ";"farma";"49.7616";"16.55796";"Koclířov 569 11 ";"Koclířov 54";603894863;;"janlatal@volny.cz "
+193;"Biofarma Knápkovi";"farma";"49.96059";"16.71125";"Horní Heřmanice 561 33";"Horní Heřmanice 21";605107144;;"aknapkova@centrum.cz "
+194;"Alžběta Stejskalová ";"farma";"49.99169";"16.66703";"Výprachtice 561 34 ";"Výprachtice 284";731184724;;
+195;"ZEOS, s. r. o.";"farma";"50.10053";"16.75375";"Králíky 561 69";"Prostřední Lipka 126";465631506;;
+196;"Bedřich Plíšek";"farma";"50.34211";"15.63623";"Hořice v Podkrkonoší 508 01";"Vinice 4";"493 698 172, 602 104 853";;"bedrich.plisek@seznam.cz "
+197;"Jiří Antoš";"farma";"50.33137";"15.27008";"Kopidlno 507 32 ";"Kamensko 249";493552159;;" jiriantos@tiscali.cz "
+198;"Doležal Drahomír";"farma";"50.51528";"16.16193";"Hronov 549 31";"Rokytník 68";491481192;;"farmardada@seznam.cz"
+199;"Karel Krecbach";"farma";"50.62421";"16.08094";"Adršpach 549 57 ";"Adršpach 86";737905941;;
+200;"LIMBA, s. r. o.";"farma";"50.62544";"16.24074";"Meziměstí 549 83 ";"Jetřichov 225";491541944;;"limba.nachod@tiscali.cz "
+201;"Bohumil a Anna Tůmovi ";"farma";"50.56562";"16.17546";"Teplice nad Metují, 549 57";"Dědov-Javor 78";;;
+202;"Jaroslav Přibyl ";"farma";"50.58709";"16.33114";"Broumov 550 01 ";"U horní brány 27";731155377;;"pribyl58@seznam.cz"
+203;"Statek Tilia s.r.o. ";"farma";"50.52647";"16.22677";"Police nad Metují 594 54 ";"Radešov 1";602144146;;"statek.tilia@tiscali.cz "
+204;"Richard Přikryl";"farma";"50.30457";"16.37361";"517 91 Deštné v Orlických horách";"Deštné v Orlických horách 275";494663041;;
+205;"František Divíšek";"farma";"50.15525";"16.42429";"Pěčín 517 57";"Pěčín 264";737501290;;
+206;"EKOLIFE – družstvo Orlické Záhoří ";"farma";"50.24932";"16.47979";"Orlické Záhoří 517 64 ";"Orlické Záhoří 8";"494 593 136, 603 294 776";;"ekolife@centrum.cz "
+207;"Miloš Kurka ";"farma";"50.05956";"16.3075";"Polom 517 41 ";"Polom 19";"494 532 144, 777 788 992";"http://www.biozelenina.cz  ";"kurka@wo.cz "
+208;"Jan Moravec ";"farma";"50.26885";"16.22349";"Dobruška 518 01 ";"Podbřezí – Lhota 85";"494 664 247, 739 085 804";;"eko.farma@tiscali.cz "
+209;"EKOFARMA Jaroslav Netík ";"farma";"50.28183";"16.23014";"Dobruška 518 01 ";"Spáleniště 5";"494 664 492, 603 904 241";"http://home.tiscali.cz/ekofarma";"jaroslav.netik@tiscali.cz "
+210;"ORLICKO, a. s. ";"farma";"50.19049";"16.42138";"Rokytnice v Orlických horách  517 61 ";"Nebeská Rybná 2";736753700;;"orlicko.sro@tiscali.cz "
+211;"Farma Bozetice ";"farma";"50.10823";"16.08719";"Borohrádek 517 24 ";"Bozetice 127";"494 381 487, 728 204 040";;
+212;"Rodinná farma manželů Skramlíkových ";"farma";"50.45157";"15.90704";"Dvůr Králové nad Labem 544 01 ";"Kohoutov 58";499392487;;"kozi.kralovstvi@tiscali.cz "
+213;"EKOHERBA";"farma";"50.31236";"16.23285";"Ohnišov 517 84 ";"Ohnišov 106";"494 665 990, 602 116 228";"http://www.ekoherba.cz/index.html";"simakova@ekoherba.cz "
+214;"Vladimír Hostinský ";"farma";"50.14955";"16.29073";"Rychnov nad Kněžnou 516 01 ";"Dlouhá Ves 15";494535931;;
+215;"Horská chata s.r.o. Farma Sedloňov ";"farma";"50.29884";"16.36832";"Deštné v Orlických horách 517 91 ";"Deštné v Orlických horách 178";"494 663 168, 604 230 613";;"chatadomov@raz-dva.cz "
+216;"MEFAS s.r.o. ";"farma";"50.29384";"16.24143";"Dobruška 518 01 ";"Sudín 1";"602 402 556, 494 664 228";;"mefas.sudin@worldonline.cz"
+217;"SELKA a.s. ";"farma";"50.1696";"16.45769";"Rokytnice v Orlických horách 517 61 ";"Rokytnice v Orlických horách 76";"494 595 127, 603 275 575";;"selka.kapler@tiscali.cz"
+218;"Tošovský s.r.o. ";"farma";"50.20472";"16.12728";"Týniště nad Orlicí 517 21 ";"Nová Ves 20, Voděrady";"494 628 333, 774 738 714";;"stanislav.tosovsky@worldonline"
+219;"Ekologická farma Černá Mára ";"farma";"50.48725";"15.90747";"Hajnice 544 66 ";"Horní Žďár 18";"499 393 246, 731 707 680";;"cerna.mara@tiscali.cz"
+220;"Farma Kout, v. o. s. ";"farma";"50.59724";"15.69277";"Rudník 543 72 ";"Fořt 29";"499 435 179, 777 934 738";;"farma.kout@post.cz "
+221;"Zdeněk Hák ";"farma";"50.42474";"15.80731";"Dvůr Králové nad Labem 544 01 ";"Bezručova 773";"499 621 506, 732 919 437";;
+222;"Antonín Šlechta – Bormato ekofarma Radeč ";"farma";"50.51329";"16.01047";"Úpice 542 32";"Revoluční 1050";731172960;;"slechta.vodack@tiscali.cz "
+223;"EKOMASO, s. r. o. ";"farma";"50.56636";"15.76658";"Trutnov 543 71 ";" Čermná 126";606611710;;"ekomaso@centrum.cz "
+224;"Farma OFCE";"farma";"50.76285";"14.82514";"Liberec 2 460 02 ";"Janovice v Podještědí 25";485172246;;"kase.ofce@atlas.cz "
+225;"Zemědelská farma Probos ";"farma";"50.61996";"14.60448";"Provodín 471 67 ";"Provodín 18";"487 877 744, 731 242 887";;"probos@centrum.cz "
+226;"Angusland s.r.o.";"farma";"50.69407";"14.65068";"Zákupy 471 23 ";"Nové Zákupy 315";487522749;;"angusland@volny.cz "
+227;"JAGRA spol. s r. o.";"farma";"50.73776";"14.75623";"Jablonné v Podještědí 47125 ";"Postřelná 76";487762351;;"pv.cvikov@volny.cz "
+228;"Bohuslav Pauzr - Chov koní";"farma";"50.53953";"14.53392";"Dubá 471 41 ";"Nové Město 295";487870174;;"pauzr.duba@centrum.cz "
+229;"PV - Cvikov s.r.o.";"farma";"50.73776";"14.75623";" Jablonné v Podještědí 471 25";"Postřelná 76";487762351;;
+230;"Vrchovany";"farma";"50.55556";"14.57692";"Doksy 472 01 ";"Vrchovany 35";"487 870 130, 602 161 263";"http://www.vrchovany.cz/";"studnickovi@vrchovany.cz "
+231;"Jaroslav Štědra - FARMA KYTLICE";"farma";"50.78695";"14.53694";"Polevsko 47116 ";"Polevsko 53";487723477;;"stedra@volny.cz "
+232;"Zelená farma s.r.o.";"farma";"50.65152";"14.45832";"Česká Lípa 470 01";"Kozly 106";737284212;;"info@biohovezi.cz "
+233;"Jiřina Barešová";"farma";"50.64305";"15.25382";"Železný Brod 468 22 ";"Popluž 107";483389428;;
+234;"Farma Filoun";"farma";"50.70082";"15.30998";"Plavy 468 46 ";"Plavy 4,";483398169;"http://www.farmafiloun.cz/";"sourek.josef@sesznam.cz "
+235;"Farma Lukava";"farma";"50.96104";"15.23138";"Jindřichovice pod Smrkem 463 66 ";"Jindřichovice pod Smrkem 12";731116551;;"martin@lukava.net"
+236;"Anna Ondřejíková ";"farma";;;"Dvůr Hlaváč 463 73 ";"Ves 8";"482 345 062, 606 327 664";;"anna.ondrejikova@seznam.cz "
+237;"Josef Procházka";"farma";"50.92541";"15.08423";"Frýdlant 464 01 ";"Lužická 843";602185524;;"prochazka.sen@seznam.cz "
+238;"REAGRO, s. r. o.";"farma";"50.67625";"14.98643";"Český Dub 463 43 ";"Starý Dub 1";"485 147 213, 603 466 372";;"reagro.sro@seznam.cz "
+239;"GRAIN a.s.";"farma";"50.91909";"15.07397";"Frýdlant v Čechách 464 01 ";"Višňová, část Poustka čp. 97";482348299;;
+240;"Robert Hampl";"farma";"50.96243";"15.01356";"Višňová 464 01 ";"Višňová 107";482348233;;"hampl.robert@volny.cz"
+241;"Pavel Mach - Farma „Pod Lipami“";"farma";"50.93477";"15.08878";"Frýdlant 464 01 ";"Údolí 597";606683684;"http://www.orlovska-perla.unas.cz/";"pavel.mach@atlas.cz "
+242;"Jaroslav Studnička";"farma";"50.77218";"15.19218";"Lučany nad Nisou 468 44 ";"Horní Maxov 127";483720062;;
+243;"Ing. Ludmila Šmídová - Farma Vyšehrad";"farma";"50.75422";"15.15305";"Janov nad Nisou 468 11 ";"Hraničná 99";483380201;;"farmavysehrad@seznam.cz, farma"
+244;"Ekofarma u Kotyků";"farma";"50.5777";"15.50648";"Roztoky u Jilemnice 512 31 ";"Roztoky u Jilemnice 82";721096135;"http://www.ekofarmaukotyku.cz/about.htm";"kotyk@ekofarmaukotyku.cz "
+245;"Farma Hucul, s. r. o.";"farma";"50.73598";"15.54663";"Vítkovice v Krkonoších 512 38 ";"Janova Hora 92";481582819;"http://www.hucul.cz/";"farma@hucul.cz"
+246;"Krakonošův ranč – hospodářské družstvo";"farma";"50.66157";"15.46326";"Poniklá 512 42 ";"Poniklá 224";481585128;;"krakonosuvranc@quick.cz "
+247;"Milan Láník ";"farma";"50.60758";"15.194";"Turnov 511 01 ";"Rohliny 7";603275608;;"alice.lanikova@centrum"
+248;"PALME Štěpán";"farma";"50.70568";"15.47599";"Jablonec nad Jizerou 512 43 ";"Bratrouchov 50";481591638;;"palmestepan@centrum.cz "
+249;"Pavel Janata";"farma";"50.57536";"15.48112";"Jilemnice 514 01 ";"Kruh 12";737848429;;
+250;"Ing. Milan Jiřič - farma Dolánky";"farma";"50.70019";"15.40542";"Vysoké nad Jizerou 512 43 ";"Sklenařice 140";732747259;;
+251;"Ing. Jana Lyerová - DVŮR BORČICE";"farma";"50.58378";"15.15221";"Turnov 511 01 ";"Dvůr Borčice";326789041;"http://www.borcice.cz/";"kone.borcice@telecom.cz "
+252;"Nadace Tábor ";"farma";"50.52134";"15.41127";"Nová Ves n/P. 512 71 ";"Nová Ves nad Popelkou 57";"481 675 264, 603 238 962";;"centrumtabor@centrum.cz "
+253;"Rodinná Farma LOMY";"farma";"50.60515";"15.3209";"Semily 513 01 ";"Myslivecká 425";"481 622 959, 736 482 411";;"verich@quick.cz "
+254;"Bc. Hana Řehořková - Farma Agrotempo";"farma";"50.6056";"15.57501";"Horní Branná 512 36 ";"Horní Branná 422";"481 584 165, 605 168 608";"http://www.chatapodhajkem.eu/";"chatapodhajkem@volny.cz "
+255;"Luboš Waldmann";"farma";"50.7253";"15.39937";"Paseky nad Jizerou 512 47 ";"Paseky nad Jizerou 2";481523289;;"lubos.waldmann@mujmejl.cz "
+256;"Zemex s.r.o.";"farma";"50.73778";"15.49432";"512 45 Rokytnice nad Jizerou";"Horní Rokytnice nad Jizerou";"481 523 577, 728 975 728";;"zemex@rokytnice.com "
+257;"AGRO DVORCE, s. r. o. ";"farma";"49.85267";"17.51125";"793 68 Kříšťanovice";"Kříšťanovice 171";"554 745 006, 777 669 902";;"agd.pas@seznam.cz "
+258;"Bellama, s. r. o.";"farma";"50.12917";"17.47602";"793 71 Holčovice";"Jelení 90";"554 644 114, 554 644 007";;"bellama@proactive.cz"
+259;"Farma Stránské";"farma";"49.8931";"17.30485";"793 51 Břidličná";"Stránské 32";"554 212 555, 604 932 913, 728 923 830";;"ji.beranek@tiscali.cz "
+260;"Věra Hanáčková";"farma";"49.83366";"17.54429";"793 68 Dvorce";"Komenského 29";777336304;;"vera.hanackova@seznam.cz "
+261;"Ekofarma Babočka";"farma";"50.04338";"17.35432";"793 31 Světlá Hora";"Podlesí 4";"554 737 102, 736 618 146";;"babocka@raz-dva.cz ; l.konopka"
+262;"Pavel Kročil";"farma";"49.95348";"17.34029";"795 01 Rýmařov";"Malá Štáhle 46";"554 286 054, 603 547 892";;
+263;"Tvrdkovská zemědělská farma, s. r. o.";"farma";"49.89876";"17.19188";"793 44 Horní Město";"Tvrdkov 34";554291016;;" tvrdkovska@seznam.cz "
+264;"AB AGRO s.r.o.";"farma";"49.8517";"17.51157";"793 68 Dvorce";"Kříšťanovice 171";"554 745 006, 777 669 902";;"agd.pas@seznam.cz "
+265;"Ing. Vít Antl";"farma";"49.9709";"17.44564";"792 01 Bruntál";"Moravskoslezský Kočov 152";"554 716 079, 608 879 226";;"vit.antl@centrum.cz "
+266;"FA-BIO spol. s r.o.";"farma";"50.04543";"17.40233";"793 31 Světlá Hora";"Světlá Hora 274";554737192;;"fabio.zeleny@tiscali.cz "
+267;"František Fabrik";"farma";"49.91766";"17.17875";"793 44 Horní Město";"Dobřečov 43";554291169;;
+268;"Farma BOVINE";"farma";"50.19928";"17.38303";"Heřmanovice 793 74 ";"Heřmanovice 161";"554 612 627, 605 248 358";;"bovine@farmabovine.cz, bovine@"
+269;"FUTUR s.r.o.";"farma";"50.06632";"17.47844";"793 22 Široká Niva";"Široká Niva 75";"554 741 030, 776 172 842";;"futur1sn@tiscali.cz "
+270;"Luděk Havelka";"farma";"49.91598";"17.18517";"793 44 Horní Město";"Zahradní 2, 795 01 Rýmařov, Dobřečov";602411004;;"ludek.havelka@email.cz "
+271;"Horymas SK s.r.o.";"farma";"49.91481";"17.22948";"793 44 Horní Město";"Skály 18";554281149;;"horymas.hornimesto@tiscali.cz "
+272;"Jan Hořák";"farma";"49.95132";"17.24816";"793 42 Janovice u Rýmařova";"Opavská 123";"554 283 059, 602 584 033";;"janhorak.janhorak@tiscali.cz "
+273;"Jan Hoško";"farma";"49.96958";"17.38474";"793 41 Rýmařov";"Václavov u Bruntálu 76";554742032;;"hosko.jan@tiscali.cz "
+274;"Anna Kmínková";"farma";"50.16893";"17.37717";"793 74 Heřmanovice";"Heřmanovice 474,";728900182;;"anna.kminkova@tiscali.cz "
+275;"Vlastimila Kobolková";"farma";"49.9284";"17.27251";"795 01 Rýmařov";"Komenskho 9";554212710;;"alois.prochazka@seznam.cz "
+276;"Markéta Kolářova, Almako";"farma";"49.90548";"17.3322";"793 51 Břidličná";"Albrechtice u Rýmařova 29";"554 211 686, 602 849 109";;"almako@centrum.cz "
+277;"Josef Koláček";"farma";"49.79592";"16.67584";"793 33 Staré Město";"Stará Město 197";"554 715 080, 777 980 016";;"kecalek@iol.cz "
+278;"Pavel Ovčáčík";"farma";"49.66544";"17.82797";"742 35 Odry";"Heřmanovice u Oder 58";737156956;;
+279;"Gustav Kotajny";"farma";"49.74025";"18.55446";"735 62 Český Těšín – Koňákov";"Hradišťská 34,";"558 732 327, 606 394 566";;"gustav.kotajny@komaov.cz "
+280;"Karel Kuběnský";"farma";"49.69504";"18.47568";"739 51 Dobrá";"Horní Domaslavice 181";558664227;;
+281;"Ekofarma Alžbětinky";"farma";"49.58947";"18.75608";"739 92 Návsí";"Návsí 355";"558 357 772, 731 504 485";;"stefkovarenata@seznam.cz "
+282;"Eliška Adamcová";"farma";"49.53695";"18.29897";"Kunčice pod Ondřejníkem 739 13";"Rozdílná 661";"595178446 , 605084339";;"adamec.libor@seznam.cz "
+283;"Rodinná ekofarma Komárková Dobromila";"farma";"49.95115";"17.74972";"747 75 Velké Heraltice";"Sádek 101";"553 663 275 (po 20 h), 737 325 473, 739 227 8";;"komarek23@seznam.cz "
+284;"Vítkovská zemědělská, s. r. o.";"farma";"49.45177";"18.57109";"Klokočov";"Zámecký dvůr 6";"556 301 377, 724 021 041";;"vitkovska@tiscali.cz "
+285;"Zdravý styl";"farma";"49.83797";"18.28531";"Ostrava 702 00 ";"Nádražní 36";"596 117 844, 775 163 296";"http://www.zdravystyl.cz/";"zdravystyl@zdravystyl.cz "
+285;"Zdravý styl";"obchod";"49.83797";"18.28531";"Ostrava 702 00 ";"Nádražní 36";"596 117 844, 775 163 296";"http://www.zdravystyl.cz/";
+286;"AGROPOS FARM, s. r. o.";"farma";"50.72656";"14.29107";"405 02 Děčín";"Heřmanov 144";"412 586 512, 723 401 888";;
+287;"Agrofarma Merboltice, s. r. o.";"farma";"50.69681";"14.35417";"405 02 Děčín";"Merboltice 124";"412 559 402, 723 962 230";;"agrofarma@atlas.cz "
+288;"Farma Huníkov „Pod sedlem“, s. r. o.";"farma";"49.89379";"14.61292";"40 721 Česká Kamenice";"Lipová 813";412584564;"http://www.volny.cz/farmahunikov/";"farmahunikov@volny.cz "
+289;"Farma Letní stráň";"farma";"50.73307";"14.25752";"405 02 Děčín";"Velká Veleň 109";"412 548 865, 602 434 757";"http://www.farmaletnistran.cz/";"letni.stran@centum.cz "
+290;"Jan Syrovátka";"farma";"50.86422";"14.45625";" 407 44 Dolní Chřibská";"Dolní Chřibská 293";412381202;;"hsyrovatkova@seznam.cz "
+291;"Ondřej Talian ";"farma";"50.96169";"14.36015";"407 79 Mikulášovice";"Mikulášovice 874";412394412;;"talian.o@seznam.cz "
+292;"Miroslav Faflák - BIO-Farma";"farma";"50.90805";"14.46322";"407 46 Krásná Lípa";"Kyjov 3";412383144;;"biofaflak@volny.cz "
+293;"Farma Lipnice";"farma";"50.83617";"14.4268";"407 21 Česká Kamenice";"Lipnice 1";"412 582 984, 602 462 892";;"farmalipnice@seznam.cz "
+294;"Farma Veselé";"farma";"50.79376";"14.3983";"407 21 Česká Kamenice";"Děčínská 113";"412 584 113, 602 958 488";;"novakova.zd@quick.cz "
+295;"Václav Frič";"farma";"50.76778";"14.27539";"407 41 Dobrná";"Dobrná 1";412525160;;
+296;"Jiří Hájek";"farma";"50.89424";"14.6225";"407 47 Varnsdorf";"Fibichova 2089";412370031;;
+297;"Oldřich Hejduk";"farma";"50.905";"14.62707";"407 47 Varnsdorf";"Husova 2753";412370821;;
+298;"Petr Houdek";"farma";"51.00428";"14.47255";"407 77 Šluknov";"Království 437";412386280;;"phoudek.zem@houdek-cz.com "
+299;"Ing. Ondřej Hulc - Farma Bystré";"farma";"50.9961";"14.50237";"517 64 Království u Šluknova";"Rybničná 296";"603 294 776 ";;
+300;"Jiří Janiš";"farma";"50.91433";"14.51873";"407 46 Krásná Lípa";"Varnsdorfská 326";"677 220 912, 606 519 437";;
+301;"Josef Koliba";"farma";"50.77432";"14.29351";"407 41 Dobrná";"Dobrná 129";412525054;;
+302;"Jindra Koutová";"farma";"50.77905";"14.3778";"407 42 Markvartice";"Veselé 40";604174575;;
+303;"Jana Medunová - Farma Kamenec";"farma";"50.76723";"14.07308";"407 01 Jílové u Děčína";"Kamenec 94";603804331;;"farmakamenec@seznam.cz "
+304;"Miroslav Pisarčík";"farma";"50.67036";"14.25446";"407 25 Verneřice";"Příbram";412512431;;
+305;"Marie Rybínová";"farma";"50.73354";"14.3846";"40 729 Velká Bukovina";"Velká Bukovina 85";"487 856 577, 487 861 291";;
+306;"Josef Rýdl";"farma";"50.94355";"14.48969";"407 61 Staré Křečany";"Staré Křečany 107";412332743;;"rydlovi@tiscali.cz "
+307;"Ing. František Šindelka - Farma Filipov";"farma";"50.80724";"14.41108";"407 21 Česká Kamenice";"Žižkova 739";"412 584 461, 602 964 400";;
+308;"Jan Tomeška";"farma";"50.69551";"14.34765";"405 02 Verneřice";"Merboltice 134";602421998;;
+309;"Verneřický Angus a.s.";"farma";"50.67163";"14.22937";"Verneřice";"Příbram p. Bukovou horou";412559066;;" vernerickyangus@volny.cz "
+310;"Aleš Vodička";"farma";"50.72888";"14.22805";"405 02 Děčín 35";"Lesná 24";412548457;;
+311;"Zemědělství MALŠOVICE s.r.o.";"farma";"50.73537";"14.16844";"405 02 Malšovice";"Malšovice 6";412542541;;
+312;"D.H.M. s.r.o. Měděnec";"farma";"50.45972";"13.40935";"430 01 Chomutov";"Poděbradova 1163";415725153;;
+313;"Ing. Jana Filipová";"farma";"50.48642";"13.30163";"430 01 Křimov";"Křimov 18";775950420;;"fil.jana@seznam.cz "
+314;"Hulvát + Holomek s.r.o.";"farma";"50.50331";"13.41813";"431 11 Jirkov";"Telčské údolí 49";"474 659 222, 602 421 489";"http://www.hulvat.cz/";"hulvat@hulvat.cz "
+315;"Ing. Vladimír Palivec";"farma";"50.38238";"13.25394";"432 01 Kadaň";"Na Strážišti 1885";"474 397 214, 602 444 957";;"vladimir.palivec@genius.cz "
+316;"Školní statek „Jezerka“";"farma";"50.37909";"13.2912";"432 01 Kadaň";"Jezerka čp. 1662";474345144;;"statekkadan@seznam.cz "
+317;"Camphill České Kopisty";"farma";"50.52464";"14.16671";"412 01 Litoměřice";"České Kopisty 6";"416 738 673, 776 063 783";"http://www.camphill.cz/";"camphill@camphill.cz "
+318;"Karel Tachecí ";"farma";"50.40196";"14.124";"411 18 Budyně nad Ohří";"Poplužní 189";"416 863 262, 728 567 003";;"Karel.tacheci@volny.cz "
+319;"Zelená louka s.r.o.";"farma";"50.63087";"14.28877";"411 45 Úštěk";"Levínské Petrovice 35";412559066;;
+320;"Eva Zikmundová";"farma";"50.63032";"14.29149";"411 45 Úštěk";"Levínské Petrovice 33";"416 797 143, 607 992 579";;"zikmundova.e@seznam.cz "
+321;"Ekochov CMN s.r.o.";"farma";"50.41199";"13.11806";"431 84 Měděnec";"Kamenné 154";"415 733 403, 602 280 334";;
+322;"ROJ-MK s.r.o.";"farma";"50.3567";"13.79686";" 440 01 Louny";"Petrovice 589";"415 652 600, 602 447 173";;
+323;"Zámecké sady Chrámce";"farma";"50.4687";"13.77474";"434 01 Most";"Chrámce 14";"476 110 041, 728 538 969";"http://www.zameckesadychramce.com/";"olga.syrovatkova@zameckesadych"
+323;"Zámecké sady Chrámce";"bioklub";"50.4687";"13.77474";"Most";"Chrámce 14";728538969;"http://www.zameckesadychramce.com";"syrovatka.senior@zameckesadych"
+324;"Adolf Loos";"farma";"50.60535";"13.441";"435 46 Hora Svaté Kateřiny";"Dlouhá 26";"476 705 814, 603 507 847";;"loosadolf@seznam.cz "
+325;"Farma Natural";"farma";"50.71709";"14.10235";"400 02 Ústí nad Labem";"Slavošov";"475 207 477, 607 582 425";;"lucie.pisingerova@seznam.cz "
+326;"Ekologická kozí farma Zásada u Kadaně";"farma";"50.37266";"13.23272";"432 01 Zásada u Kadaně";"Zásada u Kadaně 1";777299445;"http://www.kozifarma.cz/";"info@kozifarma.cz "
+327;"Farma Čermná";"farma";"50.75794";"14.0699";"403 35 Libouchec";"Libouchec 44";603499468;;
+328;"Farma Žežice";"farma";"50.68594";"14.07116";"400 11 Ústí nad Labem";"Žežice 26";606804972;;"renataswistova@seznam.cz "
+329;"Petr Horčík";"farma";"50.62881";"14.17226";"400 02 Ústí nad Labem";"Lhota pod Pannou 17";"475 228 666/46";"http://www.horcik.w1.cz/";"petr.horcik@tiscali.cz "
+330;"NATURAL AGRO s.r.o.";"farma";"50.71709";"14.10235";"400 02 Ústí n. Labem";"Slavošov";"475 207 477, 602 248 485";;
+331;"Ing. Bohuslav Siwy";"farma";"50.78839";"13.97654";"403 37 Petrovice";"Petrovice 330";"558 346 218, 475 226 190, 602 542 076";;"siwy.bohuslav@post.cz "
+332;"TEP - AGRO spol. s r.o.";"farma";"50.71609";"13.85502";"417 41 Fojtovice u Krupky";"Fojtovice u Krupky";"417 863 978, 602 217 600";;"info@fojtovice.cz"
+333;"EKOFARMA ŠMAKAL, s. r. o.";"farma";"49.79103";"14.75097";"256 01 Benešov";"Okrouhlice 27";777076092;;
+334;"Rodinná farma Blaženice";"farma";"49.78982";"14.4665";"257 44 Netvořice";"Blaženice 8";317791155;;
+335;"Usedlost Medník";"farma";"49.80863";"14.48654";"257 44 Netvořice";"Závist 69";"224 283 262, 608 978 780";;"kletecko@seznam.cz "
+336;"Farma Westec";"farma";"49.57204";"14.66325";"257 86 Miličín";"Vestec 3";"317 802 404, 603 203 008";;"farwest@raz-dva.cz "
+337;"Jan Šíbal";"farma";"49.86841";"14.87258";"285 06 Sázava";"Dojetřice 10";327321487;;
+338;"Josef Zoul";"farma";"49.661";"14.68741";"259 01 Votice";"Kaliště 7";317814564;;
+339;"Dvůr Vyšínek ";"farma";"50.29688";"14.06761";"273 71 Zlonice";"Vyšínek 5";"312 592 140, 607 943 567";;"karafiatovaalena@seznam.cz "
+340;"Farma Jitřenka";"farma";"50.24152";"13.94231";"273 76 Pozdeň";"Pozdeň 152";608970884;"http://www.biosyry.cz/";"biosyry@biosyry.cz "
+341;"Václava Nová ";"farma";"50.20832";"14.12079";"274 01 Slaný";"Jemníky 11";312521632;;"vaclava.nova@tiscali.cz "
+342;"Josef Simon";"farma";"50.2011";"14.84741";"289 22 Lysá nad Labem";"Klicperova 1358/4";736262018;;
+343;"Ekofarma Sluníčko";"farma";"50.43851";"15.13688";"294 04 Dolní Bousov";"Zahrádky 210";"326 396 922, 737 452 037";;"ekofarmaslunicko@centrum.cz "
+344;"Botanicus spol s r.o.";"farma";"50.18001";"14.89369";"289 22 Lysá nad Labem";"Ostrá 8";325551235;"http://www.botanicus.cz/";"botanicus@botanicus.cz "
+344;"Botanicus spol s r.o.";"obchod";"50.18001";"14.89369";"Lysá nad Labem";"Ostrá 8";325551235;"www.botanicus.cz/";
+345;"Ekofarma Abatis, a. s.";"farma";"49.93473";"14.41908";"252 45 Zvole u Prahy";"Zvole u Prahy 319";257761763;"http://www.eko-farma.cz/";"ekofarma@abatis.cz "
+346;"TUKAN VH ";"farma";"49.95169";"14.28903";"252 28 Černošice-Vonoklasy";"Na Vysoké II 22E";602387048;;"tukanvh@centrum.cz "
+347;"Naděžda Koščová";"farma";"50.23512";"14.40868";"250 70 Odolena Voda";"Úžická 393";283971186;;"ikarius@volny.cz "
+348;"Ekofarma Březí";"farma";"49.50926";"13.798";"262 42 Rožmitál pod Třemšínem";"Březí 27";"383 495 246, 607 914 730";"http://www.ekofarmabrezi.cz/";"citterbartova@tiscali.cz  "
+349;"Kozí farma St. Pierre";"farma";"49.55481";"14.29481";"262 55 Petrovice u Sedlčan";"Zahrádka 27";318856528;"http://www.stpierre.cz/";"simona.veverkova@stpierre.cz "
+350;"Vladimír Kuncl";"farma";"49.63835";"14.28977";;"Brzina 7, 262 56 Svatý Jan";"318 862 010, 605 953 495";"http://www.kuncluvmlyn.cz/";"kuncluvmlyn@volny.cz "
+351;"Svatava Richtrová";"farma";"49.48297";"13.61205";"335 01 Nepomuk";"Třebčice 7";371592818;;"came3@seznam.cz "
+352;"Danuše Štěpánovská";"farma";"49.56425";"14.31887";"262 55 Petrovice u Sedlčan";"Kuníček 1/12";"318 856 478, 607 828 565";"http://www.kunicek.cz/ubytovani/";"kunicek1@seznam.cz "
+353;"AGRO Česká Ves, s. r. o.";"farma";"50.2598";"17.2361";"790 81 Česká Ves";"Větrná 192";"584 428 209, 775 163 237";"http://www.agrocv.cz/";"info@agrocv.cz "
+354;"Farma Bobrovník";"farma";"50.22151";"17.16727";"790 61 Lipová Lázně";"Bobrovník 5";"584412890, 603 300 868";;
+355;"Petr Dian";"farma";"50.22542";"17.0934";"790 63 Lipová – Lázně";"Lipová 92";732469408;;"o.dian@centrum.cz "
+356;"ZD Jeseník";"farma";"50.21233";"17.20058";"790 01 Jeseník";"Šumperská 118";"584 420 157, 603 581 531";;"mariebubikova@seznam.cz, zd.je"
+357;"Biofarma Ve Dvoře";"farma";"49.67899";"16.93816";"783 24 Slavětín";"Střemeníčko 40";602507246;"http://www.crossroads.cz/";"crossroads@centrum.cz "
+358;"Svatopluk Klein ";"farma";"49.57772";"17.488";"783 55 Velký Újezd";"Velký Újezd 27";"731446944, 731446940";;"svataklein@centrum.cz, skolban"
+359;"Josef Ludík";"farma";"49.72398";"17.18727";"Žerotín 784 01";"Žerotín 784 01";585428801;;"josef.ludik@email.cz "
+360;"Jan Vašek";"farma";"49.63235";"17.33319";"772 00 Samotišky";"Okružní 13";737518368;;"janvasek@seznam.cz "
+361;"Ekofarma Dětřichovice";"farma";"50.05761";"17.42672";"793 31 Světlá Hora";"Dětřichovice 36";"554 737 510, 732 303 844";;
+362;"Farma Komňátka";"farma";"49.88187";"16.87627";"789 02 Zábřeh";"Komňátka 81";"583 246 078, 602 100 913";"http://www.farmamorava.cz/";"mazak@spk.cz "
+363;"Jan Chromek";"farma";"49.45194";"17.56976";"751 11 Radslavice";"Hradčany 63";"581 791 202, 608 757 252";;"zdenahorak@tiscali.cz "
+364;"Bohumil Kučera";"farma";"49.50101";"17.74113";"753 56 Opatovice u Hranic";"U rybníka 29";581621350;;
+365;"Farma Morava, s. r. o.";"farma";"50.09723";"16.82715";"788 33 Hanušovice";"Malá Morava 74";"583 240 166, 602 546 214";"http://farma-morava.cz/";"walter@farma-morava.cz "
+366;"Zemědělská farma Hanušovice";"farma";"50.09679";"16.95692";"788 33 Hanušovice";"Habartnická 163";583231374;"http://jandrt.sumpersko.com/";"jandrt@quick.cz "
+367;"Ekofarma Na Rychtě";"farma";"49.9935";"16.84104";"789 91 Štíty";"Hartíkov 155";"583 296 106, 603 150 694";;"xdaneks@seznam.cz, eva.kor@sez"
+368;"Pavel Kýr";"farma";"50.02715";"16.74775";"561 69 Červená Voda";"Bílá Voda 12";777046165;;"pavelkyr@seznam.cz "
+369;"Marwin, v. o. s.";"farma";"50.07261";"16.94577";"788 33 Hanušovice";"Hynčice nad Moravou 49";"583 231 198, 602 533 707";"http://www.marwin-pretoria.cz/";"f.winter@atlas.cz, info@marwin"
+370;"Farma pod Čapím vrchem";"farma";"50.01802";"16.94534";"787 01 Bratrušov";"Bratrušov 13";"583 212 273, 739 447 927";;"pape.spk@tiscali.cz "
+371;"Miroslav Strachota";"farma";"49.96169";"16.76317";"789 91 Štíty";"Štíty 306";605871565;;"strachota.miroslav@seznam.cz "
+372;"Antonín Štěrba";"farma";"50.04141";"16.90655";"789 64 Bohdíkov";"Raškov 157";605705863;;
+373;"Marek Heindl ";"farma";"49.49729";"12.93777";"346 01 Horšovský Týn";"Jeníkovice 12";379423391;;"heindl2@seznam.cz "
+374;"Jaroslav Uher ";"farma";"49.51218";"12.67686";"345 25 Hostouň";"Rybník č. 8";" 379 496 325";"http://www.ekofarma.unas.cz/";"farmarybnik@centrum.cz "
+375;"Ekofarma bratří Lehockých ";"farma";"49.29294";"13.14576";"340 22 Nýrsko 3";"U Radnice 819";"376 571 223, 602 267 983";"http://picasaweb.google.com/ekofarmasumava";"ekofarmalehocky@atlas.cz "
+376;"Václav Kubovec ";"farma";"49.38934";"13.2114";"339 01 Klatovy";"Koryta 33";"376 310 618, 720 274 832";;"vaclavkubovec@seznam.cz "
+377;"Jan Pintíř ";"farma";"49.46436";"13.37533";"Švihov 34012";" Nedaničky 24, Mečín";"606 905 071, 606 462 641";;"janpintir@seznam.cz "
+378;"AZ Farm s.r.o. ";"farma";"49.23333";"13.15";"340 22 Nýrsko";"Hamry na Šumavě";602255419;;"min@quick.cz "
+379;"BG Karolina, k.s. ";"farma";"49.26416";"13.21839";"340 22 Nýrsko";"Děpoltice 16";723121743;;"bg.karolina@tiscali.cz "
+380;"Václav Denk ";"farma";"49.25174";"13.2675";"339 01 Čachrov";"Chřepice 4";724022622;"http://www.denk.vaclav.info/";"denk.vaclav@email.cz "
+381;"Farma Bílek ";"farma";"49.2872";"13.41563";"341 42 Kolinec";"Dolní Kochánov 2";"376 588 129, 602 107 803 ";"http://penzionkochanov.unas.cz/";"ekofarmabilek@tiscali.cz "
+382;"Farma BUSIL ";"farma";"49.17023";"13.45474";"342 01 Hartmanice";"Busil u Hartmanice 22";"376 593 032, 602 331 619";"http://www.busil.cz/";"morek.busil@seznam.cz "
+383;"Farma Víska ";"farma";"49.18339";"13.72411";"376 19 Čestice";"Víska,";376597155;;
+384;"Ing. Václav Hubač - Ekofarma Žihobce ";"farma";"49.21623";"13.63124";"342 01 Sušice 1";"Žihobce 35";376597126;;
+385;"Miroslav Janda ";"farma";"49.38049";"13.51962";"340 34 Plánice";"Zborovy 75";" 376 394 384";;"marie.jandova@cmss-oz.cz "
+386;"Milence „Na Hlásce“ ";"farma";"49.28175";"13.15144";"340 22 Nýrsko";"Milence 54";603735598;;"petabek@seznam.cz"
+387;"Václav Novák";"farma";"49.32557";"13.28926";"339 01 Klatovy";"Neznašovy 1";376399228;;
+388;"Josef Raus ";"farma";"49.40719";"13.39965";"339 01 Klatovy";"Kroměždice 1";777279115;;"raus.josef@tiscali.cz "
+389;"Miroslav Rožánek ";"farma";"49.21319";"13.63121";"342 01 Sušice";"Žihobce 3";376597201;;"m-rozanek@seznam.cz "
+390;"Jitka Rudová ";"farma";"49.21914";"13.43526";"342 01 Sušice";"Vojetice 9";"376 588 196, 728 077 004";;"rudova@c-box.cz"
+391;"Antonín Salák ";"farma";"49.36883";"13.56966";"341 01 Horažďovice";"Těchotice 51";"376 696 364, 603 809 121";;
+392;"Soběšická EKOfarma s.r.o. ";"farma";"49.20582";"13.68904";"342 01 Sušice";"Soběšice 163";"376 547 711, 602 128 542";;"odsobesice@zem.jz.cz"
+393;"Statek Kašperské Hory s.r.o. ";"farma";"49.14271";"13.55527";"341 92 Kašperské Hory";"Dlouhá 95";"376 582 323/123";;"statek.khory@quick.cz"
+394;"JUDr. Milan Šíma - Velkostatek Krušec ";"farma";"49.17117";"13.45369";" 341 81 Hartmanice";" Hartmanice 99";376593204;;"milansima@atlas.cz"
+395;"Jan Valenta ";"farma";"49.24365";"13.45212";"342 01 Sušice 1";"Svojšice 11";376588341;;
+396;"Farma Galloway ";"farma";"49.53981";"13.2556";"334 53 Roupov";"Roupov 39";"377 980 667, 602 406 367";"http://www.galloway-farma.cz/";"info@galloway.cz "
+397;"Terč Jindřich + syn ";"farma";"49.64786";"13.42235";"332 09 Štěnovice";"Štěnovický Borek 54";"602 879 377, 607 762 406";;"terc.j@centrum.cz "
+398;"Farma Olšovka ";"farma";"49.48512";"13.58231";"335 01 Nepomuk";"Farma Olšovka Březí 37 u Žinkov";377420324;"http://www.nord.cz/olsovka/cz/onas.html";
+399;"Ing. Pavel Moulis - Farma Moulisových ";"farma";"49.6526";"13.50728";"33 204 Nezvěstice";"Milínov 23";"377 891 460, 602 873 935";"http://www.farmamoulisovych.cz/";"moulisovi@centrum.cz"
+400;"Milan Skala - ekofarma MATY ";"farma";"49.46563";"13.5017";"335 01 Vojovice";"Vojovice 6";371592225;;" skalamil@seznam.cz"
+401;"Šumavský Angus s.r.o. ";"farma";"49.46272";"13.55089";"335 01 Nepomuk";"Soběsuky 9";371591198;"http://www.angus-farm.cz/angus-farm-restauran";"sobesuky@angus-farm.cz "
+402;"Ekofarma a moštárna Roubenka ";"farma";"50.03443";"13.25199";"331 62 Manětín ";"Stvolny 16";"373 312 304, 725 552 919  ";"http://www.biomostarna.cz/";"info@biomostarna.cz "
+403;"Nečtinská zemědělská, a. s. ";"farma";"49.97552";"13.15663";"331 62 Nečtiny";"Nečtiny 216";"373 313 125, 774 972 714";"http://www.plzen-info.cz/nectinyas/";"nectiny.as@tiscali.cz "
+404;"Václav Beránek + syn ";"farma";"49.88282";"13.2504";"331 52 Dolní Bělá";"Horní Bělá-Vrtbo 43";373394427;;"vaclavberanek@atlas.cz "
+405;"Jaroslav Chlup ";"farma";"49.97496";"13.16306";"331 62 Manětín";"Nečtiny 85";"373 313 137, 728 041 676";;"k.chlupova@centrum.cz "
+406;"Zdeněk Janda ";"farma";"49.98934";"13.0341";"330 41 Bezvěrov";"Ostřetín 37";723737301;"http://jandakone.websnadno.cz/";"janda.chovkoni@centrum.cz"
+407;"Marie Šilpochová ";"farma";"49.99048";"13.1923";"331 62 Nečtiny";"Lešovice 15";" 373 392 507, 723 174 654";;
+408;"Farma Sirá ";"farma";"49.82078";"13.73897";"337 01 Rokycany";"Sirá 53";602151906;;
+409;"Jiří Blažek - Farma Žíkov ";"farma";"49.89059";"13.58018";"312 14 Lhotka u Radnic";"Olešná u Radnic";724765766;;
+410;"Farma Novák ";"farma";"49.82096";"13.73891";"337 01 Rokycany";"Sirá 8";371784388;"http://farmanovak.xf.cz/";
+411;"Dr. Ludmila Stuchlíková ";"farma";"49.74889";"13.84033";"267 63 Zaječov";"Zaječov";603809848;;"hantos@seznam.cz "
+412;"Agrodelikates s.r.o. ";"farma";"49.7993";"12.55496";"347 01 Tachov";"Milíře 121";603524927;;
+413;"Blond Breeding Žebráky s.r.o. ";"farma";"49.72113";"12.58532";"348 06 Přimda";"Žebráky 125";"374 784 621, 603 367 513";;
+414;"EKOČAS s.r.o. Částkov ";"farma";"49.75558";"12.67205";"348 01 Částkov 1";"Staré Sedliště";" 374 795 186, 606 908 214";;
+415;"Josef Gál ";"farma";"49.8599";"12.93889";"349 52 Lomy";" Lomy 1";" 728 983 643";;
+416;"Jiří Lacina ";"farma";"49.87407";"13.01771";"349 52 Konstantinovy Lázně";"Dlouhé Hradiště";605296427;;"lajipa@seznam.cz "
+417;"MVDr. Libor Liška ";"farma";"49.89179";"12.60507";"348 15 Planá u Mariánských Lázní";" Broumov 87";" 374 782 494, 606 810 206";;
+418;"Panství Trpísty s.r.o. ";"farma";"49.82184";"13.05778";"349 01 Trpísty";" Zámek Trpísty 1";723824233;;"office@the-trpisty-estate.com "
+419;"Ing. Jiří Valenta CSc. ";"farma";"49.74144";"13.00047";"349 01 Stříbro";"Tuněchody";777174478;;"agritradep@volny.cz"
+420;"www.biokvalita.cz";"eshop";"49.73032";"17.2971";"Šternberk";;;"http://www.biokvalita.cz/";
+421;"www.bioapetit.cz ";"eshop";"49.19098";"16.61153";"Brno";;;"http://www.bioapetit.cz/";
+422;"www.bionebio.cz";"eshop";"49.91306";"13.97888";"Zdice";;;"http://www.bionebio.cz/";
+423;"www.biosfera.cz";"eshop";"49.19098";"16.61153";"Brno";;;"http://www.biosfera.cz/";
+424;"www.bionatura.cz ";"eshop";"49.11678";"16.58135";"Želešice";;;"http://bionatura.cz/nddbc.html";
+425;"www.bioobchod.cz";"eshop";"50.43139";"15.81471";"Dvůr Králové";;;"http://www.bioobchod.cz/";
+426;"Internetový obchůdek klubu přátel biofarem Růžičkových";"eshop";"50.08781";"14.42046";"Praha";;;"http://obchudek.biopotraviny.cz/";
+427;"Biotop";"eshop";"50.0798";"14.42392";"Praha";"Školská 34";;"http://www.ebiotop.cz/";
+428;"www.edenshop.cz";"eshop";"49.21585";"15.87992";"Třebíč";;;"http://www.edenshop.cz/";
+429;"www.majoranka.cz";"eshop";"49.11509";"13.82767";"Čkyně";;;"http://www.majoranka.cz/";
+430;"www.zdravanota.com";"eshop";"49.46678";"18.14162";"Hradištko";;;"http://www.zdravanota.com/";
+431;"www.zzbrno.cz";"eshop";"49.19098";"16.61153";"Brno";;;"http://www.zzbrno.cz/";
+432;"www.vitektrade.cz";"eshop";"49.59539";"17.25187";"Olomouc";;;"http://www.vitektrade.cz/";
+433;"www.rozmaryna.cz";"eshop";"50.06988";"14.40514";"Praha";"Nádražní 17";;"http://www.rozmaryna.cz/";
+434;"www.najadashop.cz";"eshop";"48.76021";"16.88074";"Břeclav";;;"http://www.najadashop.cz/";
+435;"www.organix.cz";"eshop";"50.08781";"14.42046";"Praha";;;"http://organix.cz/";
+436;"www.obchod.slunecnibrana.cz";"eshop";"48.9052";"16.94319";"Čejkovice";"Havlíčkův mlýn 944";;"http://www.obchod.slunecnibrana.cz/";
+437;"www.bio-produkty.cz";"eshop";;;"Pavlov";;;"http://www.bio-produkty.cz/";
+438;"www.vltava2000.cz/biozelenina";"eshop";"49.10592";"17.39458";"Velehrad";;;"http://www.vltava2000.cz/biozelenina/";
+439;"www.biobaby.cz";"eshop";"50.08781";"14.42046";"Praha";;;"http://www.biobaby.cz/";
+440;"www.lotties.cz";"eshop";"49.19098";"16.61153";"Brno";;;"http://www.lotties.cz/";
+441;"Léčivé rostliny JDŽ";"obchod";"49.35993";"16.63747";"678 01 Blansko";"Zdíkova 4";;;
+442;"Harmonie";"obchod";"49.35996";"16.64665";"678 01 Blansko";"Sadová 2";776713163;;
+443;"Namaste";"obchod";"49.49";"16.65966";"680 01 Boskovice";"Bezručova 12";"608 408 613 ";;
+444;"Zdravá výživa";"obchod";"49.10192";"16.37479";"664 91 Ivančice";"Tesařovo náměstí 2";"546 434 519, 603 456 043 ";;"hmelicharova@razdva.cz"
+445;"Zdravá výživa";"obchod";"49.30797";"16.53331";"664 34 Kuřim";"Bezručova 1116";"541 263 442, 603 456 043 ";;"hmelicharova@razdva.cz"
+446;"BIO prodejna - VERONIKA";"obchod";"49.3497";"16.4205";"66601 Tišnov";"Jungmannova 753";"549 412 605, 777 786 876 ";;"veronika@tisnof.cz"
+447;"Asanka - zdravá výživa";"obchod";"49.19593";"16.61172";"602 00 Brno";"Vachova 8";721808601;;
+448;"Aura restaurace";"obchod";"49.21139";"16.6019";"602 00 Brno";"Štefánikova 35";541213273;"http://www.aurabrno.cz ";"info@aurabrno.cz "
+449;"Bioapetit - pí centrum";"obchod";"49.20333";"16.60715";"602 00 Brno";"Lidická 38";777963619;"http://www.bioapetit.cz";"bioapetit@seznam.cz "
+449;"Bioapetit - pí centrum";"bioklub";;;"Brno";"Lidická 38";;;
+450;"Brána ke zdraví";"obchod";"49.24099";"16.58357";"602 00 Brno";"Banskobystrická 136";542211064;;
+451;"Brána k dětem";"obchod";"49.19337";"16.61187";"602 00 Brno";"Josefská 1";;"http://www.branakdetem.cz ";
+452;"LUMO Natur s.r.o.";"obchod";"49.18884";"16.61375";"602 00 Brno";"Ve Vaňkovce 1";"543 256 075, 724 214 428 ";;"lumo-natur@mistral.cz "
+453;" Manna - Zdravá výživa";"obchod";"49.18917";"16.59422";"602 00 Brno";"Křížová 8";543211804;"http://www.pro-bio.cz/prodejny/manna/";"manna@volny.cz"
+454;"Naturka";"obchod";"49.20022";"16.60889";"602 00 Brno";"Koliště 5";"545 578 701, 775 920 985";;"naturka.brno@seznam.cz"
+455;"Restaurace ReBio";"obchod";"49.19409";"16.61271";"602 00 Brno";"Orlí 520/26";542211110;"http://www.rebio.cz/";
+456;"Spirála Bio restaurace";"obchod";"49.19331";"16.61023";"602 00 Brno";"Orlí 3";542516304;"http://www.rebio.cz/";"spiralabrno@atlas.cz "
+457;"Tři sudičky";"obchod";"49.19266";"16.60265";"602 00 Brno";"Pellicova 5";;;"trisudicky@centrum.cz "
+458;"Vitalita";"obchod";"49.20087";"16.61307";"602 00 Brno";"Milady Horákové 15";"545 215 075 ";;
+459;"Zdravá výživa Lékárna u Rubínu ";"obchod";"49.21853";"16.57644";"616 00 Brno";"Makovského náměstí 2";"539 090 285, 777 135 505 ";;"lekarna@orkan.cz"
+460;"Zdravá výživa";"obchod";"49.19169";"16.59895";"602 00 Brno";"Pekařská 58";"543 215 382 ";;
+461;"Zdravá výživa Barborka";"obchod";"49.20037";"16.60067";"612 00 Brno";"Veveří 21";"549 244 884 ";;
+462;"Zdravá výživa U Měnínské brány";"obchod";"49.19354";"16.61167";"602 00 Brno";"Orlí 20";"542 211 064 ";;
+463;"Zdravý život";"obchod";"49.20213";"16.60756";"602 00 Brno";"Lidická 26";"549 240 056, 721 464 676 ";"http://www.zzbrno.cz";"obchod@zzbrno.cz"
+464;"Zdravíčko";"obchod";"49.27719";"16.99772";"682 01 Vyškov";"Husova 12";;;
+465;"PETRA - prodejna zdravé výživy";"obchod";"49.27808";"16.99808";"682 01 Vyškov";"J.Šoupala 4";517347555;;
+466;"DIA-RACIO-BIO";"obchod";"48.85496";"17.12496";"695 01 Hodonín";"Národní třída 48";"518 321 171 ";;"lekarna.btml@post.cz"
+467;"Kvítek";"obchod";"48.85174";"17.13132";"695 01 Hodonín";"Měšťanská 176/4";"606 603 385 ";;"obchudek@slunecnice.cz"
+468;"Lidová Jizba";"obchod";"49.00988";"17.12287";"697 014 Kyjov";"Masarykovo nám. 5";"224 213 366 ";;
+469;"Zdravíčko";"obchod";"49.0106";"17.12263";"697 01 Kyjov";"Masarykovo náměstí 3";"518 610 076, 608 820 979 ";"http://www.zdravicko.com";"zdravicko@zdravicko.com, zdrav"
+470;"Krajinka zdravé výživy";"obchod";"49.06942";"17.45785";"Uherské Hradiště";"Mariánské náměstí 63";"775 052 712 ";;"jkovarik@tiscali.cz"
+471;"HERBA racionální výživa";"obchod";"48.75656";"16.88793";"690 02 Břeclav";"Jana Palacha (shopping center)";519326445;;
+472;"Najada";"obchod";"48.75798";"16.88219";"690 02 Břeclav";"Fintajslova 5";519323622;"http://www.najadashop.cz";"najada@email.cz"
+473;"Marco Polo";"obchod";"48.85808";"16.04807";"669 02 Znojmo";"Velká Michalská 1";"515 226 738 ";;"tonynovak@quick.cz "
+474;"Zdravá výživa Na cestě";"obchod";"49.48993";"16.66506";"Boskovice 680 01 ";"Hybešova 2378/17";"731 543 388 ";"http://www.na-ceste.com/";"na-ceste@seznam.cz "
+476;"Farma Mlýnec";"bioklub";"49.51076";"14.57589";"391 33 Jistebnice";"Smrkov 10";606264732;"http://www.mlynec.blog.cz";"mlynec@volny.cz"
+477;"Bioklub Hnutí DUHA České Budějovice";"bioklub";"48.73822";"14.49488";"382 41 Kaplice";"Dlouhá 134";380711558;;"ceskebudejovice@hnutiduha.cz"
+478;"Biozahrada v Táboře";"bioklub";"49.43103";"14.65736";"Tábor";"Benešovská 50";;"http://www.biozahrada.estranky.cz";"bio@a-krejci.cz"
+479;"Bioklub při Waldorfské škole Brno";"bioklub";"49.21724";"16.58094";"Brno";"Plovdivská 8";774097487;"http://www.waldorf-brno.cz/";"trisudicky@centrum.cz"
+480;"Bio-bedýnka";"bioklub";"49.24884";"16.58071";"Brno";"Veselka 8";774125899;"http://www.bio-bedynka.cz/";"info@bio-bedynka.cz"
+481;"Biobanka - Hnutí Brontosaurus";"bioklub";"49.19358";"16.61032";"Brno";"Orlí 5";777656173;"http://akcepriroda.cz/banka";"buchweisen@atlas.cz"
+482;"Tři sudičky";"bioklub";"49.19266";"16.60265";"Brno";"Pellicova 5";774097487;"http://www.trisudicky.cz/";"trisudicky@centrum.cz"
+483;"Slunečnice, zdravá výživa";"bioklub";"49.22211";"16.58662";"Brno";"Skácelova 26";731514134;"http://www.bioslunecnice.cz";"bioslunecnice@gmail.com"
+484;"BioBox";"bioklub";"49.19858";"16.59445";"Brno";"Údolní 32";775702537;"http://www.biozelenina.eu";"atep3@mac.com"
+484;"BioBox";"bioklub";"49.59539";"17.25187";"Olomouc";"Plavecká 12";775702537;"http://www.biozelenina.eu";"atep3@mac.com"
+485;"Duhový Bioklub";"bioklub";"49.1977";"16.59877";"Brno";"Údolní 33";775045957;;"ekofarma@atlas.cz"
+486;"Mléčná bedýnka";"bioklub";"49.19098";"16.61153";"Brno";;605779993;"http://www.ekokoza.cz";"capkovi@ekokoza.cz"
+487;"Biozelenina  Velehrad BioKlub";"bioklub";"49.22689";"17.6689";"Zlín";"tržnice Pod Kaštany";775702537;"http://www.biozelenina.eu/biozelenina/BioKlub";"atep3@mac.com"
+488;"Ekofarma l.p";"bioklub";"49.29202";"16.14159";"Velká Bíteš";"Holubí Zhoř 21";603524623;;"honzasmarda@centrum.cz"
+489;"Biobedýnky Liberec";"bioklub";"50.80484";"15.07496";"Liberec";"Pod Dračím kamenem 99";776103738;"http://www.poddracimkamenem.cz/biobedynky";"biobedynky@hruska.cz"
+490;"Bedýnky HK";"bioklub";"50.57411";"15.94737";"Hradec Králové";"Benešova třída";774600780;"http://www.bedynkyhk.cz";"kristian@bedynkyhk.cz"
+492;"Balíčky s překvapením";"bioklub";"50.07652";"15.95892";"Horní Ředice";"Horní Ředice 35";608981450;"http://www.bio-zelenina.cz";"bio-zelenina@seznam.cz"
+493;"Bedýnky z Poodří";"bioklub";"49.67101";"18.08643";"Sedlnice";"Sedlnice 56";731414316;"http://www.ovoce-licka.cz";"lickova.iva@cmail.cz"
+494;"Bedýnky";"bioklub";"49.95115";"17.74972";"Velké Heraltice";"Sádek 101";739227811;;"biokomarkova@seznam.cz"
+495;"Beskydský Bioklubík";"bioklub";;;;"zatím v jednání";776645751;"http://www.bioklubik.webnode.cz";"beskydskybioklubik@gmail.com"
+496;"Bioklub Bouzovské Zahrady";"bioklub";"49.59539";"17.25187";"Olomouc";;723452980;"http://www.bouzovskezahrady.cz";"vanous@penguin.cz"
+497;"Bioklub Hnutí DUHA Olomouc";"bioklub";"49.81749";"15.47296";"Olomouc";"Dolní náměstí 38";585228584;"http://www.hnutiduha.cz/olomouc";"renata.plackova@hnutiduha.cz"
+498;"Biozdraví";"bioklub";"50.06923";"14.41703";"Praha 2";"Plavecká 12";773603030;;"jitka-adamova@seznam.cz"
+499;"El Bio Bedýnky";"bioklub";"50.07846";"14.64619";"Praha";"Starokolínská 425";721569378;"http://www.elbio.cz";"hana@elbio.cz"
+500;"Freshbedýnky.cz";"bioklub";"50.06114";"14.40208";"Praha";"Na Neklance 1080/20";"739 544 488, 731 533 492";"http://www.freshbedynky.cz";"info@freshbedynky.cz"
+501;"Podporujme svého sedláka";"bioklub";"50.0482";"14.51973";"Praha";"Kubátova 1/32";774683833;"http://www.bio-bedynky.cz";"podporujmesvehofarmare@gmail.c"
+502;"Farma Košík";"bioklub";"50.0752";"14.41417";"Praha";"Rašínovo náb. 78";325514850;"http://www.farmakosik.cz";"info@farmakosik.cz"
+503;"Bio Zahrada, Praha";"bioklub";"50.07399";"14.43546";"Praha";"Belgická 33";603752468;"http://www.bedynky.bio-zahrada.cz";"bedynky@bio-zahrada.cz"
+504;"Bioklub Roztoky";"bioklub";"50.15807";"14.39762";"Roztoky u Prahy";;;"http://www.roztoc.cz/";"bioklub.roztoky@gmail.com"
+505;"SADY Svobodná Ves s.r.o.";"bioklub";"49.9969";"15.42382";"Horušice";"Horušice 100";327399133;"http://www.czfruit.cz";"sadyves@czfruit.cz"
+506;"Čerstvé bedýnky";"bioklub";"50.00301";"14.2979";"Praha";"Ke Kalinovu mlýnu 34";603446943;"http://www.cerstvebedynky.cz ";"IIKK@seznam.cz"
+507;"Čertovy brambory";"bioklub";"50.07496";"14.43648";"Praha";"náměstí Míru";777937520;;" "
+508;"Biodream";"bioklub";"50.07524";"14.45341";"Praha";"Korunní 90";732408982;"http://www.biodream.cz";"biobedynky@biodream.cz"
+509;"ŠŤOVÍK - TEPLICKÝ BIOKLUB";"bioklub";"50.64484";"13.85202";"415 01 Teplice";"Koperníkova 2592";733545210;"http://www.stovik.cz";"ekocentrum@stovik.cz"

@@ -68,6 +68,21 @@
     incomingViewController.navigationItem.titleView = aSegmentedControl;
 }
 
+- (void)updateLocation
+{
+    NSLog(@"Updating location...");
+    for (UIViewController * viewController in self.viewControllers) {
+        if ([viewController isKindOfClass:[AroundMeListViewController class]]) {
+            AroundMeListViewController *aroundMeListViewController = (AroundMeListViewController *)viewController;
+            aroundMeListViewController.bestEffortAtLocation = self.bestEffortAtLocation;
+            [aroundMeListViewController dataWithDistance];
+        } else if ([viewController isKindOfClass:[AroundMeMapViewController class]]) {
+            AroundMeMapViewController *aroundMeMapViewController = (AroundMeMapViewController *)viewController;
+            aroundMeMapViewController.bestEffortAtLocation = self.bestEffortAtLocation;
+        }
+    }
+}
+
 #pragma mark - location
 
 /*
@@ -107,7 +122,7 @@
     }
     // update the display with the new location data
     
-    NSLog(@"%@", self.bestEffortAtLocation);
+    [self updateLocation];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {

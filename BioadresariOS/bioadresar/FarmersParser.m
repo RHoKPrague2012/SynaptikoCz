@@ -10,6 +10,8 @@
 #import "CoreDataStack.h"
 #import "Product.h"
 #import "Farmer.h"
+#import "CSVParser.h"
+#import "NSManagedObjectContext+SaveAssert.h"
 
 @interface FarmersParser () {
     NSMutableDictionary *dbProducts;
@@ -26,6 +28,8 @@
     [self loadProducts];
     [self fetchProductsFromDatabase];
     [self loadFarmers];
+    [self loadFarmerProduct];
+    [[CoreDataStack sharedStack].managedObjectContext save];
 }
 
 /*
@@ -39,48 +43,27 @@
 
 - (void)loadProducts
 {
-    [self createProductWithName:@"kravské mléko" 
-                          andId:[NSNumber numberWithInt:1] 
-                  andCategoryid:[NSNumber numberWithInt:43]];
-    [self createProductWithName:@"mrkev" 
-                          andId:[NSNumber numberWithInt:2] 
-                  andCategoryid:[NSNumber numberWithInt:5]];
+    //SELECT * FROM produkt INTO OUTFILE '/tmp/products.csv' FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n';
     
-    [self createProductWithName:@"jehňata" 
-                          andId:[NSNumber numberWithInt:3] 
-                  andCategoryid:[NSNumber numberWithInt:44]];
+    //select pr.id, pr.nazev, d.typ, d.poznamka, k.latitude, k.longtitude, k.mesto, k.ulice, k.mobil, k.web, k.email from producent pr inner join divize d on d.producent_id = pr.id inner join kontakt k on k.divize_id = d.id INTO OUTFILE '/tmp/farmers.csv' FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n';
     
-    [self createProductWithName:@"vlna" 
-                          andId:[NSNumber numberWithInt:4] 
-                  andCategoryid:[NSNumber numberWithInt:0]];
+    //select p.produkt_id, pr.id as farmer_id from produkuje p inner join divize d on p.divize_id = d.id inner join producent pr on pr.id = d.producent_id INTO OUTFILE '/tmp/farmerproduct.csv' FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n';
     
-    [self createProductWithName:@"zelenina" 
-                          andId:[NSNumber numberWithInt:5] 
-                  andCategoryid:[NSNumber numberWithInt:5]];
+    // parse csv
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"products" ofType:@"csv"];
+    NSString *dataFile = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil ];
     
-    [self createProductWithName:@"cibule" 
-                          andId:[NSNumber numberWithInt:6] 
-                  andCategoryid:[NSNumber numberWithInt:5]];
+    CSVParser *parser = [[[CSVParser alloc] initWithString:dataFile separator:@";" hasHeader:NO fieldNames:[NSArray arrayWithObjects: @"productId", @"name", @"categoryId", nil]] autorelease];
     
-    [self createProductWithName:@"dýně Hokaido" 
-                          andId:[NSNumber numberWithInt:7] 
-                  andCategoryid:[NSNumber numberWithInt:5]];
+    NSArray *rows = [parser arrayOfParsedRows];
     
-    [self createProductWithName:@"pastinák" 
-                          andId:[NSNumber numberWithInt:8] 
-                  andCategoryid:[NSNumber numberWithInt:5]];
-    
-    [self createProductWithName:@"česnek" 
-                          andId:[NSNumber numberWithInt:9] 
-                  andCategoryid:[NSNumber numberWithInt:5]];
-    
-    [self createProductWithName:@"brambory" 
-                          andId:[NSNumber numberWithInt:10] 
-                  andCategoryid:[NSNumber numberWithInt:5]];
-    
-    [self createProductWithName:@"obiloviny" 
-                          andId:[NSNumber numberWithInt:11] 
-                  andCategoryid:[NSNumber numberWithInt:0]];
+    for (NSDictionary *row in rows) {
+        [self createProductWithName:[row valueForKey:@"name"]
+                              andId:[NSNumber numberWithInt:
+                                     [[row valueForKey:@"productId"] intValue]] 
+                      andCategoryid:[NSNumber numberWithInt:
+                                     [[row valueForKey:@"categoryId"] intValue]]];
+    }
 }
 
 - (void)createProductWithName:(NSString *)name andId:(NSNumber *)productId andCategoryid:(NSNumber *)categoryId
@@ -118,6 +101,31 @@
 
 - (void)loadFarmers
 {
+    // parse csv
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"farmers" ofType:@"csv"];
+    NSString *dataFile = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil ];
+    
+    CSVParser *parser = [[[CSVParser alloc] initWithString:dataFile separator:@";" hasHeader:NO fieldNames:[NSArray arrayWithObjects: @"farmerId", @"name", @"type", @"latitude", @"longtitude", @"city", @"street", @"phone", @"web", @"email", nil]] autorelease];
+    
+    NSArray *rows = [parser arrayOfParsedRows];
+    
+    for (NSDictionary *row in rows) {
+        [self createFarmerWithName:[row valueForKey:@"name"]
+                       andFarmerId:[NSNumber numberWithInt:
+                                    [[row valueForKey:@"farmerId"] intValue]]
+                            andLat:[NSNumber numberWithDouble:
+                                    [[row valueForKey:@"latitude"] doubleValue]] 
+                            andLon:[NSNumber numberWithDouble:
+                                    [[row valueForKey:@"longtitude"] doubleValue]] 
+                           andCity:[row valueForKey:@"city"] 
+                         andStreet:[row valueForKey:@"street"] 
+                          andEmail:[row valueForKey:@"email"] 
+                          andPhone:[row valueForKey:@"phone"] 
+                            andWeb:[row valueForKey:@"web"]];
+    }
+    
+    
+    /*
     [self createFarmerWithName:@"SADY Svobodná Ves s.r.o." 
                    andFarmerId:[NSNumber numberWithInt:505] 
                         andLat:[NSNumber numberWithDouble:49.9969] 
@@ -138,9 +146,49 @@
                    andFarmerId:[NSNumber numberWithInt:509] 
                         andLat:[NSNumber numberWithDouble:50.64484] 
                         andLon:[NSNumber numberWithDouble:13.85202]];
+     */
 }
 
-- (void)createFarmerWithName:(NSString *)name andFarmerId:(NSNumber *)farmerId andLat:(NSNumber *)lat andLon:(NSNumber *)lon
+- (void)loadFarmerProduct
+{
+    // parse csv
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"farmerproduct" ofType:@"csv"];
+    NSString *dataFile = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil ];
+    
+    CSVParser *parser = [[[CSVParser alloc] initWithString:dataFile separator:@";" hasHeader:NO fieldNames:[NSArray arrayWithObjects: @"productId", @"farmerId", nil]] autorelease];
+    
+    NSArray *rows = [parser arrayOfParsedRows];
+    
+    for (NSDictionary *row in rows) {
+        
+        Product *product = [dbProducts objectForKey:[row valueForKey:@"productId"]];
+        Farmer *farmer = [self getFarmerFromId:[NSNumber numberWithInt:
+                                                [[row valueForKey:@"farmerId"] intValue]]];
+        
+        if (farmer) {
+            [product addFarmerProductObject:farmer];
+        }
+    }
+}
+
+- (Farmer *)getFarmerFromId:(NSNumber *)farmerId
+{
+    // check if flower exists
+    Farmer *dbFarmer = nil;
+    
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    request.entity = [NSEntityDescription entityForName:@"Farmer" inManagedObjectContext:[CoreDataStack sharedStack].managedObjectContext];
+    request.predicate = [NSPredicate predicateWithFormat:@"farmerId = %@", farmerId];
+    
+    NSError *error = nil;
+    dbFarmer = [[[CoreDataStack sharedStack].managedObjectContext executeFetchRequest:request error:&error] lastObject];
+    
+    [request release];
+    
+    return dbFarmer;
+}
+
+- (void)createFarmerWithName:(NSString *)name andFarmerId:(NSNumber *)farmerId andLat:(NSNumber *)lat andLon:(NSNumber *)lon andCity:(NSString *)city andStreet:(NSString *)street andEmail:(NSString *)email andPhone:(NSString *)phone andWeb:(NSString *)web
 {
     Farmer *farmer = (Farmer *)[NSEntityDescription insertNewObjectForEntityForName:@"Farmer" inManagedObjectContext:[CoreDataStack sharedStack].managedObjectContext];
     farmer.farmerId = farmerId;
@@ -148,18 +196,11 @@
     farmer.latitude = lat;
     farmer.longtitude = lon;
     farmer.desc = @"Náš systém „Složte si svou Bio Bedýnku” jsme začali provozovat v únoru 2010. Funguje na principu objednávkového stažitelného formuláře z našich webových stránek, ve kterém si samy určíte množství nebízeného sortimentu (nejen ovoce a zelenina) z aktualizovaného ceníku. Na sezónu 2010 jsme navázali spolupráci z ekofarmáři z kraje Vysočina a budeme nabízet veškerou možnou tuzemskou produkci do našich Bio Bedýnek. Kromě toho využíváme i celoevropskou distribuční síť (ekofarma Deblín, Gastro Fresh). V našem systému si můžete objednávat i jednorázově. Objednávky vyřizujeme jednou týdně.";
-    farmer.city = @"Praha";
-    farmer.street = @"Korunní 90";
-    farmer.email = @"biobedynky@biodream.cz";
-    farmer.phone = @"732 408 982";
-    farmer.web = @"http://www.biodream.cz";
-    
-    NSArray *keys = [dbProducts allKeys];
-    
-    for (NSString *key in keys) {
-        Product *product = [dbProducts objectForKey:key];
-        [product addFarmerProductObject:farmer];
-    }
+    farmer.city = city;
+    farmer.street = street;
+    farmer.email = email;
+    farmer.phone = phone;
+    farmer.web = web;
 }
      
 - (void)dealloc

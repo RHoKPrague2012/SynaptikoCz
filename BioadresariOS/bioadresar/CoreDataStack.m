@@ -61,7 +61,9 @@
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
     if (![fileManager fileExistsAtPath:storePath]) {
+        NSLog(@"LOADING");
         NSString *defaultStorePath = [[NSBundle mainBundle] pathForResource:@"biodirectory" ofType:@"sqlite"];
+        NSLog(@"DEFAUTL: %@", defaultStorePath);
         
         if (defaultStorePath) {
             [fileManager copyItemAtPath:defaultStorePath toPath:storePath error:nil];

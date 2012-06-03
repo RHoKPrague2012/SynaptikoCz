@@ -15,4 +15,6 @@
 
 @property (nonatomic, retain) CLLocation *bestEffortAtLocation;
 
+- (void)dataWithDistance;
+
 @end

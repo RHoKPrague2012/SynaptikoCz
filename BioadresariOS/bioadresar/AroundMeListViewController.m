@@ -11,14 +11,15 @@
 #import "FarmerDetailViewController.h"
 #import "CoreDataStack.h"
 #import "Farmer.h"
+#import <CoreLocation/CoreLocation.h>
 
 @interface AroundMeListViewController () {
     FarmerDetailViewController *_farmerDetailViewController;
-    NSFetchedResultsController *fetchedResultsController;
+    NSArray *_aroundMeData;
 }
 
 @property (nonatomic, retain) FarmerDetailViewController *farmerDetailViewController;
-@property (nonatomic, readonly) NSFetchedResultsController *fetchedResultsController;
+@property (nonatomic, retain) NSArray *aroundMeData;
 
 @end
 
@@ -26,36 +27,55 @@
 
 @synthesize farmerDetailViewController = _farmerDetailViewController;
 @synthesize bestEffortAtLocation;
+@synthesize aroundMeData = _aroundMeData;
 
 #pragma mark - Fetched results controller
 
-- (NSFetchRequest*)fetchRequest {
-	
-	NSFetchRequest *request = [[NSFetchRequest alloc] init];
-	
-	request.entity = [NSEntityDescription entityForName: @"Farmer"
-								 inManagedObjectContext: [CoreDataStack sharedStack].managedObjectContext];
-	
-	NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey: @"name" ascending: YES];
-	
-	request.sortDescriptors = [NSArray arrayWithObject: descriptor];
-	[descriptor release];
-	
-	return [request autorelease];
+- (NSArray *)aroundMeData
+{
+    if (!_aroundMeData) {
+        NSFetchRequest *request = [[NSFetchRequest alloc] init];
+        
+        request.entity = [NSEntityDescription entityForName: @"Farmer"
+                                     inManagedObjectContext: [CoreDataStack sharedStack].managedObjectContext];
+        
+        NSError *error;
+        self.aroundMeData = [[CoreDataStack sharedStack].managedObjectContext executeFetchRequest:request error:&error];
+        
+        if (self.aroundMeData == nil) {
+            NSLog(@"an error occurred");
+        }
+                
+        [request release];
+    }
+    return _aroundMeData;
 }
 
-- (NSFetchedResultsController*)fetchedResultsController {
+
+- (void)dataWithDistance
+{
+    NSLog(@"dataWithDistance");
     
-	if (!fetchedResultsController) {
-		
-		fetchedResultsController = [[NSFetchedResultsController alloc] 
-                                    initWithFetchRequest: [self fetchRequest]
-                                    managedObjectContext: [CoreDataStack sharedStack].managedObjectContext
-                                    sectionNameKeyPath: nil
-                                    cacheName: @"FarmerCache"];
-	}
+    for (Farmer *farmer in self.aroundMeData) {
+        
+        CLLocationCoordinate2D location;
+        location.latitude = [farmer.latitude doubleValue];
+        location.longitude = [farmer.longtitude doubleValue];
+        
+        CLLocation *locB = [[CLLocation alloc] initWithLatitude:location.latitude 
+                                                      longitude:location.longitude];
+        
+        farmer.distance = [bestEffortAtLocation distanceFromLocation:locB];
+        
+        [locB release];
+    }
     
-	return fetchedResultsController;
+    NSSortDescriptor *sortDescriptor;
+    sortDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"distance" ascending:YES] autorelease];
+    NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
+    self.aroundMeData = [self.aroundMeData sortedArrayUsingDescriptors:sortDescriptors];
+    
+    [self.tableView reloadData];
 }
 
 #pragma mark - init
@@ -109,11 +129,6 @@
     [super viewDidLoad];
 
     [self setUpNavigationBar];
-    
-    // fetch data
-    NSError *error;
-    NSAssert1([self.fetchedResultsController performFetch: &error],
-			  @"Unhandled error while fetching: %@", [error localizedDescription]);
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -131,10 +146,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController.sections objectAtIndex: section];
-	
-    return sectionInfo.numberOfObjects;
+    return self.aroundMeData.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -143,13 +155,12 @@
     
     AroundMeCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    if (!cell) {
-		
-        cell = [[[AroundMeCell alloc] initWithStyle : UITableViewCellStyleDefault
-                                   reuseIdentifier: CellIdentifier] autorelease];
-    }
+    // TODO if cell
     
-    Farmer *farmer = [self.fetchedResultsController objectAtIndexPath: indexPath];
+    cell = [[[AroundMeCell alloc] initWithStyle : UITableViewCellStyleDefault
+                                   reuseIdentifier: CellIdentifier] autorelease];
+    
+    Farmer *farmer = [self.aroundMeData objectAtIndex:indexPath.row];
     
     [cell setFarmer:farmer];
     
@@ -171,7 +182,7 @@
         self.farmerDetailViewController = [[[FarmerDetailViewController alloc] initWithStyle:UITableViewStyleGrouped] autorelease];
     }
     
-    self.farmerDetailViewController.farmer = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    self.farmerDetailViewController.farmer = [self.aroundMeData objectAtIndex:indexPath.row];
     
     [self.navigationController pushViewController:self.farmerDetailViewController animated:YES];
 }
@@ -181,7 +192,7 @@
 - (void)dealloc
 {
     [_farmerDetailViewController release];
-    [fetchedResultsController release];
+    [_aroundMeData release];
     [bestEffortAtLocation release];
     
     [super dealloc];
