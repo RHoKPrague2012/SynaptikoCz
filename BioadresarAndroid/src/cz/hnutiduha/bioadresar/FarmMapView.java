@@ -4,6 +4,7 @@ import java.util.Hashtable;
 import java.util.List;
 
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.location.Criteria;
@@ -101,7 +102,16 @@ public class FarmMapView extends MapView {
 		if (currentLocation == null)
 		{
 			Log.w("gps", "Location not available");
-			return;
+		    if ((0 == (context.getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE)))
+				return;
+		    
+		    Log.d("gps", "faking location...");
+		    currentLocation = new Location(LocationManager.GPS_PROVIDER);
+			currentLocation.setLatitude(49);
+			currentLocation.setLongitude(16);
+			currentLocation.setTime(System.currentTimeMillis());
+				
+		    
 		}
 		
 		centerOnGeoPoint(new GeoPoint((int)(currentLocation.getLatitude() * 1E6), (int)(currentLocation.getLongitude() * 1E6)));
