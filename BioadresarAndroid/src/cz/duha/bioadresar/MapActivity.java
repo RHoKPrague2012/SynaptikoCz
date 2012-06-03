@@ -17,10 +17,11 @@ import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.util.Log;
 
 public class MapActivity extends com.google.android.maps.MapActivity {
 	private MapView mapView;
-	FarmsOverlay farms;
+	FarmsOverlay farmOverlay;
 	
 	
     /** Called when the activity is first created. */
@@ -34,11 +35,11 @@ public class MapActivity extends com.google.android.maps.MapActivity {
         
         List<Overlay> mapOverlays = mapView.getOverlays();
         Drawable drawable = this.getResources().getDrawable(R.drawable.ic_map_marker);
-        farms = new FarmsOverlay(drawable, this);
-        mapOverlays.add(farms);
+        farmOverlay = new FarmsOverlay(drawable, this);
+        mapOverlays.add(farmOverlay);
         
         centerOnCurrentLocation();
-        mapView.getController().setZoom(12);
+        mapView.getController().setZoom(10);
         
         refreshPoints();
     }
@@ -84,7 +85,7 @@ public class MapActivity extends com.google.android.maps.MapActivity {
 		Location currentLocation = locationManager.getLastKnownLocation(provider);
 		if (currentLocation == null)
 		{
-			// TODO: report location not avail
+			Log.w("gps", "Location not available");
 			return;
 		}
 		
@@ -94,11 +95,18 @@ public class MapActivity extends com.google.android.maps.MapActivity {
 	private void refreshPoints()
 	{
 		DatabaseHelper db = DatabaseHelper.getDefaultDb();
+		if (db == null)
+		{
+			Log.e("db", "Fatal, can't get default db");
+			return;
+		}
 		
 		GeoPoint [] screen = this.getVisibleRectangle();
+		Log.d("gui", "visible area is " + screen[0].toString() + " x " + screen[1].toString());
+		
 		Hashtable <Long, FarmInfo> farms = db.getFarmsInRectangle(
 				screen[0].getLatitudeE6() / 1E6, screen[0].getLongitudeE6() / 1E6,
 				screen[1].getLatitudeE6() / 1E6, screen[1].getLongitudeE6() / 1E6);
-		this.farms.setVisiblePoints(farms);
+		this.farmOverlay.setVisiblePoints(farms);
 	}
 }
