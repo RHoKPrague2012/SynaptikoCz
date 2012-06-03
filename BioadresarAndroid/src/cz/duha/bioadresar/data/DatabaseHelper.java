@@ -13,6 +13,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -131,48 +132,56 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-
+		// nothing to do
 	}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+		// nothing to do
 	}
 
-	public Cursor getCategoryCursor() {
-		return db.rawQuery("SELECT name FROM category", null);
-	}
-	
-	public Cursor getFarmCursor() {
-		return db.rawQuery("SELECT name FROM farm", null);
-	}
-	
-	public void setFilter(DataFilter filter)
-	{
+	public void setFilter(DataFilter filter) {
 		//TODO: implement this
 	}
 	
-	public void clearFilter()
-	{
+	public void clearFilter() {
 		//TODO: implement this
 	}
 	
-	public Hashtable<Long, FarmInfo> getFarmsInRectangle(double lat1, double long1, double lat2, double long2) {
+	public Hashtable<Long, FarmInfo> getFarmsInRectangle(double lat1, double lon1, double lat2, double lon2) {
+		String[] columns = new String[] { "_id", "name", "gps_lat", "gps_long" };
+		String selection = "gps_lat >= ? AND gps_long >= ? AND gps_lat <= ? AND gps_long <= ?";
+		String[] args = new String[] {
+				Double.toString(lat1), Double.toString(lon1),
+				Double.toString(lat2), Double.toString(lon2)
+		};
+		Cursor c = db.query("farm", columns, selection, args, null, null, "gps_lat, gps_long");
+		Hashtable<Long, FarmInfo> result = new Hashtable<Long, FarmInfo>();
+		
+		c.moveToNext();
+		while (!c.isAfterLast()) {
+			FarmInfo farmInfo = new FarmInfo();
+
+			farmInfo.id = c.getLong(0);
+			farmInfo.name = c.getString(1);
+			farmInfo.lat = c.getDouble(2);
+			farmInfo.lon = c.getDouble(3);
+			
+			Log.d("farm info", farmInfo.id + "; " + farmInfo.name + "; " + farmInfo.lat + "; " + farmInfo.lon);
+			result.put(farmInfo.id, farmInfo);
+			c.moveToNext();
+		}
+		c.close();
+		
+		return result;
+	}
+	
+	public TreeSet<FarmInfo> getFarmInfoInDistance(double lat, double lon, int distanceInKm) {
 		//TODO: implement this
 		return null;
-		/* return db.rawQuery("SELECT name, gps_lat, gps_long FROM farm WHERE gps_lat >= ? AND gps_long >= ? AND gps_lat <= ? AND gps_long <= ?",
-				new String[] { Double.toString(lat1), Double.toString(long1), Double.toString(lat2), Double.toString(long2) });
-				*/
 	}
 	
-	public TreeSet<FarmInfo> getFarmInDistance(double lat, double lon, int distanceInKm)
-	{
-		//TODO: implement this
-		return null;
-	}
-	
-	public void fillDetails(FarmInfo info)
-	{
+	public void fillDetails(FarmInfo info) {
 		// TODO: implement this
 	}
 
