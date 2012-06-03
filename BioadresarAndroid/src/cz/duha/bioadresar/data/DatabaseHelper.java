@@ -45,7 +45,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 			try {
 				defaultDb = new DatabaseHelper();
 				defaultDb.createDb();
-			} catch (IOException e) {}
+				defaultDb.openDb();
+			} catch (IOException e) {
+				Log.e("db", "error opening db " + e.toString());
+			}
 		}
 		return defaultDb; 
 	}
