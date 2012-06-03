@@ -4,6 +4,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.TreeSet;
 
@@ -155,8 +156,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		String[] columns = new String[] { "_id", "name", "gps_lat", "gps_long" };
 		String selection = "gps_lat >= ? AND gps_long >= ? AND gps_lat <= ? AND gps_long <= ?";
 		String[] args = new String[] {
-				Double.toString(lat1), Double.toString(lon1),
-				Double.toString(lat2), Double.toString(lon2)
+				Double.toString(Math.min(lat1, lat2)), Double.toString(Math.min(lon1, lon2)),
+				Double.toString(Math.max(lat1, lat2)), Double.toString(Math.max(lon1, lon2))
 		};
 		Cursor c = db.query("farm", columns, selection, args, null, null, "gps_lat, gps_long");
 		Hashtable<Long, FarmInfo> result = new Hashtable<Long, FarmInfo>();
@@ -180,12 +181,69 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	}
 	
 	public TreeSet<FarmInfo> getFarmInfoInDistance(double lat, double lon, int distanceInKm) {
-		//TODO: implement this
-		return null;
+		FarmInfoComparator comparator = new FarmInfoComparator();
+		double[] point1 = new double[2];
+		double[] point2 = new double[2];
+		Hashtable<Long, FarmInfo> farms;
+		TreeSet<FarmInfo> result = new TreeSet<FarmInfo>(comparator);
+		
+		// TODO implement comparator and isInDistance methods
+		farms = getFarmsInRectangle(point1[0], point1[1], point2[0], point2[1]);
+		for (FarmInfo farm : farms.values()) {
+			if (farm.isInDistance(lat, lon, distanceInKm)) {
+				result.add(farm);
+			}
+		}
+		
+		return result;
 	}
 	
 	public void fillDetails(FarmInfo info) {
-		// TODO: implement this
+		String[] columns = new String[] { "type", "desc" };
+		String selection = "_id = ?";
+		String[] args = new String[] { Long.toString(info.id) };
+		Cursor c = db.query("farm", columns, selection, args, null, null, null);
+		FarmContact farmContact = new FarmContact();
+		
+		c.moveToNext();
+		if (!c.isAfterLast()) {
+			info.type = c.getString(0);
+			info.description = c.getString(1);
+		}
+		c.close();
+		
+		farmContact.phoneNumbers = new ArrayList<String>();
+		
+		columns = new String[] { "type", "contact" };
+		selection = "farm_id = ?";
+		c = db.query("contact", columns, selection, args, null, null, null);
+		c.moveToNext();
+		if (!c.isAfterLast()) {
+			String type = c.getString(0);
+			String contact = c.getString(1);
+			
+			if (type == "city") {
+				farmContact.city = contact;
+			}
+			else if (type == "email") {
+				farmContact.email = contact;
+			}
+			else if (type == "eshop") {
+				farmContact.eshop = contact;
+			}
+			else if (type == "phone") {
+				farmContact.phoneNumbers.add(contact);
+			}
+			else if (type == "street") {
+				farmContact.street = contact;
+			}
+			else if (type == "web") {
+				farmContact.web = contact;
+			}
+		}
+		c.close();
+		
+		info.contact = farmContact;
 	}
 
 }
