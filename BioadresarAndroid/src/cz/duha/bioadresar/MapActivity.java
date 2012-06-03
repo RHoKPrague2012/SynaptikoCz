@@ -28,7 +28,7 @@ public class MapActivity extends com.google.android.maps.MapActivity {
         mapView.setBuiltInZoomControls(true);
         
         List<Overlay> mapOverlays = mapView.getOverlays();
-        Drawable drawable = this.getResources().getDrawable(R.drawable.logo);
+        Drawable drawable = this.getResources().getDrawable(R.drawable.ic_map_marker);
         farms = new FarmsOverlay(drawable, this);
         mapOverlays.add(farms);
         

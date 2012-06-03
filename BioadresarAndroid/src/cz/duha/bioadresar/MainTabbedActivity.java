@@ -24,7 +24,7 @@ public class MainTabbedActivity extends TabActivity {
 
 	    // Initialize a TabSpec for each tab and add it to the TabHost
 	    spec = tabHost.newTabSpec("Map View").setIndicator("Map",
-	                      res.getDrawable(R.drawable.logo))
+	                      res.getDrawable(R.drawable.ic_launcher))
 	                  .setContent(intent);
 	    tabHost.addTab(spec);
 /*
