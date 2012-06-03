@@ -73,7 +73,7 @@ public class MapActivity extends com.google.android.maps.MapActivity {
 		{
 			Criteria criteria = new Criteria();
 			criteria.setPowerRequirement(Criteria.POWER_HIGH);
-			criteria.setBearingAccuracy(Criteria.ACCURACY_HIGH);
+			criteria.setAccuracy(Criteria.ACCURACY_FINE);
 			provider = locationManager.getBestProvider(criteria, true);
 		}
 		

@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Hashtable;
+import java.util.TreeSet;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -146,7 +147,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 				*/
 	}
 	
-	public Hashtable<Long, FarmInfo> getFarmInDistance(double lat, double lon, int distanceInKm)
+	public TreeSet<FarmInfo> getFarmInDistance(double lat, double lon, int distanceInKm)
 	{
 		//TODO: implement this
 		return null;
