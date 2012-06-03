@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11E53" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Farmer" representedClassName="Farmer" syncable="YES">
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="farmerId" attributeType="Integer 32" indexed="YES" syncable="YES"/>
+        <attribute name="lastProcessedTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longtitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="street" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="web" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="productFarmer" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Product" inverseName="farmerProduct" inverseEntity="Product" syncable="YES"/>
+    </entity>
+    <entity name="Product" representedClassName="Product" syncable="YES">
+        <attribute name="categoryId" optional="YES" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
+        <attribute name="lastProcessedTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="productId" optional="YES" attributeType="Integer 32" indexed="YES" syncable="YES"/>
+        <relationship name="farmerProduct" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Farmer" inverseName="productFarmer" inverseEntity="Farmer" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Farmer" positionX="-8667" positionY="-1719" width="128" height="240"/>
+        <element name="Product" positionX="-8883" positionY="-1626" width="128" height="120"/>
+    </elements>
+</model>
