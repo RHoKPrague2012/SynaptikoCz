@@ -41,31 +41,48 @@ public class FarmOverlayItem extends OverlayItem implements android.view.View.On
 		super(point, farm.name, farm.name);
 		this.data = farm;
 	}
+	
+	private static final int ID_DETAIL_BUTTON = 1;
+	private static final int ID_CLOSE_BUTTON = 2;
+	private AlertDialog dialog = null;
 
 	public boolean showBaloon(Context context)
 	{		
-		this.context = context;
-		LinearLayout baloonMainLayout = new LinearLayout(context);
-		
-		// add categories
-		Iterator<Long> it = data.categories.iterator();
-		while (it.hasNext())
+		if (dialog == null)
 		{
-			ImageView imageView = new ImageView(context);
-
-	        imageView.setImageResource(context.getResources().getIdentifier("drawable/category_" + it.next(), null, context.getPackageName()));
+			this.context = context;
+			LinearLayout baloonMainLayout = new LinearLayout(context);
+			ImageView imageView;
+			// add categories
+			Iterator<Long> it = data.categories.iterator();
+			while (it.hasNext())
+			{
+				imageView = new ImageView(context);
+	
+		        imageView.setImageResource(context.getResources().getIdentifier("drawable/category_" + it.next(), null, context.getPackageName()));
+		        baloonMainLayout.addView(imageView);
+			}
+			
+			// add details arrow
+			imageView = new ImageView(context);
+			imageView.setId(ID_DETAIL_BUTTON);
+	        imageView.setImageResource(context.getResources().getIdentifier("drawable/ic_details", null, context.getPackageName()));
 	        baloonMainLayout.addView(imageView);
+	        imageView.setOnClickListener(this);
+	        
+	        imageView = new ImageView(context);
+	        imageView.setId(ID_CLOSE_BUTTON);
+	        imageView.setImageResource(context.getResources().getIdentifier("drawable/btn_dialog", null, "android"));
+	        baloonMainLayout.addView(imageView);
+	        imageView.setOnClickListener(this);
+			
+			dialog = new AlertDialog.Builder(context).create();
+			dialog.setTitle(data.name);
+			dialog.setCanceledOnTouchOutside(true);
+			dialog.setCancelable(true);
+			dialog.setView(baloonMainLayout);
 		}
 		
-		// add details arrow
-		ImageView imageView = new ImageView(context);
-        imageView.setImageResource(context.getResources().getIdentifier("drawable/ic_details", null, context.getPackageName()));
-        baloonMainLayout.addView(imageView);
-        imageView.setOnClickListener(this);
-		
-		AlertDialog.Builder dialog = new AlertDialog.Builder(context);
-		dialog.setTitle(data.name);
-		dialog.setView(baloonMainLayout);
 		dialog.show();
 		return true;
 	}
@@ -81,7 +98,17 @@ public class FarmOverlayItem extends OverlayItem implements android.view.View.On
 	
 	@Override
 	public void onClick(View v) {
-		showDetail();
+		switch(v.getId())
+		{
+		case ID_CLOSE_BUTTON:
+			if (dialog != null)
+				dialog.dismiss();
+			break;
+		case ID_DETAIL_BUTTON:
+			showDetail();
+			dialog.dismiss();
+			break;
+		}
 		
 	}
 }

@@ -1,14 +1,20 @@
 package cz.hnutiduha.bioadresar;
 
 import java.io.IOException;
+import java.util.Random;
 import java.util.TreeSet;
 
 import android.app.ListActivity;
 import android.app.TabActivity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
 import android.content.res.Resources;
 import android.database.SQLException;
+import android.location.Criteria;
 import android.location.Location;
+import android.location.LocationManager;
+import android.location.LocationProvider;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TabHost;
@@ -23,6 +29,7 @@ public class MainTabbedActivity extends TabActivity {
 	    
 	    DatabaseHelper.setContext(this);
 	    
+	    
 	    setContentView(R.layout.main);
 
 	    Resources res = getResources(); // Resource object to get Drawables
@@ -35,13 +42,13 @@ public class MainTabbedActivity extends TabActivity {
 
 	    // Initialize a TabSpec for each tab and add it to the TabHost
 	    spec = tabHost.newTabSpec("Map View").setIndicator("Map",
-	    			res.getDrawable(R.drawable.ic_map_marker))
+	    			res.getDrawable(getResources().getIdentifier("drawable/ic_menu_mapmode", null, "android")))
 	    		.setContent(intent);
 	    tabHost.addTab(spec);
 	    
 	    intent = new Intent().setClass(this, ListActivity.class);
 	    spec = tabHost.newTabSpec("List View").setIndicator("List",
-	    			res.getDrawable(R.drawable.ic_launcher))
+	    			res.getDrawable(getResources().getIdentifier("drawable/ic_menu_agenda", null, "android"))) 
 	    		.setContent(intent);
 	    tabHost.addTab(spec);
 
@@ -54,6 +61,7 @@ public class MainTabbedActivity extends TabActivity {
 	{
 		super.onDestroy();
 		DatabaseHelper.closeDefaultDb();
+		
 	}
 	
 	private void testDbHelper() {
@@ -95,5 +103,4 @@ public class MainTabbedActivity extends TabActivity {
 			dbHelper.close();
 		}
 	}
-	
 }

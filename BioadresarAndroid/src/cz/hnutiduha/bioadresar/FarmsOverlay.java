@@ -87,7 +87,6 @@ public class FarmsOverlay extends ItemizedOverlay<OverlayItem>{
 			if (!(last instanceof FarmOverlayItem))
 					continue;
 			
-			Log.d("gui", "known overlay farm " + ((FarmOverlayItem)last).data.name);
 			farms.remove(Long.valueOf(((FarmOverlayItem)last).data.id));
 		}
 		Log.d("gui", "done going through already drawn");
@@ -99,7 +98,6 @@ public class FarmsOverlay extends ItemizedOverlay<OverlayItem>{
 		while (farmIterator.hasNext())
 		{
 			nextFarm = farmIterator.next();
-			Log.d("gui", "adding farm " + nextFarm.name + " to overlay");
 			toAdd = new FarmOverlayItem(FarmInfo.getGeoPoint(nextFarm), nextFarm);
 			overlays.add(toAdd);
 		}
