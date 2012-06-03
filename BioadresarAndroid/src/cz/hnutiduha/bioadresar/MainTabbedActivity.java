@@ -43,7 +43,7 @@ public class MainTabbedActivity extends TabActivity {
 	    			res.getDrawable(R.drawable.ic_launcher))
 	    		.setContent(intent);
 	    tabHost.addTab(spec);
-	    
+
 	    // FIXME remove method for testing in final version
 	    // testDbHelper();
 	}

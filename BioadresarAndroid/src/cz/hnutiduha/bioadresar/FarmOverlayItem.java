@@ -1,5 +1,23 @@
 package cz.hnutiduha.bioadresar;
 
+import java.util.Iterator;
+import java.util.LinkedList;
+
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.text.method.LinkMovementMethod;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Gallery;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TextView;
+
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.OverlayItem;
 
@@ -19,4 +37,30 @@ public class FarmOverlayItem extends OverlayItem{
 		this.data = farm;
 	}
 
+	public boolean showBaloon(Context context)
+	{
+		LinearLayout lay = new LinearLayout(context);
+		
+		Iterator<Long> it = data.categories.iterator();
+		while (it.hasNext())
+		{
+			ImageView imageView = new ImageView(context);
+
+	        imageView.setImageResource(context.getResources().getIdentifier("drawable/category_" + it.next(), null, context.getPackageName()));
+	        lay.addView(imageView);
+		}
+		//ListView content = new ListView(context);
+		//CategoryListAdapter categories = new CategoryListAdapter(context, data.categories);
+		//content.setAdapter(categories);
+		//LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+	    //View v = inflater.inflate(R.layout.categorylist, null);
+	    
+		
+		AlertDialog.Builder dialog = new AlertDialog.Builder(context);
+		dialog.setTitle(data.name);
+		dialog.setView(lay);
+		dialog.show();
+
+		return true;
+	}
 }

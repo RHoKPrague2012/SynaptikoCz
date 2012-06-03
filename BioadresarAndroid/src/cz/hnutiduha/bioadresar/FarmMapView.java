@@ -40,7 +40,9 @@ public class FarmMapView extends MapView {
 	{
 		super.dispatchDraw(canvas);
 		
-		// don't redraw on each zoom change. there may be dozen of them during one zoom
+		// TODO: don't refresh poinds on zoom-in
+		
+		// don't refresh on each zoom change. there may be dozen of them during one zoom
 		int lastZoomLevel = currentZoomLevel;
 		currentZoomLevel = getZoomLevel();
 		if (currentZoomLevel != lastZoomLevel)
@@ -48,7 +50,7 @@ public class FarmMapView extends MapView {
 		
 		GeoPoint lastVisibleRectangle[] = currentVisibleRectangle;
 		currentVisibleRectangle = getVisibleRectangle();
-		// don't draw on every pan, wait the position to stabilize
+		// don't refresh on every pan, wait the position to stabilize
 		if (lastVisibleRectangle != null && 
 				lastVisibleRectangle[0].equals(currentVisibleRectangle[0]) &&
 				lastVisibleRectangle[1].equals(currentVisibleRectangle[1]))

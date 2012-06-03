@@ -51,24 +51,18 @@ public class FarmsOverlay extends ItemizedOverlay<OverlayItem>{
 	public int size() {
 		return overlays.size();
 	}
-	
+		
 	@Override
 	protected boolean onTap(int index) {
 		// don't show detail on pinch
 		if (isPinch)
 			return false;
 		
-		TextView message = new TextView(context);
-		
 		OverlayItem item = overlays.get(index);
-		AlertDialog.Builder dialog = new AlertDialog.Builder(context);
-		dialog.setTitle(item.getTitle());
-		dialog.setView(message);
-		dialog.show();
+		if (!(item instanceof FarmOverlayItem))
+			return false;
 		
-		message.setMovementMethod(LinkMovementMethod.getInstance());
-		
-		return true;
+		return ((FarmOverlayItem)item).showBaloon(context);
 	}
 	
 	@Override
