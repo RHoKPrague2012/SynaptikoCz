@@ -1,4 +1,4 @@
-package cz.duha.bioadresar;
+package cz.hnutiduha.bioadresar;
 
 import java.util.Hashtable;
 import java.util.List;
@@ -16,8 +16,8 @@ import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapView;
 import com.google.android.maps.Overlay;
 
-import cz.duha.bioadresar.data.DatabaseHelper;
-import cz.duha.bioadresar.data.FarmInfo;
+import cz.hnutiduha.bioadresar.data.DatabaseHelper;
+import cz.hnutiduha.bioadresar.data.FarmInfo;
 
 public class FarmMapView extends MapView {
 	FarmsOverlay farmOverlay;

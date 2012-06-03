@@ -1,4 +1,4 @@
-package cz.duha.bioadresar.data;
+package cz.hnutiduha.bioadresar.data;
 
 import java.util.Comparator;
 

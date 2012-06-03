@@ -1,4 +1,4 @@
-package cz.duha.bioadresar;
+package cz.hnutiduha.bioadresar;
 
 import android.app.Activity;
 import android.os.Bundle;

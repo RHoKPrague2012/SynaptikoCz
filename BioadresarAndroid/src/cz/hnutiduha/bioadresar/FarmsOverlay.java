@@ -1,4 +1,4 @@
-package cz.duha.bioadresar;
+package cz.hnutiduha.bioadresar;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -17,7 +17,7 @@ import android.widget.TextView;
 import com.google.android.maps.ItemizedOverlay;
 import com.google.android.maps.OverlayItem;
 
-import cz.duha.bioadresar.data.FarmInfo;
+import cz.hnutiduha.bioadresar.data.FarmInfo;
 
 public class FarmsOverlay extends ItemizedOverlay<OverlayItem>{
 	private ArrayList<OverlayItem> overlays = new ArrayList<OverlayItem>();
@@ -70,7 +70,7 @@ public class FarmsOverlay extends ItemizedOverlay<OverlayItem>{
 	protected void setVisiblePoints(Hashtable<Long, FarmInfo> farms)
 	{
 		Log.d("gui", "starting redraw of visible points");
-		Iterator<OverlayItem> overlaysIterator = overlays.iterator();
+		/*Iterator<OverlayItem> overlaysIterator = overlays.iterator();
 		OverlayItem last;
 		// remove existing from hashtable
 		while (overlaysIterator.hasNext())
@@ -98,7 +98,7 @@ public class FarmsOverlay extends ItemizedOverlay<OverlayItem>{
 		}
 		Log.d("gui", "done adding new");
 		
-		populate();
+		populate();*/
 	}
 
 }

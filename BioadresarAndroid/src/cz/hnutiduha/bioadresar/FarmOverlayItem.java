@@ -1,9 +1,9 @@
-package cz.duha.bioadresar;
+package cz.hnutiduha.bioadresar;
 
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.OverlayItem;
 
-import cz.duha.bioadresar.data.FarmInfo;
+import cz.hnutiduha.bioadresar.data.FarmInfo;
 
 public class FarmOverlayItem extends OverlayItem{
 	protected FarmInfo data;

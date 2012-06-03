@@ -1,4 +1,4 @@
-package cz.duha.bioadresar;
+package cz.hnutiduha.bioadresar;
 
 import java.io.IOException;
 import java.util.Hashtable;
@@ -11,8 +11,8 @@ import android.database.SQLException;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TabHost;
-import cz.duha.bioadresar.data.DatabaseHelper;
-import cz.duha.bioadresar.data.FarmInfo;
+import cz.hnutiduha.bioadresar.data.DatabaseHelper;
+import cz.hnutiduha.bioadresar.data.FarmInfo;
 
 
 public class MainTabbedActivity extends TabActivity {

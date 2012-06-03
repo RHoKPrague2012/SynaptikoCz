@@ -1,4 +1,4 @@
-package cz.duha.bioadresar.data;
+package cz.hnutiduha.bioadresar.data;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -19,7 +19,7 @@ import android.util.Log;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-	private static String DB_PATH = "/data/data/cz.duha.bioadresar/databases/";
+	private static String DB_PATH = "/data/data/cz.hnutiduha.bioadresar/databases/";
 
 	private static String DB_NAME = "bioadr";
 	

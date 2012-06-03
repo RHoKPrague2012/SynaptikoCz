@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<cz.duha.bioadresar.FarmMapView xmlns:android="http://schemas.android.com/apk/res/android"
+<cz.hnutiduha.bioadresar.FarmMapView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/mapview"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:apiKey="0rTL9ClT6Cj-SD9yVK9rdjID56CmNNtvYaWAW2g"
+    android:apiKey="0FczunPQSIQ_epWJ3ysSLWP5bl0NIhimUpc652Q"
     android:clickable="true" />
