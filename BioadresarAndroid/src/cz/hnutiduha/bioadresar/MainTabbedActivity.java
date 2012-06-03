@@ -1,13 +1,14 @@
 package cz.hnutiduha.bioadresar;
 
 import java.io.IOException;
-import java.util.Hashtable;
+import java.util.TreeSet;
 
 import android.app.ListActivity;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.database.SQLException;
+import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TabHost;
@@ -45,7 +46,7 @@ public class MainTabbedActivity extends TabActivity {
 	    tabHost.addTab(spec);
 	    
 	    // FIXME remove method for testing in final version
-	    // testDbHelper();
+	    //testDbHelper();
 	}
 	
 	@Override
@@ -66,7 +67,7 @@ public class MainTabbedActivity extends TabActivity {
 
 		try {
 			dbHelper.openDb();
-			Hashtable<Long, FarmInfo> infos = dbHelper.getFarmsInRectangle(47, 15, 49, 17);
+			/*Hashtable<Long, FarmInfo> infos = dbHelper.getFarmsInRectangle(47, 15, 49, 17);
 			Log.d("size", infos.size() + "");
 			
 			for (FarmInfo info : infos.values()) {
@@ -77,7 +78,17 @@ public class MainTabbedActivity extends TabActivity {
 				Log.d("info detail", info.name + "; " + info.type + "; " + info.description);
 				Log.d("info detail - contact", info.contact.city + "; " + info.contact.street + "; " + info.contact.phoneNumbers.size());
 				Log.d("info detail - products", "size: " + info.products.size());
+			}*/
+			
+			Location testLocation = new Location("");
+			testLocation.setLatitude(49);
+			testLocation.setLongitude(16);
+			TreeSet<FarmInfo> farms = dbHelper.getAllFarmsSortedByDistance(testLocation);
+			
+			for (FarmInfo farm : farms) {
+				Log.d("distance test", farm.getDistance(testLocation) + "; " + farm.lat + " - " + farm.lon);
 			}
+			
 		} catch (SQLException sqle) {
 			throw sqle;
 		} finally {
