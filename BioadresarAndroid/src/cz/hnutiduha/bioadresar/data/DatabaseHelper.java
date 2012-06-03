@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.TreeSet;
@@ -27,9 +28,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	
 	private static DatabaseHelper defaultDb = null;
 
-	private SQLiteDatabase db;
-
 	private static Context appContext = null;
+	
+	private SQLiteDatabase db;
+	
+	private HashMap<Long, String> categories = null;
+	
+	private HashMap<Long, String> products = null;
 
 	public DatabaseHelper() {
 		super(appContext, DB_NAME, null, DB_VERSION);
@@ -277,6 +282,48 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		}
 		c.close();
 		info.products = products;
+	}
+	
+	public String getProductName(Long id) {
+		if (this.products == null) {
+			this.loadProductNames();
+		}
+		
+		return products.get(id);
+	}
+	
+	private void loadProductNames() {
+		String[] columns = new String[] { "_id", "name" };
+		Cursor c = db.query("product", columns, null, null, null, null, "_id");
+		
+		products = new HashMap<Long, String>();
+		c.moveToNext();
+		while(!c.isAfterLast()) {
+			products.put(c.getLong(0), c.getString(1));
+			c.moveToNext();
+		}
+		c.close();
+	}
+
+	public String getCategoryName(Long id) {
+		if (this.categories == null) {
+			this.loadCategoryNames();
+		}
+		
+		return categories.get(id);
+	}
+
+	private void loadCategoryNames() {
+		String[] columns = new String[] { "_id", "name" };
+		Cursor c = db.query("category", columns, null, null, null, null, "_id");
+		
+		categories = new HashMap<Long, String>();
+		c.moveToNext();
+		while(!c.isAfterLast()) {
+			categories.put(c.getLong(0), c.getString(1));
+			c.moveToNext();
+		}
+		c.close();
 	}
 
 }
