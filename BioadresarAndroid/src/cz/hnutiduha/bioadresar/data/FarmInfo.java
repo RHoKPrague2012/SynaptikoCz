@@ -9,13 +9,13 @@ public class FarmInfo {
 	public long id;
 	public String name;
 	public double lat, lon;
+	public List<Long> categories;
 	
 	// call DatabaseHelper.fillDetails to obtain these
 	public String description;
 	public String type;
 	public FarmContact contact;
-	public List<String> products;
-	public List<String> categories;
+	public List<Long> products;
 	
 	public static GeoPoint getGeoPoint(FarmInfo farm)
 	{
