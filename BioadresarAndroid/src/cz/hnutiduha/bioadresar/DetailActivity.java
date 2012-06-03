@@ -1,10 +1,10 @@
 package cz.hnutiduha.bioadresar;
 
-import cz.hnutiduha.bioadresar.data.FarmInfo;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.EditText;
+import android.text.util.Linkify;
+import android.widget.TextView;
 
 public class DetailActivity extends Activity{
 	
@@ -15,9 +15,12 @@ public class DetailActivity extends Activity{
         
         this.setContentView(R.layout.detailview);
         Intent intent = getIntent();
-        EditText mail = (EditText) findViewById(R.id.editText1);
+        TextView name = (TextView) findViewById(R.id.farmName);
+        TextView mail = (TextView) findViewById(R.id.emailText);
+        
+        name.setText(intent.getStringExtra("name"));
         mail.setText(intent.getStringExtra("email"));
-        this.setTitle(intent.getStringExtra("name"));
+        Linkify.addLinks(mail, Linkify.EMAIL_ADDRESSES);
     }
 
 }
