@@ -1,6 +1,7 @@
 package cz.duha.bioadresar;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -12,6 +13,8 @@ import android.widget.TextView;
 
 import com.google.android.maps.ItemizedOverlay;
 import com.google.android.maps.OverlayItem;
+
+import cz.duha.bioadresar.data.FarmInfo;
 
 public class FarmsOverlay extends ItemizedOverlay<OverlayItem>{
 	private ArrayList<OverlayItem> overlays = new ArrayList<OverlayItem>();
@@ -57,6 +60,10 @@ public class FarmsOverlay extends ItemizedOverlay<OverlayItem>{
 		message.setMovementMethod(LinkMovementMethod.getInstance());
 		
 		return true;
+	}
+	
+	protected void setVisiblePoints(Hashtable<Long, FarmInfo> farms)
+	{
 	}
 
 }

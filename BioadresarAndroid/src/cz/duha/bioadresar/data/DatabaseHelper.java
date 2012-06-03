@@ -21,14 +21,32 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	private static String DB_NAME = "bioadr";
 	
 	private static int DB_VERSION = 1;
+	
+	private static DatabaseHelper defaultDb = null;
 
 	private SQLiteDatabase db;
 
-	private final Context context;
+	private static Context appContext = null;
 
-	public DatabaseHelper(Context context) {
-		super(context, DB_NAME, null, DB_VERSION);
-		this.context = context;
+	public DatabaseHelper() {
+		super(appContext, DB_NAME, null, DB_VERSION);
+	}
+	
+	public static void setContext(Context context)
+	{
+		appContext = context;
+	}
+	
+	public static DatabaseHelper getDefaultDb()
+	{
+		if (defaultDb == null && appContext != null)
+		{
+			try {
+				defaultDb = new DatabaseHelper();
+				defaultDb.createDb();
+			} catch (IOException e) {}
+		}
+		return defaultDb; 
 	}
 
 	/**
@@ -81,7 +99,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	 * handled. This is done by transfering bytestream.
 	 * */
 	private void copyDb() throws IOException {
-		InputStream myInput = context.getAssets().open(DB_NAME);
+		InputStream myInput = appContext.getAssets().open(DB_NAME);
 		String outFileName = DB_PATH + DB_NAME;
 		OutputStream myOutput = new FileOutputStream(outFileName);
 
@@ -139,7 +157,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		//TODO: implement this
 	}
 	
-	public Hashtable<Long, FarmInfo> getFarmCursorInRectangle(double lat1, double long1, double lat2, double long2) {
+	public Hashtable<Long, FarmInfo> getFarmsInRectangle(double lat1, double long1, double lat2, double long2) {
 		//TODO: implement this
 		return null;
 		/* return db.rawQuery("SELECT name, gps_lat, gps_long FROM farm WHERE gps_lat >= ? AND gps_long >= ? AND gps_lat <= ? AND gps_long <= ?",

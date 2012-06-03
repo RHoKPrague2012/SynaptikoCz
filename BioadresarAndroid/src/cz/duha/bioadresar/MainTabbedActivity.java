@@ -1,5 +1,6 @@
 package cz.duha.bioadresar;
 
+import cz.duha.bioadresar.data.DatabaseHelper;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -12,6 +13,9 @@ public class MainTabbedActivity extends TabActivity {
 
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
+	    
+	    DatabaseHelper.setContext(this);
+	    
 	    setContentView(R.layout.main);
 
 	    Resources res = getResources(); // Resource object to get Drawables
@@ -24,8 +28,14 @@ public class MainTabbedActivity extends TabActivity {
 
 	    // Initialize a TabSpec for each tab and add it to the TabHost
 	    spec = tabHost.newTabSpec("Map View").setIndicator("Map",
-	                      res.getDrawable(R.drawable.ic_launcher))
-	                  .setContent(intent);
+	    			res.getDrawable(R.drawable.ic_map_marker))
+	    		.setContent(intent);
+	    tabHost.addTab(spec);
+	    
+	    intent = new Intent().setClass(this, ListActivity.class);
+	    spec = tabHost.newTabSpec("List View").setIndicator("List",
+	    			res.getDrawable(R.drawable.ic_launcher))
+	    		.setContent(intent);
 	    tabHost.addTab(spec);
 /*
 	    // Do the same for the other tabs

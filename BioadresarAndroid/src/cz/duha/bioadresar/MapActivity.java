@@ -1,5 +1,6 @@
 package cz.duha.bioadresar;
 
+import java.util.Hashtable;
 import java.util.List;
 
 import com.google.android.maps.GeoPoint;
@@ -7,6 +8,9 @@ import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
 import com.google.android.maps.Overlay;
 import com.google.android.maps.OverlayItem;
+
+import cz.duha.bioadresar.data.DatabaseHelper;
+import cz.duha.bioadresar.data.FarmInfo;
 
 import android.graphics.drawable.Drawable;
 import android.location.Criteria;
@@ -17,6 +21,7 @@ import android.os.Bundle;
 public class MapActivity extends com.google.android.maps.MapActivity {
 	private MapView mapView;
 	FarmsOverlay farms;
+	
 	
     /** Called when the activity is first created. */
     @Override
@@ -33,7 +38,9 @@ public class MapActivity extends com.google.android.maps.MapActivity {
         mapOverlays.add(farms);
         
         centerOnCurrentLocation();
-        mapView.getController().setZoom(15);
+        mapView.getController().setZoom(12);
+        
+        refreshPoints();
     }
     
     protected GeoPoint[] getVisibleRectangle()
@@ -56,9 +63,6 @@ public class MapActivity extends com.google.android.maps.MapActivity {
 	{
 		MapController control = mapView.getController();
 		control.animateTo(center);
-		OverlayItem overlayitem = new OverlayItem(center, "Whoa!", "I'm here!");
-		if (farms != null)
-			farms.addOverlay(overlayitem);
 	}
 	
 	private void centerOnCurrentLocation()
@@ -87,6 +91,14 @@ public class MapActivity extends com.google.android.maps.MapActivity {
 		centerOnGeoPoint(new GeoPoint((int)(currentLocation.getLatitude() * 1E6), (int)(currentLocation.getLongitude() * 1E6)));
 	}
 	
-	
-
+	private void refreshPoints()
+	{
+		DatabaseHelper db = DatabaseHelper.getDefaultDb();
+		
+		GeoPoint [] screen = this.getVisibleRectangle();
+		Hashtable <Long, FarmInfo> farms = db.getFarmsInRectangle(
+				screen[0].getLatitudeE6() / 1E6, screen[0].getLongitudeE6() / 1E6,
+				screen[1].getLatitudeE6() / 1E6, screen[1].getLongitudeE6() / 1E6);
+		this.farms.setVisiblePoints(farms);
+	}
 }
