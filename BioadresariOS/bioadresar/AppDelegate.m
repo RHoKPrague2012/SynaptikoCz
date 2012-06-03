@@ -33,8 +33,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // load data TODO
-    FarmersParser *farmersParser = [[FarmersParser alloc] init];
-    [farmersParser parse];
+    //FarmersParser *farmersParser = [[FarmersParser alloc] init];
+    //[farmersParser parse];
     
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     
@@ -53,7 +53,7 @@
     [self firstUserExperience];
     
     // farmers list
-    FarmersListViewController *farmersListViewController = [[FarmersListViewController alloc] init];
+    FarmersListViewController *farmersListViewController = [[FarmersListViewController alloc] initWithNibName:@"FarmersListViewController" bundle:[NSBundle mainBundle]];
     UINavigationController *farmersListViewNavigationController = [[UINavigationController alloc] initWithRootViewController:farmersListViewController];
     
     // tab bar

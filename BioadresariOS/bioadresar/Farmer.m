@@ -26,6 +26,8 @@
 @dynamic web;
 @dynamic productFarmer;
 
+@synthesize distance;
+
 - (CLLocationCoordinate2D)coordinate
 {
     CLLocationCoordinate2D location;
@@ -38,6 +40,10 @@
 - (NSString*)title
 {
     return self.name;
+}
+
+- (NSComparisonResult)compare:(Farmer *)otherObject {
+    return [[NSNumber numberWithDouble:self.distance] compare:[NSNumber numberWithDouble:otherObject.distance]];
 }
 
 @end

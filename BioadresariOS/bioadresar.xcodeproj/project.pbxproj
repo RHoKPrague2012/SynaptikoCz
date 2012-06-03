@@ -13,6 +13,13 @@
 		0DA61D64157AC4C000CAAB1E /* CoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA61D63157AC4C000CAAB1E /* CoreDataStack.m */; };
 		0DA61D68157AC58900CAAB1E /* NSManagedObjectContext+SaveAssert.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA61D67157AC58900CAAB1E /* NSManagedObjectContext+SaveAssert.m */; };
 		0DA61D72157B484100CAAB1E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DA61D71157B484100CAAB1E /* CoreLocation.framework */; };
+		0DD723CF157B743700EB0806 /* OverlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD723CD157B743700EB0806 /* OverlayViewController.m */; };
+		0DD723D0157B743700EB0806 /* OverlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DD723CE157B743700EB0806 /* OverlayViewController.xib */; };
+		0DF008AE157B99E0001E3CDF /* products.csv in Resources */ = {isa = PBXBuildFile; fileRef = 0DF008AD157B99E0001E3CDF /* products.csv */; };
+		0DF008B3157B9A2E001E3CDF /* CSVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF008B2157B9A2E001E3CDF /* CSVParser.m */; };
+		0DF008B5157B9FB4001E3CDF /* farmers.csv in Resources */ = {isa = PBXBuildFile; fileRef = 0DF008B4157B9FB4001E3CDF /* farmers.csv */; };
+		0DF008B7157BA353001E3CDF /* farmerproduct.csv in Resources */ = {isa = PBXBuildFile; fileRef = 0DF008B6157BA353001E3CDF /* farmerproduct.csv */; };
+		0DF008BB157BAD5F001E3CDF /* biodirectory.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 0DF008BA157BAD5F001E3CDF /* biodirectory.sqlite */; };
 		0DFEF1E1157A020400EF319F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DFEF1E0157A020400EF319F /* UIKit.framework */; };
 		0DFEF1E3157A020400EF319F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DFEF1E2157A020400EF319F /* Foundation.framework */; };
 		0DFEF1E5157A020400EF319F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DFEF1E4157A020400EF319F /* CoreGraphics.framework */; };
@@ -74,6 +81,15 @@
 		0DA61D66157AC58900CAAB1E /* NSManagedObjectContext+SaveAssert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+SaveAssert.h"; sourceTree = "<group>"; };
 		0DA61D67157AC58900CAAB1E /* NSManagedObjectContext+SaveAssert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectContext+SaveAssert.m"; sourceTree = "<group>"; };
 		0DA61D71157B484100CAAB1E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		0DD723CC157B743700EB0806 /* OverlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverlayViewController.h; sourceTree = "<group>"; };
+		0DD723CD157B743700EB0806 /* OverlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverlayViewController.m; sourceTree = "<group>"; };
+		0DD723CE157B743700EB0806 /* OverlayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverlayViewController.xib; sourceTree = "<group>"; };
+		0DF008AD157B99E0001E3CDF /* products.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = products.csv; sourceTree = "<group>"; };
+		0DF008B1157B9A2E001E3CDF /* CSVParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSVParser.h; sourceTree = "<group>"; };
+		0DF008B2157B9A2E001E3CDF /* CSVParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSVParser.m; sourceTree = "<group>"; };
+		0DF008B4157B9FB4001E3CDF /* farmers.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = farmers.csv; sourceTree = "<group>"; };
+		0DF008B6157BA353001E3CDF /* farmerproduct.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = farmerproduct.csv; sourceTree = "<group>"; };
+		0DF008BA157BAD5F001E3CDF /* biodirectory.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = biodirectory.sqlite; sourceTree = "<group>"; };
 		0DFEF1DC157A020400EF319F /* bioadresar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bioadresar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DFEF1E0157A020400EF319F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0DFEF1E2157A020400EF319F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -161,6 +177,15 @@
 			name = Category;
 			sourceTree = "<group>";
 		};
+		0DF008B0157B9A1E001E3CDF /* CSVParser */ = {
+			isa = PBXGroup;
+			children = (
+				0DF008B1157B9A2E001E3CDF /* CSVParser.h */,
+				0DF008B2157B9A2E001E3CDF /* CSVParser.m */,
+			);
+			name = CSVParser;
+			sourceTree = "<group>";
+		};
 		0DFEF1D1157A020300EF319F = {
 			isa = PBXGroup;
 			children = (
@@ -238,6 +263,7 @@
 		0DFEF219157A037700EF319F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0DF008B0157B9A1E001E3CDF /* CSVParser */,
 				0DA61D62157AC4C000CAAB1E /* CoreDataStack.h */,
 				0DA61D63157AC4C000CAAB1E /* CoreDataStack.m */,
 				0DA61D5C157AC41E00CAAB1E /* Farmer.h */,
@@ -273,6 +299,8 @@
 				0DFEF24C157A328E00EF319F /* FarmerDetailViewController.m */,
 				0DFEF264157A501100EF319F /* SegmentsController.h */,
 				0DFEF265157A501100EF319F /* SegmentsController.m */,
+				0DD723CC157B743700EB0806 /* OverlayViewController.h */,
+				0DD723CD157B743700EB0806 /* OverlayViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -293,6 +321,10 @@
 		0DFEF222157A041F00EF319F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0DF008BA157BAD5F001E3CDF /* biodirectory.sqlite */,
+				0DF008B6157BA353001E3CDF /* farmerproduct.csv */,
+				0DF008B4157B9FB4001E3CDF /* farmers.csv */,
+				0DF008AD157B99E0001E3CDF /* products.csv */,
 				0DFEF224157A046300EF319F /* Images */,
 				0DFEF223157A045D00EF319F /* Nib */,
 			);
@@ -306,6 +338,7 @@
 				0DFEF22F157A0DB800EF319F /* FarmersListViewController.xib */,
 				0DFEF23A157A1D2500EF319F /* AroundMeListViewController.xib */,
 				0DFEF24D157A328F00EF319F /* FarmerDetailViewController.xib */,
+				0DD723CE157B743700EB0806 /* OverlayViewController.xib */,
 			);
 			name = Nib;
 			sourceTree = "<group>";
@@ -426,6 +459,11 @@
 				0DFEF261157A4AE900EF319F /* Default.png in Resources */,
 				0DFEF263157A4B9D00EF319F /* icon-map-marker.png in Resources */,
 				0DFEF268157A544F00EF319F /* AroundMeMapViewController.xib in Resources */,
+				0DD723D0157B743700EB0806 /* OverlayViewController.xib in Resources */,
+				0DF008AE157B99E0001E3CDF /* products.csv in Resources */,
+				0DF008B5157B9FB4001E3CDF /* farmers.csv in Resources */,
+				0DF008B7157BA353001E3CDF /* farmerproduct.csv in Resources */,
+				0DF008BB157BAD5F001E3CDF /* biodirectory.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,6 +512,8 @@
 				0DA61D61157AC45800CAAB1E /* FarmersParser.m in Sources */,
 				0DA61D64157AC4C000CAAB1E /* CoreDataStack.m in Sources */,
 				0DA61D68157AC58900CAAB1E /* NSManagedObjectContext+SaveAssert.m in Sources */,
+				0DD723CF157B743700EB0806 /* OverlayViewController.m in Sources */,
+				0DF008B3157B9A2E001E3CDF /* CSVParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

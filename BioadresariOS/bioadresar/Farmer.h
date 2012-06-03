@@ -30,6 +30,7 @@
 
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
 @property (nonatomic, readonly, copy) NSString *title;
+@property (nonatomic) CLLocationDistance distance;
 
 @end
 

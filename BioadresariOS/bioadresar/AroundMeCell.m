@@ -59,7 +59,8 @@
     // categories
     
     NSMutableSet *categoriesSet = [[NSMutableSet alloc] init];
-    for (Product *product in [farmer.productFarmer allObjects]) {
+    NSArray *products = [farmer.productFarmer allObjects];
+    for (Product *product in products) {
         [categoriesSet addObject:product.categoryId];
     }
     
@@ -69,15 +70,18 @@
                                 [UIImage imageNamed:[categoryId stringValue]]];
         imgView.frame = CGRectMake(position*50, 0, 29, 29);
         [imgFrame addSubview:imgView];
+        [imgView release];
         position++;
     }
+    
+    [categoriesSet release];
     
     // name
     lblName.text = farmer.name;
     
-    // price
-    //double distance = [[farmer valueForKey:@"distance"] doubleValue] / 1000;
-    double distance = 1.5;
+    // distance
+    double distance = farmer.distance / 1000;
+
     lblDistance.text = [NSString stringWithFormat:@"%.2f km", distance];
 }
 

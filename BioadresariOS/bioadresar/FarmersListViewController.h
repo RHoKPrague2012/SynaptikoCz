@@ -8,6 +8,24 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FarmersListViewController : UITableViewController
+@class OverlayViewController;
+
+@interface FarmersListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
+    IBOutlet UISearchBar *searchBar;
+    IBOutlet UIToolbar *toolbar;
+    NSMutableArray *listOfItems;
+	NSMutableArray *copyListOfItems;
+    BOOL searching;
+	BOOL letUserSelectRow;
+    
+    OverlayViewController *ovController;
+}
+
+@property (nonatomic, retain) IBOutlet UISearchBar *searchBar;
+@property (retain, nonatomic) IBOutlet UIToolbar *toolbar;
+@property (retain, nonatomic) IBOutlet UITableView *tableView;
+
+- (void) searchTableView;
+- (void) doneSearching_Clicked:(id)sender;
 
 @end
