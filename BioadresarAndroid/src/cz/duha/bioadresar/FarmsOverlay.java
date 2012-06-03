@@ -24,12 +24,14 @@ public class FarmsOverlay extends ItemizedOverlay<OverlayItem>{
 	private Context context;
 	
 	public FarmsOverlay(Drawable defaultMarker, Context context) {
-		  super(boundCenterBottom(defaultMarker));
-		  this.context = context;
-		}
+		super(boundCenterBottom(defaultMarker));
+		this.context = context;
+		populate();
+	}
 	
 	public FarmsOverlay(Drawable defaultMarker) {
 		super(boundCenterBottom(defaultMarker));
+		populate();
 	}
 
 	public void addOverlay(OverlayItem overlay) {
@@ -77,6 +79,8 @@ public class FarmsOverlay extends ItemizedOverlay<OverlayItem>{
 			// ignore other overlays
 			if (!(last instanceof FarmOverlayItem))
 					continue;
+			
+			Log.d("gui", "known overlay farm " + ((FarmOverlayItem)last).data.name);
 			farms.remove(Long.valueOf(((FarmOverlayItem)last).data.id));
 		}
 		Log.d("gui", "done going through already drawn");
@@ -88,6 +92,7 @@ public class FarmsOverlay extends ItemizedOverlay<OverlayItem>{
 		while (farmIterator.hasNext())
 		{
 			nextFarm = farmIterator.next();
+			Log.d("gui", "adding farm " + nextFarm.name + " to overlay");
 			toAdd = new FarmOverlayItem(FarmInfo.getGeoPoint(nextFarm), nextFarm);
 			overlays.add(toAdd);
 		}
