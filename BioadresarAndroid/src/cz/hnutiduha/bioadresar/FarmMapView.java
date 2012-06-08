@@ -14,15 +14,14 @@ import android.util.AttributeSet;
 import android.util.Log;
 
 import com.google.android.maps.GeoPoint;
-import com.google.android.maps.MapView;
 import com.google.android.maps.Overlay;
+import com.readystatesoftware.maps.TapControlledMapView;
 
 import cz.hnutiduha.bioadresar.data.DatabaseHelper;
 import cz.hnutiduha.bioadresar.data.FarmInfo;
 
-public class FarmMapView extends MapView {
+public class FarmMapView extends TapControlledMapView {
 	FarmsOverlay farmOverlay;
-	Context context;
 	GeoPoint currentVisibleRectangle[];
 	boolean currentDrawn = false;
 	int currentZoomLevel = -1;
@@ -30,10 +29,9 @@ public class FarmMapView extends MapView {
 
 	public FarmMapView(Context context, AttributeSet attrs) {
 		super(context, attrs);
-		this.context = context;
         List<Overlay> mapOverlays = this.getOverlays();
-        Drawable drawable = this.getResources().getDrawable(R.drawable.ic_map_marker);
-        farmOverlay = new FarmsOverlay(drawable, context);
+        Drawable drawable = this.getResources().getDrawable(R.drawable.marker2);
+        farmOverlay = new FarmsOverlay(drawable, this);
         mapOverlays.add(farmOverlay);
 	}
 	
@@ -79,12 +77,18 @@ public class FarmMapView extends MapView {
 	
 	public void centerOnGeoPoint(GeoPoint center)
 	{
-		getController().animateTo(center);
+		getController().animateTo(center, new Runnable() {
+			@Override
+			public void run() {
+				refreshPoints();
+			}
+			
+		});
 	}
 	
 	public void centerOnCurrentLocation()
 	{
-		LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+		LocationManager locationManager = (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE);
 		String provider;
 		if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER))
 		{
@@ -102,7 +106,7 @@ public class FarmMapView extends MapView {
 		if (currentLocation == null)
 		{
 			Log.w("gps", "Location not available");
-		    if ((0 == (context.getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE)))
+		    if ((0 == (getContext().getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE)))
 				return;
 		    
 		    Log.d("gps", "faking location...");

@@ -96,17 +96,22 @@ public class FarmOverlayItem extends OverlayItem implements android.view.View.On
 		context.startActivity(detail);
 	}
 	
+	public void hideBalloon()
+	{
+		if (dialog != null)
+			dialog.dismiss();
+	}
+	
 	@Override
 	public void onClick(View v) {
 		switch(v.getId())
 		{
 		case ID_CLOSE_BUTTON:
-			if (dialog != null)
-				dialog.dismiss();
+			hideBalloon();
 			break;
 		case ID_DETAIL_BUTTON:
 			showDetail();
-			dialog.dismiss();
+			hideBalloon();
 			break;
 		}
 		

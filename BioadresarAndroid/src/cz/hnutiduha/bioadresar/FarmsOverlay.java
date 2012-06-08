@@ -13,22 +13,19 @@ import android.view.MotionEvent;
 import com.google.android.maps.ItemizedOverlay;
 import com.google.android.maps.MapView;
 import com.google.android.maps.OverlayItem;
+import com.readystatesoftware.maps.OnSingleTapListener;
 
 import cz.hnutiduha.bioadresar.data.FarmInfo;
 
-public class FarmsOverlay extends ItemizedOverlay<OverlayItem>{
+public class FarmsOverlay extends ItemizedOverlay<OverlayItem> implements OnSingleTapListener{
 	private ArrayList<OverlayItem> overlays = new ArrayList<OverlayItem>();
-	private Context context;
+	private FarmOverlayItem lastSelected = null;
+	private FarmMapView map;
 	private boolean isPinch;
 	
-	public FarmsOverlay(Drawable defaultMarker, Context context) {
-		super(boundCenterBottom(defaultMarker));
-		this.context = context;
-		populate();
-	}
-	
-	public FarmsOverlay(Drawable defaultMarker) {
-		super(boundCenterBottom(defaultMarker));
+	public FarmsOverlay(Drawable defaultMarker, FarmMapView map) {
+		super(boundCenter(defaultMarker));
+		this.map = map;
 		populate();
 	}
 
@@ -46,6 +43,12 @@ public class FarmsOverlay extends ItemizedOverlay<OverlayItem>{
 	public int size() {
 		return overlays.size();
 	}
+	
+	public void hideBalloon()
+	{
+		if (lastSelected != null)
+			lastSelected.hideBalloon();
+	}
 		
 	@Override
 	protected boolean onTap(int index) {
@@ -57,7 +60,11 @@ public class FarmsOverlay extends ItemizedOverlay<OverlayItem>{
 		if (!(item instanceof FarmOverlayItem))
 			return false;
 		
-		return ((FarmOverlayItem)item).showBaloon(context);
+		map.centerOnGeoPoint(item.getPoint());
+		
+		lastSelected = (FarmOverlayItem)item;
+		return lastSelected.showBaloon(map.getContext());
+		
 	}
 	
 	@Override
@@ -104,6 +111,12 @@ public class FarmsOverlay extends ItemizedOverlay<OverlayItem>{
 		Log.d("gui", "done adding new");
 		
 		populate();
+	}
+
+	@Override
+	public boolean onSingleTap(MotionEvent e) {
+		hideBalloon();
+		return true;
 	}
 
 }
