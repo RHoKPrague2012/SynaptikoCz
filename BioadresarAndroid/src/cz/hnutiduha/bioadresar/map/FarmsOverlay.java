@@ -1,11 +1,10 @@
-package cz.hnutiduha.bioadresar;
+package cz.hnutiduha.bioadresar.map;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Hashtable;
 import java.util.Iterator;
 
-import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -56,14 +55,21 @@ public class FarmsOverlay extends ItemizedOverlay<OverlayItem> implements OnSing
 		if (isPinch)
 			return false;
 		
+		// hide old balloon
+		/* TODO: maybe we could use(reuse) only one static balloon to save memory & cpu
+		 *       and only change title and show/hide particular category icons
+		 */
+		hideBalloon();
+		Log.d("d", "show balloon");
 		OverlayItem item = overlays.get(index);
 		if (!(item instanceof FarmOverlayItem))
 			return false;
 		
+		// wtf. the map sends one aux click through the movement
+		disableHiding();
 		map.centerOnGeoPoint(item.getPoint());
-		
 		lastSelected = (FarmOverlayItem)item;
-		return lastSelected.showBaloon(map.getContext());
+		return lastSelected.showBalloon();
 		
 	}
 	
@@ -81,9 +87,11 @@ public class FarmsOverlay extends ItemizedOverlay<OverlayItem> implements OnSing
 	    return super.onTouchEvent(e,mapView);
 	}
 	
+	/* TODO: maybe remove the old ones?
+	 * TODO: maybe faster join?
+	 */
 	protected void setVisiblePoints(Hashtable<Long, FarmInfo> farms)
 	{
-		Log.d("gui", "starting redraw of visible points");
 		Iterator<OverlayItem> overlaysIterator = overlays.iterator();
 		OverlayItem last;
 		// remove existing from hashtable
@@ -96,7 +104,6 @@ public class FarmsOverlay extends ItemizedOverlay<OverlayItem> implements OnSing
 			
 			farms.remove(Long.valueOf(((FarmOverlayItem)last).data.id));
 		}
-		Log.d("gui", "done going through already drawn");
 		
 		Collection<FarmInfo> newFarms= farms.values();
 		Iterator<FarmInfo> farmIterator = newFarms.iterator();
@@ -105,17 +112,33 @@ public class FarmsOverlay extends ItemizedOverlay<OverlayItem> implements OnSing
 		while (farmIterator.hasNext())
 		{
 			nextFarm = farmIterator.next();
-			toAdd = new FarmOverlayItem(FarmInfo.getGeoPoint(nextFarm), nextFarm);
+			toAdd = new FarmOverlayItem(FarmInfo.getGeoPoint(nextFarm), nextFarm, map);
 			overlays.add(toAdd);
 		}
-		Log.d("gui", "done adding new");
 		
 		populate();
+	}
+	
+	/* NOTE: animating to point generates for some mysterious reason one excessive click
+	 *       so we ignore all clicks between start & stop of animation
+	 */
+	private boolean hidingEnabled = true; 
+	public void enableHiding()
+	{
+		hidingEnabled = true;
+	}
+	public void disableHiding()
+	{
+		hidingEnabled = false;
 	}
 
 	@Override
 	public boolean onSingleTap(MotionEvent e) {
+		if (lastSelected == null || !hidingEnabled)
+			return false;
+
 		hideBalloon();
+		
 		return true;
 	}
 

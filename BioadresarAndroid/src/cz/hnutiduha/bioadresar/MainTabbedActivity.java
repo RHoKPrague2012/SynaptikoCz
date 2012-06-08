@@ -1,26 +1,23 @@
 package cz.hnutiduha.bioadresar;
 
 import java.io.IOException;
-import java.util.Random;
 import java.util.TreeSet;
 
-import android.app.ListActivity;
 import android.app.TabActivity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
 import android.content.res.Resources;
 import android.database.SQLException;
-import android.location.Criteria;
 import android.location.Location;
-import android.location.LocationManager;
-import android.location.LocationProvider;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TabHost;
 import cz.hnutiduha.bioadresar.data.DatabaseHelper;
 import cz.hnutiduha.bioadresar.data.FarmInfo;
-
+import cz.hnutiduha.bioadresar.data.LocationCache;
+import cz.hnutiduha.bioadresar.filter.FilterActivity;
+import cz.hnutiduha.bioadresar.map.MapActivity;
+import cz.hnutiduha.bioadresar.list.ListActivity;
+import cz.hnutiduha.bioadresar.R;
 
 public class MainTabbedActivity extends TabActivity {
 
@@ -28,9 +25,11 @@ public class MainTabbedActivity extends TabActivity {
 	    super.onCreate(savedInstanceState);
 	    
 	    DatabaseHelper.setContext(this);
+	    // current location is default center of everything :)
+	    LocationCache.centerOnGps(this);
 	    
 	    
-	    setContentView(R.layout.main);
+	    setContentView(R.layout.main_view);
 
 	    Resources res = getResources(); // Resource object to get Drawables
 	    TabHost tabHost = getTabHost();  // The activity TabHost
@@ -41,14 +40,20 @@ public class MainTabbedActivity extends TabActivity {
 	    intent = new Intent().setClass(this, MapActivity.class);
 
 	    // Initialize a TabSpec for each tab and add it to the TabHost
-	    spec = tabHost.newTabSpec("Map View").setIndicator("Map",
-	    			res.getDrawable(getResources().getIdentifier("drawable/ic_menu_mapmode", null, "android")))
+	    spec = tabHost.newTabSpec("Map View").setIndicator(res.getString(R.string.map_tab_title),
+	    			res.getDrawable(res.getIdentifier("drawable/ic_menu_mapmode", null, "android")))
 	    		.setContent(intent);
 	    tabHost.addTab(spec);
 	    
 	    intent = new Intent().setClass(this, ListActivity.class);
-	    spec = tabHost.newTabSpec("List View").setIndicator("List",
-	    			res.getDrawable(getResources().getIdentifier("drawable/ic_menu_agenda", null, "android"))) 
+	    spec = tabHost.newTabSpec("List View").setIndicator(res.getString(R.string.list_tab_title),
+	    			res.getDrawable(res.getIdentifier("drawable/ic_menu_agenda", null, "android"))) 
+	    		.setContent(intent);
+	    tabHost.addTab(spec);
+	    
+	    intent = new Intent().setClass(this, FilterActivity.class);
+	    spec = tabHost.newTabSpec("List View").setIndicator(res.getString(R.string.filter_tab_title),
+	    			res.getDrawable(res.getIdentifier("drawable/ic_menu_search", null, "android"))) 
 	    		.setContent(intent);
 	    tabHost.addTab(spec);
 

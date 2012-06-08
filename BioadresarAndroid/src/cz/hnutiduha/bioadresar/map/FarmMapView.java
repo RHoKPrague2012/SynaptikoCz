@@ -1,17 +1,15 @@
-package cz.hnutiduha.bioadresar;
+package cz.hnutiduha.bioadresar.map;
 
 import java.util.Hashtable;
 import java.util.List;
 
 import android.content.Context;
-import android.content.pm.ApplicationInfo;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
-import android.location.Criteria;
 import android.location.Location;
-import android.location.LocationManager;
 import android.util.AttributeSet;
 import android.util.Log;
+import cz.hnutiduha.bioadresar.R;
 
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.Overlay;
@@ -19,6 +17,7 @@ import com.readystatesoftware.maps.TapControlledMapView;
 
 import cz.hnutiduha.bioadresar.data.DatabaseHelper;
 import cz.hnutiduha.bioadresar.data.FarmInfo;
+import cz.hnutiduha.bioadresar.data.LocationCache;
 
 public class FarmMapView extends TapControlledMapView {
 	FarmsOverlay farmOverlay;
@@ -33,13 +32,15 @@ public class FarmMapView extends TapControlledMapView {
         Drawable drawable = this.getResources().getDrawable(R.drawable.marker2);
         farmOverlay = new FarmsOverlay(drawable, this);
         mapOverlays.add(farmOverlay);
+        
+		setOnSingleTapListener(farmOverlay);
 	}
 	
 	public void dispatchDraw(Canvas canvas)
 	{
 		super.dispatchDraw(canvas);
 		
-		// TODO: don't refresh poinds on zoom-in
+		// TODO: don't refresh points on zoom-in
 		
 		// don't refresh on each zoom change. there may be dozen of them during one zoom
 		int lastZoomLevel = currentZoomLevel;
@@ -81,44 +82,18 @@ public class FarmMapView extends TapControlledMapView {
 			@Override
 			public void run() {
 				refreshPoints();
-			}
-			
+				// wtf. the map generate one aux click through movement
+				farmOverlay.enableHiding();
+			}	
 		});
 	}
 	
-	public void centerOnCurrentLocation()
+	// centers on current location (from gps/cellular)
+	public void centerMap()
 	{
-		LocationManager locationManager = (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE);
-		String provider;
-		if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER))
-		{
-			provider = LocationManager.GPS_PROVIDER;
-		}
-		else
-		{
-			Criteria criteria = new Criteria();
-			criteria.setPowerRequirement(Criteria.POWER_HIGH);
-			criteria.setAccuracy(Criteria.ACCURACY_FINE);
-			provider = locationManager.getBestProvider(criteria, true);
-		}
+		Location center = LocationCache.getCenter();
 		
-		Location currentLocation = locationManager.getLastKnownLocation(provider);
-		if (currentLocation == null)
-		{
-			Log.w("gps", "Location not available");
-		    if ((0 == (getContext().getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE)))
-				return;
-		    
-		    Log.d("gps", "faking location...");
-		    currentLocation = new Location(LocationManager.GPS_PROVIDER);
-			currentLocation.setLatitude(49);
-			currentLocation.setLongitude(16);
-			currentLocation.setTime(System.currentTimeMillis());
-				
-		    
-		}
-		
-		centerOnGeoPoint(new GeoPoint((int)(currentLocation.getLatitude() * 1E6), (int)(currentLocation.getLongitude() * 1E6)));
+		centerOnGeoPoint(new GeoPoint((int)(center.getLatitude() * 1E6), (int)(center.getLongitude() * 1E6)));
 	}
 	
 	private void refreshPoints()

@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="hello">Hello World, BioadresarAndroidActivity!</string>
     <string name="app_name">BioadresarAndroid</string>
     <string name="contact">Kontakt</string>
+    <string name="map_tab_title">Mapa</string>
+    <string name="list_tab_title">Seznam</string>
+    <string name="filter_tab_title">Filtr</string>
 
 </resources>

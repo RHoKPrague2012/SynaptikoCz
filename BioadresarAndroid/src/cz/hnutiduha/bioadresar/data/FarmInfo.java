@@ -2,11 +2,17 @@ package cz.hnutiduha.bioadresar.data;
 
 import java.util.List;
 
+import android.content.Context;
+import android.content.Intent;
 import android.location.Location;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 import com.google.android.maps.GeoPoint;
 
-public class FarmInfo {
+import cz.hnutiduha.bioadresar.detail.DetailActivity;
+
+public class FarmInfo implements OnClickListener{
 	// these are always present
 	public long id;
 	public String name;
@@ -38,6 +44,17 @@ public class FarmInfo {
 		}
 		
 		return location;
+	}
+
+	// this is little hack, it doesn't belong to data class, but it serve us nicely :)
+	@Override
+	public void onClick(View v) {
+		DatabaseHelper helpMeeeFillMeee = DatabaseHelper.getDefaultDb();
+		helpMeeeFillMeee.fillDetails(this);
+		Context context = v.getContext();
+		DetailActivity.setFarm(this);
+		Intent detail = new Intent(context, DetailActivity.class);
+		context.startActivity(detail);
 	}
 
 }
