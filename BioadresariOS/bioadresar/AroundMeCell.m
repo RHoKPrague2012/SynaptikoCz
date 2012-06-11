@@ -32,7 +32,7 @@
         lblName.textColor = [UIColor colorWithRed:0.204 green:0.553 blue:0.118 alpha:1.000];
         
         // distance
-        UIImageView *mapMarkerView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon-map-marker"]];
+        UIImageView *mapMarkerView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon-map-marker"]] autorelease];
         mapMarkerView.frame = CGRectMake(235, 5, 11.2, 18.2);
         
         lblDistance = [[UILabel alloc] init];

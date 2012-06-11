@@ -7,28 +7,15 @@
 //
 
 #import "AppDelegate.h"
-#import "AroundMeListViewController.h"
-#import "AroundMeMapViewController.h"
 #import "FarmersListViewController.h"
-#import "SegmentsController.h"
 #import "FarmersParser.h"
-
-@interface AppDelegate () {
-    SegmentsController *_segmentsController;
-    UISegmentedControl *_segmentedControl;
-}
-
-@property (nonatomic, retain) SegmentsController *segmentsController;
-@property (nonatomic, retain) UISegmentedControl *segmentedControl;
-
-@end
+#import "AroundMeViewController.h"
+#import "InfoViewController.h"
 
 @implementation AppDelegate
 
 @synthesize window = _window;
 @synthesize tabBarController = _tabBarController;
-@synthesize segmentsController = _segmentsController;
-@synthesize segmentedControl = _segmentedControl;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -38,48 +25,33 @@
     
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     
-    // segmented control
-    NSArray * viewControllers = [self segmentViewControllers];
-    UINavigationController * navigationController = [[[UINavigationController alloc] init] autorelease];
-    self.segmentsController = [[SegmentsController alloc] initWithNavigationController:navigationController viewControllers:viewControllers];
-    
-    self.segmentedControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Seznam", @"Mapa" , nil]];
-    self.segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
-    
-    [self.segmentedControl addTarget:self.segmentsController
-                              action:@selector(indexDidChangeForSegmentedControl:)
-                    forControlEvents:UIControlEventValueChanged];
-    
-    [self firstUserExperience];
-    
+    // generic around me controller
+    AroundMeViewController *aroundMeViewController = [[AroundMeViewController alloc] init];
+    UINavigationController *aroundMeNavigationController = [[UINavigationController alloc] initWithRootViewController:aroundMeViewController];
+    [aroundMeViewController release];
+        
     // farmers list
     FarmersListViewController *farmersListViewController = [[FarmersListViewController alloc] initWithNibName:@"FarmersListViewController" bundle:[NSBundle mainBundle]];
     UINavigationController *farmersListViewNavigationController = [[UINavigationController alloc] initWithRootViewController:farmersListViewController];
+    [farmersListViewController release];
+    
+    // info
+    InfoViewController *infoViewController = [[InfoViewController alloc] init];
+    UINavigationController *infoViewNavigationController = [[UINavigationController alloc] initWithRootViewController:infoViewController];
+    [infoViewController release];
     
     // tab bar
-    self.tabBarController = [[UITabBarController alloc] init];
-    self.tabBarController.viewControllers = [NSArray arrayWithObjects:navigationController, farmersListViewNavigationController, nil];
+    self.tabBarController = [[[UITabBarController alloc] init] autorelease];
+    self.tabBarController.viewControllers = [NSArray arrayWithObjects:aroundMeNavigationController, farmersListViewNavigationController, infoViewNavigationController, nil];
+    
+    [farmersListViewNavigationController release];
+    [aroundMeNavigationController release];
+    [infoViewNavigationController release];
     
     self.window.rootViewController = self.tabBarController;
     
     [self.window makeKeyAndVisible];
     return YES;
-}
-
-- (NSArray *)segmentViewControllers {
-    AroundMeListViewController *aroundMeListViewController = [[AroundMeListViewController alloc] init];
-    AroundMeMapViewController *aroundMeMapViewController = [[AroundMeMapViewController alloc] init];
-    
-    NSArray * viewControllers = [NSArray arrayWithObjects:aroundMeListViewController, aroundMeMapViewController, nil];
-    [aroundMeListViewController release];
-    [aroundMeMapViewController release];
-    
-    return viewControllers;
-}
-
-- (void)firstUserExperience {
-    self.segmentedControl.selectedSegmentIndex = 0;
-    [self.segmentsController indexDidChangeForSegmentedControl:self.segmentedControl];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

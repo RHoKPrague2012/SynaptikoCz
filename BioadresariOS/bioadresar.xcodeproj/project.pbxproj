@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D1009C41582073A00D55754 /* AroundMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D1009C21582073A00D55754 /* AroundMeViewController.m */; };
+		0D1009C51582073A00D55754 /* AroundMeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D1009C31582073A00D55754 /* AroundMeViewController.xib */; };
+		0D1BE609158230DA00F4D477 /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D1BE607158230DA00F4D477 /* InfoViewController.m */; };
+		0D1BE60A158230DA00F4D477 /* InfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D1BE608158230DA00F4D477 /* InfoViewController.xib */; };
+		0D1BE60D1582344000F4D477 /* icon-hnuti-duha.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D1BE60B1582344000F4D477 /* icon-hnuti-duha.png */; };
+		0D1BE60E1582344000F4D477 /* icon-hnuti-duha@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D1BE60C1582344000F4D477 /* icon-hnuti-duha@2x.png */; };
 		0DA61D5B157AC41E00CAAB1E /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA61D5A157AC41E00CAAB1E /* Product.m */; };
 		0DA61D5E157AC41E00CAAB1E /* Farmer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA61D5D157AC41E00CAAB1E /* Farmer.m */; };
 		0DA61D61157AC45800CAAB1E /* FarmersParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA61D60157AC45700CAAB1E /* FarmersParser.m */; };
@@ -31,7 +37,6 @@
 		0DFEF201157A020400EF319F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DFEF1E2157A020400EF319F /* Foundation.framework */; };
 		0DFEF209157A020400EF319F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0DFEF207157A020400EF319F /* InfoPlist.strings */; };
 		0DFEF20C157A020400EF319F /* bioadresarTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DFEF20B157A020400EF319F /* bioadresarTests.m */; };
-		0DFEF21F157A03AB00EF319F /* AroundMeMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DFEF21D157A03AB00EF319F /* AroundMeMapViewController.m */; };
 		0DFEF227157A068100EF319F /* icon-aroundme.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DFEF225157A068100EF319F /* icon-aroundme.png */; };
 		0DFEF228157A068100EF319F /* icon-aroundme@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DFEF226157A068100EF319F /* icon-aroundme@2x.png */; };
 		0DFEF22B157A07D900EF319F /* icon-search.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DFEF229157A07D900EF319F /* icon-search.png */; };
@@ -39,8 +44,6 @@
 		0DFEF230157A0DB800EF319F /* FarmersListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DFEF22E157A0DB800EF319F /* FarmersListViewController.m */; };
 		0DFEF231157A0DB800EF319F /* FarmersListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DFEF22F157A0DB800EF319F /* FarmersListViewController.xib */; };
 		0DFEF237157A130000EF319F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DFEF236157A130000EF319F /* MapKit.framework */; };
-		0DFEF23B157A1D2500EF319F /* AroundMeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DFEF239157A1D2500EF319F /* AroundMeListViewController.m */; };
-		0DFEF23C157A1D2500EF319F /* AroundMeListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DFEF23A157A1D2500EF319F /* AroundMeListViewController.xib */; };
 		0DFEF23F157A1E7B00EF319F /* AroundMeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DFEF23E157A1E7B00EF319F /* AroundMeCell.m */; };
 		0DFEF246157A2DC000EF319F /* 0.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DFEF241157A2DC000EF319F /* 0.png */; };
 		0DFEF247157A2DC000EF319F /* 15.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DFEF242157A2DC000EF319F /* 15.png */; };
@@ -53,8 +56,6 @@
 		0DFEF25F157A497300EF319F /* logo-hnuti-duha.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DFEF25E157A497200EF319F /* logo-hnuti-duha.png */; };
 		0DFEF261157A4AE900EF319F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DFEF260157A4AE900EF319F /* Default.png */; };
 		0DFEF263157A4B9D00EF319F /* icon-map-marker.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DFEF262157A4B9D00EF319F /* icon-map-marker.png */; };
-		0DFEF266157A501100EF319F /* SegmentsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DFEF265157A501100EF319F /* SegmentsController.m */; };
-		0DFEF268157A544F00EF319F /* AroundMeMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DFEF267157A544F00EF319F /* AroundMeMapViewController.xib */; };
 		0DFEF290157ABB1200EF319F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DFEF28F157ABB1200EF319F /* CoreData.framework */; };
 		0DFEF293157ABB9E00EF319F /* BioDirectoryModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0DFEF291157ABB9E00EF319F /* BioDirectoryModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
@@ -70,6 +71,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0D1009C11582073A00D55754 /* AroundMeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AroundMeViewController.h; sourceTree = "<group>"; };
+		0D1009C21582073A00D55754 /* AroundMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AroundMeViewController.m; sourceTree = "<group>"; };
+		0D1009C31582073A00D55754 /* AroundMeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AroundMeViewController.xib; sourceTree = "<group>"; };
+		0D1BE606158230DA00F4D477 /* InfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewController.h; sourceTree = "<group>"; };
+		0D1BE607158230DA00F4D477 /* InfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoViewController.m; sourceTree = "<group>"; };
+		0D1BE608158230DA00F4D477 /* InfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoViewController.xib; sourceTree = "<group>"; };
+		0D1BE60B1582344000F4D477 /* icon-hnuti-duha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-hnuti-duha.png"; sourceTree = "<group>"; };
+		0D1BE60C1582344000F4D477 /* icon-hnuti-duha@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-hnuti-duha@2x.png"; sourceTree = "<group>"; };
 		0DA61D59157AC41E00CAAB1E /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Product.h; sourceTree = "<group>"; };
 		0DA61D5A157AC41E00CAAB1E /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Product.m; sourceTree = "<group>"; };
 		0DA61D5C157AC41E00CAAB1E /* Farmer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Farmer.h; sourceTree = "<group>"; };
@@ -106,8 +115,6 @@
 		0DFEF208157A020400EF319F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0DFEF20A157A020400EF319F /* bioadresarTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bioadresarTests.h; sourceTree = "<group>"; };
 		0DFEF20B157A020400EF319F /* bioadresarTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = bioadresarTests.m; sourceTree = "<group>"; };
-		0DFEF21C157A03AB00EF319F /* AroundMeMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AroundMeMapViewController.h; sourceTree = "<group>"; };
-		0DFEF21D157A03AB00EF319F /* AroundMeMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AroundMeMapViewController.m; sourceTree = "<group>"; };
 		0DFEF225157A068100EF319F /* icon-aroundme.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-aroundme.png"; sourceTree = "<group>"; };
 		0DFEF226157A068100EF319F /* icon-aroundme@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-aroundme@2x.png"; sourceTree = "<group>"; };
 		0DFEF229157A07D900EF319F /* icon-search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-search.png"; sourceTree = "<group>"; };
@@ -116,9 +123,6 @@
 		0DFEF22E157A0DB800EF319F /* FarmersListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FarmersListViewController.m; sourceTree = "<group>"; };
 		0DFEF22F157A0DB800EF319F /* FarmersListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FarmersListViewController.xib; sourceTree = "<group>"; };
 		0DFEF236157A130000EF319F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		0DFEF238157A1D2500EF319F /* AroundMeListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AroundMeListViewController.h; sourceTree = "<group>"; };
-		0DFEF239157A1D2500EF319F /* AroundMeListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AroundMeListViewController.m; sourceTree = "<group>"; };
-		0DFEF23A157A1D2500EF319F /* AroundMeListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AroundMeListViewController.xib; sourceTree = "<group>"; };
 		0DFEF23D157A1E7B00EF319F /* AroundMeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AroundMeCell.h; sourceTree = "<group>"; };
 		0DFEF23E157A1E7B00EF319F /* AroundMeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AroundMeCell.m; sourceTree = "<group>"; };
 		0DFEF241157A2DC000EF319F /* 0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0.png; sourceTree = "<group>"; };
@@ -133,9 +137,6 @@
 		0DFEF25E157A497200EF319F /* logo-hnuti-duha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-hnuti-duha.png"; sourceTree = "<group>"; };
 		0DFEF260157A4AE900EF319F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		0DFEF262157A4B9D00EF319F /* icon-map-marker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-map-marker.png"; sourceTree = "<group>"; };
-		0DFEF264157A501100EF319F /* SegmentsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentsController.h; sourceTree = "<group>"; };
-		0DFEF265157A501100EF319F /* SegmentsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentsController.m; sourceTree = "<group>"; };
-		0DFEF267157A544F00EF319F /* AroundMeMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AroundMeMapViewController.xib; sourceTree = "<group>"; };
 		0DFEF28F157ABB1200EF319F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		0DFEF292157ABB9E00EF319F /* BioDirectoryModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BioDirectoryModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -289,18 +290,16 @@
 		0DFEF21B157A038200EF319F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				0DFEF21C157A03AB00EF319F /* AroundMeMapViewController.h */,
-				0DFEF21D157A03AB00EF319F /* AroundMeMapViewController.m */,
-				0DFEF238157A1D2500EF319F /* AroundMeListViewController.h */,
-				0DFEF239157A1D2500EF319F /* AroundMeListViewController.m */,
+				0D1009C11582073A00D55754 /* AroundMeViewController.h */,
+				0D1009C21582073A00D55754 /* AroundMeViewController.m */,
 				0DFEF22D157A0DB800EF319F /* FarmersListViewController.h */,
 				0DFEF22E157A0DB800EF319F /* FarmersListViewController.m */,
 				0DFEF24B157A328E00EF319F /* FarmerDetailViewController.h */,
 				0DFEF24C157A328E00EF319F /* FarmerDetailViewController.m */,
-				0DFEF264157A501100EF319F /* SegmentsController.h */,
-				0DFEF265157A501100EF319F /* SegmentsController.m */,
 				0DD723CC157B743700EB0806 /* OverlayViewController.h */,
 				0DD723CD157B743700EB0806 /* OverlayViewController.m */,
+				0D1BE606158230DA00F4D477 /* InfoViewController.h */,
+				0D1BE607158230DA00F4D477 /* InfoViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -334,11 +333,11 @@
 		0DFEF223157A045D00EF319F /* Nib */ = {
 			isa = PBXGroup;
 			children = (
-				0DFEF267157A544F00EF319F /* AroundMeMapViewController.xib */,
+				0D1009C31582073A00D55754 /* AroundMeViewController.xib */,
 				0DFEF22F157A0DB800EF319F /* FarmersListViewController.xib */,
-				0DFEF23A157A1D2500EF319F /* AroundMeListViewController.xib */,
 				0DFEF24D157A328F00EF319F /* FarmerDetailViewController.xib */,
 				0DD723CE157B743700EB0806 /* OverlayViewController.xib */,
+				0D1BE608158230DA00F4D477 /* InfoViewController.xib */,
 			);
 			name = Nib;
 			sourceTree = "<group>";
@@ -354,6 +353,8 @@
 				0DFEF260157A4AE900EF319F /* Default.png */,
 				0DFEF225157A068100EF319F /* icon-aroundme.png */,
 				0DFEF226157A068100EF319F /* icon-aroundme@2x.png */,
+				0D1BE60B1582344000F4D477 /* icon-hnuti-duha.png */,
+				0D1BE60C1582344000F4D477 /* icon-hnuti-duha@2x.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -448,7 +449,6 @@
 				0DFEF22B157A07D900EF319F /* icon-search.png in Resources */,
 				0DFEF22C157A07D900EF319F /* icon-search@2x.png in Resources */,
 				0DFEF231157A0DB800EF319F /* FarmersListViewController.xib in Resources */,
-				0DFEF23C157A1D2500EF319F /* AroundMeListViewController.xib in Resources */,
 				0DFEF246157A2DC000EF319F /* 0.png in Resources */,
 				0DFEF247157A2DC000EF319F /* 15.png in Resources */,
 				0DFEF248157A2DC000EF319F /* 43.png in Resources */,
@@ -458,12 +458,15 @@
 				0DFEF25F157A497300EF319F /* logo-hnuti-duha.png in Resources */,
 				0DFEF261157A4AE900EF319F /* Default.png in Resources */,
 				0DFEF263157A4B9D00EF319F /* icon-map-marker.png in Resources */,
-				0DFEF268157A544F00EF319F /* AroundMeMapViewController.xib in Resources */,
 				0DD723D0157B743700EB0806 /* OverlayViewController.xib in Resources */,
 				0DF008AE157B99E0001E3CDF /* products.csv in Resources */,
 				0DF008B5157B9FB4001E3CDF /* farmers.csv in Resources */,
 				0DF008B7157BA353001E3CDF /* farmerproduct.csv in Resources */,
 				0DF008BB157BAD5F001E3CDF /* biodirectory.sqlite in Resources */,
+				0D1009C51582073A00D55754 /* AroundMeViewController.xib in Resources */,
+				0D1BE60A158230DA00F4D477 /* InfoViewController.xib in Resources */,
+				0D1BE60D1582344000F4D477 /* icon-hnuti-duha.png in Resources */,
+				0D1BE60E1582344000F4D477 /* icon-hnuti-duha@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,12 +503,9 @@
 			files = (
 				0DFEF1ED157A020400EF319F /* main.m in Sources */,
 				0DFEF1F1157A020400EF319F /* AppDelegate.m in Sources */,
-				0DFEF21F157A03AB00EF319F /* AroundMeMapViewController.m in Sources */,
 				0DFEF230157A0DB800EF319F /* FarmersListViewController.m in Sources */,
-				0DFEF23B157A1D2500EF319F /* AroundMeListViewController.m in Sources */,
 				0DFEF23F157A1E7B00EF319F /* AroundMeCell.m in Sources */,
 				0DFEF24E157A328F00EF319F /* FarmerDetailViewController.m in Sources */,
-				0DFEF266157A501100EF319F /* SegmentsController.m in Sources */,
 				0DFEF293157ABB9E00EF319F /* BioDirectoryModel.xcdatamodeld in Sources */,
 				0DA61D5B157AC41E00CAAB1E /* Product.m in Sources */,
 				0DA61D5E157AC41E00CAAB1E /* Farmer.m in Sources */,
@@ -514,6 +514,8 @@
 				0DA61D68157AC58900CAAB1E /* NSManagedObjectContext+SaveAssert.m in Sources */,
 				0DD723CF157B743700EB0806 /* OverlayViewController.m in Sources */,
 				0DF008B3157B9A2E001E3CDF /* CSVParser.m in Sources */,
+				0D1009C41582073A00D55754 /* AroundMeViewController.m in Sources */,
+				0D1BE609158230DA00F4D477 /* InfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
