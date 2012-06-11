@@ -1,6 +1,7 @@
-package cz.hnutiduha.bioadresar;
+package cz.hnutiduha.bioadresar.map;
 
 import android.os.Bundle;
+import cz.hnutiduha.bioadresar.R;
 
 public class MapActivity extends com.google.android.maps.MapActivity {
 	private FarmMapView mapView;
@@ -10,12 +11,12 @@ public class MapActivity extends com.google.android.maps.MapActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.map);
+        setContentView(R.layout.map_view);
         
         mapView = (FarmMapView) findViewById(R.id.mapview);
         mapView.setBuiltInZoomControls(true);
         
-        mapView.centerOnCurrentLocation();
+        mapView.centerMap();
         mapView.getController().setZoom(10);
     }
     

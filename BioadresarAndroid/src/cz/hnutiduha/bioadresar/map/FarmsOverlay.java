@@ -1,39 +1,30 @@
-package cz.hnutiduha.bioadresar;
+package cz.hnutiduha.bioadresar.map;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Hashtable;
 import java.util.Iterator;
 
-import android.app.AlertDialog;
-import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.text.SpannableString;
-import android.text.method.LinkMovementMethod;
-import android.text.util.Linkify;
 import android.util.Log;
 import android.view.MotionEvent;
-import android.widget.TextView;
 
 import com.google.android.maps.ItemizedOverlay;
 import com.google.android.maps.MapView;
 import com.google.android.maps.OverlayItem;
+import com.readystatesoftware.maps.OnSingleTapListener;
 
 import cz.hnutiduha.bioadresar.data.FarmInfo;
 
-public class FarmsOverlay extends ItemizedOverlay<OverlayItem>{
+public class FarmsOverlay extends ItemizedOverlay<OverlayItem> implements OnSingleTapListener{
 	private ArrayList<OverlayItem> overlays = new ArrayList<OverlayItem>();
-	private Context context;
+	private FarmOverlayItem lastSelected = null;
+	private FarmMapView map;
 	private boolean isPinch;
 	
-	public FarmsOverlay(Drawable defaultMarker, Context context) {
-		super(boundCenterBottom(defaultMarker));
-		this.context = context;
-		populate();
-	}
-	
-	public FarmsOverlay(Drawable defaultMarker) {
-		super(boundCenterBottom(defaultMarker));
+	public FarmsOverlay(Drawable defaultMarker, FarmMapView map) {
+		super(boundCenter(defaultMarker));
+		this.map = map;
 		populate();
 	}
 
@@ -51,6 +42,12 @@ public class FarmsOverlay extends ItemizedOverlay<OverlayItem>{
 	public int size() {
 		return overlays.size();
 	}
+	
+	public void hideBalloon()
+	{
+		if (lastSelected != null)
+			lastSelected.hideBalloon();
+	}
 		
 	@Override
 	protected boolean onTap(int index) {
@@ -58,11 +55,22 @@ public class FarmsOverlay extends ItemizedOverlay<OverlayItem>{
 		if (isPinch)
 			return false;
 		
+		// hide old balloon
+		/* TODO: maybe we could use(reuse) only one static balloon to save memory & cpu
+		 *       and only change title and show/hide particular category icons
+		 */
+		hideBalloon();
+		Log.d("d", "show balloon");
 		OverlayItem item = overlays.get(index);
 		if (!(item instanceof FarmOverlayItem))
 			return false;
 		
-		return ((FarmOverlayItem)item).showBaloon(context);
+		// wtf. the map sends one aux click through the movement
+		disableHiding();
+		map.centerOnGeoPoint(item.getPoint());
+		lastSelected = (FarmOverlayItem)item;
+		return lastSelected.showBalloon();
+		
 	}
 	
 	@Override
@@ -79,9 +87,11 @@ public class FarmsOverlay extends ItemizedOverlay<OverlayItem>{
 	    return super.onTouchEvent(e,mapView);
 	}
 	
+	/* TODO: maybe remove the old ones?
+	 * TODO: maybe faster join?
+	 */
 	protected void setVisiblePoints(Hashtable<Long, FarmInfo> farms)
 	{
-		Log.d("gui", "starting redraw of visible points");
 		Iterator<OverlayItem> overlaysIterator = overlays.iterator();
 		OverlayItem last;
 		// remove existing from hashtable
@@ -92,10 +102,8 @@ public class FarmsOverlay extends ItemizedOverlay<OverlayItem>{
 			if (!(last instanceof FarmOverlayItem))
 					continue;
 			
-			Log.d("gui", "known overlay farm " + ((FarmOverlayItem)last).data.name);
 			farms.remove(Long.valueOf(((FarmOverlayItem)last).data.id));
 		}
-		Log.d("gui", "done going through already drawn");
 		
 		Collection<FarmInfo> newFarms= farms.values();
 		Iterator<FarmInfo> farmIterator = newFarms.iterator();
@@ -104,13 +112,34 @@ public class FarmsOverlay extends ItemizedOverlay<OverlayItem>{
 		while (farmIterator.hasNext())
 		{
 			nextFarm = farmIterator.next();
-			Log.d("gui", "adding farm " + nextFarm.name + " to overlay");
-			toAdd = new FarmOverlayItem(FarmInfo.getGeoPoint(nextFarm), nextFarm);
+			toAdd = new FarmOverlayItem(FarmInfo.getGeoPoint(nextFarm), nextFarm, map);
 			overlays.add(toAdd);
 		}
-		Log.d("gui", "done adding new");
 		
 		populate();
+	}
+	
+	/* NOTE: animating to point generates for some mysterious reason one excessive click
+	 *       so we ignore all clicks between start & stop of animation
+	 */
+	private boolean hidingEnabled = true; 
+	public void enableHiding()
+	{
+		hidingEnabled = true;
+	}
+	public void disableHiding()
+	{
+		hidingEnabled = false;
+	}
+
+	@Override
+	public boolean onSingleTap(MotionEvent e) {
+		if (lastSelected == null || !hidingEnabled)
+			return false;
+
+		hideBalloon();
+		
+		return true;
 	}
 
 }
