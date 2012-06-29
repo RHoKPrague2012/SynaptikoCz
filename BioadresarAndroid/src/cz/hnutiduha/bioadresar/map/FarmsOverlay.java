@@ -20,7 +20,8 @@ public class FarmsOverlay extends ItemizedOverlay<OverlayItem> implements OnSing
 	private ArrayList<OverlayItem> overlays = new ArrayList<OverlayItem>();
 	private FarmOverlayItem lastSelected = null;
 	private FarmMapView map;
-	private boolean isPinch;
+	private boolean isPinch = false;
+	private long firstBalloon = FarmInfo.INVALID_FARM_ID;
 	
 	public FarmsOverlay(Drawable defaultMarker, FarmMapView map) {
 		super(boundCenter(defaultMarker));
@@ -47,6 +48,12 @@ public class FarmsOverlay extends ItemizedOverlay<OverlayItem> implements OnSing
 	{
 		if (lastSelected != null)
 			lastSelected.hideBalloon();
+	}
+	
+	public void showFarmBalloonOnStart(long farmId)
+	{
+		Log.d("debug", "setting next farm to " + farmId);
+		firstBalloon = farmId;
 	}
 		
 	@Override
@@ -101,8 +108,15 @@ public class FarmsOverlay extends ItemizedOverlay<OverlayItem> implements OnSing
 			// ignore other overlays
 			if (!(last instanceof FarmOverlayItem))
 					continue;
-			
-			farms.remove(Long.valueOf(((FarmOverlayItem)last).data.id));
+			FarmOverlayItem lastFarm = (FarmOverlayItem)last;
+			if (firstBalloon == lastFarm.data.id)
+			{
+				hideBalloon();
+				lastSelected = lastFarm;
+				lastSelected.showBalloon();
+				firstBalloon = FarmInfo.INVALID_FARM_ID;
+			}
+			farms.remove(Long.valueOf(lastFarm.data.id));
 		}
 		
 		Collection<FarmInfo> newFarms= farms.values();
@@ -114,6 +128,13 @@ public class FarmsOverlay extends ItemizedOverlay<OverlayItem> implements OnSing
 			nextFarm = farmIterator.next();
 			toAdd = new FarmOverlayItem(FarmInfo.getGeoPoint(nextFarm), nextFarm, map);
 			overlays.add(toAdd);
+			if (firstBalloon == nextFarm.id)
+			{
+				hideBalloon();
+				lastSelected = toAdd;
+				lastSelected.showBalloon();
+				firstBalloon = FarmInfo.INVALID_FARM_ID;
+			}
 		}
 		
 		populate();

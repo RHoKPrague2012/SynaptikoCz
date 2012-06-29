@@ -96,6 +96,11 @@ public class FarmMapView extends TapControlledMapView {
 		centerOnGeoPoint(new GeoPoint((int)(center.getLatitude() * 1E6), (int)(center.getLongitude() * 1E6)));
 	}
 	
+	public void showFarmBalloonOnStart(long farmId)
+	{
+		farmOverlay.showFarmBalloonOnStart(farmId);
+	}
+	
 	private void refreshPoints()
 	{
 		DatabaseHelper db = DatabaseHelper.getDefaultDb();

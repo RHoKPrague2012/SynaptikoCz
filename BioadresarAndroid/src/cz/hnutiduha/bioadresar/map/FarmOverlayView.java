@@ -59,10 +59,11 @@ public class FarmOverlayView extends FrameLayout {
 		Iterator<Long> it = data.categories.iterator();
 		ImageView icon;
 		while (it.hasNext())
-		{
+		{	
 			icon = new ImageView(context);
 			icon.setImageResource(context.getResources().getIdentifier("drawable/category_" + it.next(), null, context.getPackageName()));
 		    icons.addView(icon);
+		    
 		}
 		
 	}

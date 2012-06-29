@@ -2,8 +2,12 @@ package cz.hnutiduha.bioadresar.map;
 
 import android.os.Bundle;
 import cz.hnutiduha.bioadresar.R;
+import cz.hnutiduha.bioadresar.data.FarmInfo;
 
 public class MapActivity extends com.google.android.maps.MapActivity {
+	
+	public static String mapNodePropertyName = "farmIdToShow";
+	
 	private FarmMapView mapView;
 	
 	
@@ -18,6 +22,9 @@ public class MapActivity extends com.google.android.maps.MapActivity {
         
         mapView.centerMap();
         mapView.getController().setZoom(10);
+        
+        Long targetFarmId = this.getParent().getIntent().getLongExtra(mapNodePropertyName, FarmInfo.INVALID_FARM_ID);
+        mapView.showFarmBalloonOnStart(targetFarmId.longValue());
     }
     
 	@Override

@@ -20,13 +20,19 @@ import cz.hnutiduha.bioadresar.list.ListActivity;
 import cz.hnutiduha.bioadresar.R;
 
 public class MainTabbedActivity extends TabActivity {
+	
+	public static String defaultActivityPropertyName = "defaultActivity";
+	public static String mapActivityTag = "Map View";
+	public static String listActivityTag = "List View";
 
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
 	    
 	    DatabaseHelper.setContext(this);
+	    
 	    // current location is default center of everything :)
-	    LocationCache.centerOnGps(this);
+	    if (LocationCache.getCenter() == null)
+	    	LocationCache.centerOnGps(this);
 	    
 	    
 	    setContentView(R.layout.main_view);
@@ -35,18 +41,18 @@ public class MainTabbedActivity extends TabActivity {
 	    TabHost tabHost = getTabHost();  // The activity TabHost
 	    TabHost.TabSpec spec;  // Resusable TabSpec for each tab
 	    Intent intent;  // Reusable Intent for each tab
-
+	    
 	    // Create an Intent to launch an Activity for the tab (to be reused)
 	    intent = new Intent().setClass(this, MapActivity.class);
 
 	    // Initialize a TabSpec for each tab and add it to the TabHost
-	    spec = tabHost.newTabSpec("Map View").setIndicator(res.getString(R.string.map_tab_title),
+	    spec = tabHost.newTabSpec(mapActivityTag).setIndicator(res.getString(R.string.map_tab_title),
 	    			res.getDrawable(res.getIdentifier("drawable/ic_menu_mapmode", null, "android")))
 	    		.setContent(intent);
 	    tabHost.addTab(spec);
 	    
 	    intent = new Intent().setClass(this, ListActivity.class);
-	    spec = tabHost.newTabSpec("List View").setIndicator(res.getString(R.string.list_tab_title),
+	    spec = tabHost.newTabSpec(listActivityTag).setIndicator(res.getString(R.string.list_tab_title),
 	    			res.getDrawable(res.getIdentifier("drawable/ic_menu_agenda", null, "android"))) 
 	    		.setContent(intent);
 	    tabHost.addTab(spec);
@@ -57,6 +63,16 @@ public class MainTabbedActivity extends TabActivity {
 	    		.setContent(intent);
 	    tabHost.addTab(spec);
 
+	    
+	    String targetTab = getIntent().getStringExtra(defaultActivityPropertyName);
+	    if (targetTab != null)
+	    {
+	    	tabHost.setCurrentTabByTag(targetTab);
+	    }
+	    else if (savedInstanceState != null) {
+            tabHost.setCurrentTabByTag(savedInstanceState.getString("tab"));
+        }
+	    
 	    // FIXME remove method for testing in final version
 	    //testDbHelper();
 	}

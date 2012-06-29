@@ -13,6 +13,8 @@ import com.google.android.maps.GeoPoint;
 import cz.hnutiduha.bioadresar.detail.DetailActivity;
 
 public class FarmInfo implements OnClickListener{
+	
+	public static long INVALID_FARM_ID = -1;
 	// these are always present
 	public long id;
 	public String name;

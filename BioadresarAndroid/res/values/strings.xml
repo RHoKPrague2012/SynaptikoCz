@@ -6,5 +6,13 @@
     <string name="map_tab_title">Mapa</string>
     <string name="list_tab_title">Seznam</string>
     <string name="filter_tab_title">Filtr</string>
+    <string name="Produkce">Produkce</string>
+    <string name="Popis">Popis</string>
+    <string name="web">web</string>
+    <string name="email">E-Mail</string>
+    <string name="production">Produkce</string>
+    <string name="description">Popis</string>
+    <string name="phone">Telefon</string>
+    <string name="address">Adresa</string>
 
 </resources>
