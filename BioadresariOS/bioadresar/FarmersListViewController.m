@@ -10,15 +10,23 @@
 #import "CoreDataStack.h"
 #import "Product.h"
 #import "OverlayViewController.h"
+#import "AroundMeViewController.h"
+
+#define TITLE_SEARCH @"Search"
+#define IMAGE_SEARCH @"icon-search"
 
 @interface FarmersListViewController () <UISearchBarDelegate> {
     NSFetchedResultsController *fetchedResultsController;
     NSArray *_sections;
     int rowsSelected;
+    NSMutableDictionary *_selectedRows;
+    AroundMeViewController *_aroundMeViewController;
 }
 
 @property (nonatomic, readonly) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, retain) NSArray *sections;
+@property (nonatomic, retain) NSMutableDictionary *selectedRows;
+@property (nonatomic, retain) AroundMeViewController *aroundMeViewController;
 
 @end
 
@@ -28,55 +36,38 @@
 @synthesize searchBar = searchBar;
 @synthesize toolbar;
 @synthesize tableView;
-
-#pragma mark - section
-
-- (NSArray *)sections
-{
-    if (!_sections) {
-        NSArray *products = self.fetchedResultsController.fetchedObjects;
-        NSMutableOrderedSet *tempSet = [[NSMutableOrderedSet alloc] init];
-        
-        for (Product *product in products) {
-            // get first letter
-            NSString *firstLetter = [product.name substringToIndex:1];
-            
-            // add letter to set
-            [tempSet addObject:firstLetter];
-        }
-        
-        self.sections = [tempSet array];
-    }
-    
-    return _sections;
-}
+@synthesize selectedRows = _selectedRows;
+@synthesize aroundMeViewController = _aroundMeViewController;
 
 #pragma mark - Fetched results controller
 
-- (NSFetchRequest*)fetchRequest {
+- (NSFetchRequest*)fetchRequest
+{
 	
 	NSFetchRequest *request = [[NSFetchRequest alloc] init];
 	
-	request.entity = [NSEntityDescription entityForName: @"Product"
-								 inManagedObjectContext: [CoreDataStack sharedStack].managedObjectContext];
+	request.entity = [NSEntityDescription entityForName:@"Product"
+								 inManagedObjectContext:[CoreDataStack sharedStack].managedObjectContext];
 	
-	NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey: @"name" ascending: YES];
+	NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"name" 
+                                                               ascending:YES];
 	
-	request.sortDescriptors = [NSArray arrayWithObject: descriptor];
+	request.sortDescriptors = [NSArray arrayWithObject:descriptor];
 	[descriptor release];
 	
 	return [request autorelease];
 }
 
-- (NSFetchedResultsController*)fetchedResultsController {
+- (NSFetchedResultsController*)fetchedResultsController
+{
     
 	if (!fetchedResultsController) {
 		
 		fetchedResultsController = [[NSFetchedResultsController alloc] 
-                                    initWithFetchRequest: [self fetchRequest]
-                                    managedObjectContext: [CoreDataStack sharedStack].managedObjectContext
-                                    sectionNameKeyPath: nil
-                                    cacheName: @"ProductCache"];
+                                    initWithFetchRequest:[self fetchRequest]
+                                    managedObjectContext:[CoreDataStack sharedStack].managedObjectContext
+                                    sectionNameKeyPath:nil
+                                    cacheName:@"ProductCache"];
 	}
     
 	return fetchedResultsController;
@@ -90,10 +81,12 @@
     
     if (self) {
         // tab bar
-        self.tabBarItem = [[[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Search", "") image:[UIImage imageNamed:@"icon-search"] tag:0] autorelease];
+        self.tabBarItem = [[[UITabBarItem alloc] initWithTitle:NSLocalizedString(TITLE_SEARCH, "") image:[UIImage imageNamed:IMAGE_SEARCH] tag:0] autorelease];
         
         // set default values
         rowsSelected = 0;
+        
+        self.selectedRows = [[[NSMutableDictionary alloc] init] autorelease];
     }
     return self;
 }
@@ -103,7 +96,7 @@
 - (void)setUpNavigationBar
 {
     // title
-    NSString *title = NSLocalizedString(@"Search", "");
+    NSString *title = NSLocalizedString(TITLE_SEARCH, "");
     self.title = title;
     
     // navigation
@@ -122,13 +115,6 @@
     self.navigationItem.titleView = titleLabel;
 }
 
-#pragma mark - search
-
-- (void)searchTapped:(id)sender
-{
-    NSLog(@"search tapped");
-}
-
 #pragma mark - view
 
 - (void)viewDidLoad
@@ -138,27 +124,34 @@
     // navigation
     [self setUpNavigationBar];
     
-    // search bar    
+    // search bar
     //self.searchBar.delegate = self;
-
+    
 	self.tableView.tableHeaderView = self.searchBar;
 	self.searchBar.autocorrectionType = UITextAutocorrectionTypeNo;
 	
 	searching = NO;
 	letUserSelectRow = YES;
     
-    // toolbar
-    //TODOself.toolbar.frame = CGRectMake(self.toolbar.frame.origin.x, self.toolbar.frame.origin.y, 0, 0);
-    
     // fetch data
     NSError *error;
-    NSAssert1([self.fetchedResultsController performFetch: &error],
+    NSAssert1([self.fetchedResultsController performFetch:&error],
 			  @"Unhandled error while fetching: %@", [error localizedDescription]);
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+#pragma mark - do search
+
+- (IBAction)searchTapped:(id)sender
 {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    if (!_aroundMeViewController) {
+        self.aroundMeViewController = [[[AroundMeViewController alloc] init] autorelease];
+    }
+    
+    NSArray *selectedRowsArray = [NSArray arrayWithArray:[self.selectedRows allValues]];
+    
+    [self.aroundMeViewController filterWithProducts:selectedRowsArray];
+    
+    [self.navigationController pushViewController:self.aroundMeViewController animated:YES];
 }
 
 #pragma mark - Table view data source
@@ -172,7 +165,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController.sections objectAtIndex: 0];
+    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController.sections objectAtIndex:0];
 	
     return sectionInfo.numberOfObjects;
 }
@@ -184,12 +177,11 @@
     
     if (!cell) {
 		
-        cell = [[[UITableViewCell alloc] initWithStyle : UITableViewCellStyleDefault
-                                     reuseIdentifier: CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                       reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    NSIndexPath *repairIndexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:0];
-    Product *product = [self.fetchedResultsController objectAtIndexPath:repairIndexPath];
+    Product *product = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     cell.textLabel.text = product.name;
     
@@ -205,10 +197,11 @@
     
     if (cell.accessoryType == UITableViewCellAccessoryNone) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        
+        [self.selectedRows setObject:[self.fetchedResultsController objectAtIndexPath:indexPath] forKey:indexPath];
         rowsSelected++;
     } else {
         cell.accessoryType = UITableViewCellAccessoryNone;
+        [self.selectedRows removeObjectForKey:indexPath];
         rowsSelected--;
     }
     
@@ -221,6 +214,29 @@
 
 #pragma mark - devel
 
+/* TODO - odstranit?? 
+ #pragma mark - section
+ 
+ - (NSArray *)sections
+ {
+ if (!_sections) {
+ NSArray *products = self.fetchedResultsController.fetchedObjects;
+ NSMutableOrderedSet *tempSet = [[NSMutableOrderedSet alloc] init];
+ 
+ for (Product *product in products) {
+ // get first letter
+ NSString *firstLetter = [product.name substringToIndex:1];
+ 
+ // add letter to set
+ [tempSet addObject:firstLetter];
+ }
+ 
+ self.sections = [tempSet array];
+ }
+ 
+ return _sections;
+ }
+
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
 {
 	return self.sections;
@@ -230,10 +246,12 @@
 	
 	return index % 2;
 }
+ */
 
 #pragma mark - Search Bar 
 
-- (void) searchBarTextDidBeginEditing:(UISearchBar *)theSearchBar {
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)theSearchBar
+{
 	
 	//This method is called again when the user clicks back from the detail view.
 	//So the overlay is displayed on the results, which is something we do not want to happen.
@@ -269,7 +287,8 @@
 	
 }
 
-- (void)searchBar:(UISearchBar *)theSearchBar textDidChange:(NSString *)searchText {
+- (void)searchBar:(UISearchBar *)theSearchBar textDidChange:(NSString *)searchText
+{
     
 	//Remove all objects first.
 	[copyListOfItems removeAllObjects];
@@ -294,12 +313,13 @@
 	[self.tableView reloadData];
 }
 
-- (void) searchBarSearchButtonClicked:(UISearchBar *)theSearchBar {
-	
+- (void)searchBarSearchButtonClicked:(UISearchBar *)theSearchBar
+{
 	[self searchTableView];
 }
 
-- (void) searchTableView {
+- (void)searchTableView
+{
 	
 	NSString *searchText = self.searchBar.text;
 	NSMutableArray *searchArray = [[NSMutableArray alloc] init];
@@ -322,7 +342,8 @@
 	searchArray = nil;
 }
 
-- (void) doneSearching_Clicked:(id)sender {
+- (void)doneSearching_Clicked:(id)sender
+{
 	
 	self.searchBar.text = @"";
 	[self.searchBar resignFirstResponder];
@@ -339,13 +360,15 @@
 	[self.tableView reloadData];
 }
 
-
 #pragma mark - Dealloc
 
 - (void)dealloc
 {
     [fetchedResultsController release];
     [searchBar release];
+    [_sections release];
+    [_selectedRows release];
+    [_aroundMeViewController release];
 
     [toolbar release];
     [tableView release];

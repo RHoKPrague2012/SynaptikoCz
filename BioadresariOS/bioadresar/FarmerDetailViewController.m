@@ -10,18 +10,19 @@
 #import "Product.h"
 
 #define SECTION_PRODUCTION 0
-#define SECTION_ADDRESS 1
-#define SECTION_CONTACT 2
-#define SECTION_DESCRIPTION 3
+#define SECTION_CONTACT 1
+#define SECTION_DESCRIPTION 2
 
-#define ADDRESS_STREET 0
-#define ADDRESS_CITY 1
-
-#define CONTACT_PHONE 0
-#define CONTACT_WEB 1
+#define CONTACT_ADDRESS 0
+#define CONTACT_PHONE 1
+#define CONTACT_WEB 3
 #define CONTACT_EMAIL 2
 
-@interface FarmerDetailViewController ()
+#define DEFAULT_TEXT1 @"N/A"
+
+@interface FarmerDetailViewController () {
+    NSString *production;
+}
 
 @end
 
@@ -37,7 +38,28 @@
         [_farmer release];
         _farmer = [farmer retain];
         
+        // set navigation title
         [self setNavigationTitle:farmer.name];
+        
+        // set production
+        production = @"";
+        NSArray *products = [self.farmer.productFarmer allObjects];
+        int i = 0;
+        for (Product *product in products) {
+            production = [production stringByAppendingString:product.name];
+            if (i < products.count - 1) {
+                production = [production stringByAppendingString:@", "];
+            }
+            i++;
+        }
+        
+        if ([production isEqualToString:@""]) {
+            production = DEFAULT_TEXT1;
+        }
+        
+        [production retain];
+
+        // reload data
         [self.tableView reloadData];
     }
 }
@@ -82,39 +104,19 @@
     return self;
 }
 
-#pragma mark - view
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 4;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     switch (section) {
-        case SECTION_ADDRESS:
-            return 2;
         case SECTION_CONTACT:
-            return 3;
+            return 4;
         case SECTION_DESCRIPTION:
             return 1;
         case SECTION_PRODUCTION:
@@ -131,58 +133,70 @@
     
     if (!cell) {
 		
-        cell = [[[UITableViewCell alloc] initWithStyle : UITableViewCellStyleValue2
-                                     reuseIdentifier: CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2
+                                       reuseIdentifier:CellIdentifier] autorelease];
     }
     
     switch (indexPath.section) {
-        case SECTION_ADDRESS:
-            switch (indexPath.row) {
-                case ADDRESS_CITY:
-                    cell.textLabel.text = @"Město";
-                    cell.detailTextLabel.text = self.farmer.city;
-                    break;
-                case ADDRESS_STREET:
-                    cell.textLabel.text = @"Ulice";
-                    cell.detailTextLabel.text = self.farmer.street;
-                    break;
-            }
-            break;
         case SECTION_CONTACT:
             switch (indexPath.row) {
+                case CONTACT_ADDRESS:
+                    cell.textLabel.text = @"Adresa";
+                    NSString *address;
+                    if ([self.farmer.street isEqualToString:@""] && [self.farmer.city isEqualToString:@""]) {
+                        address = DEFAULT_TEXT1;
+                    } else if ([self.farmer.street isEqualToString:@""]) {
+                        address = self.farmer.city;
+                    } else if ([self.farmer.city isEqualToString:@""]) {
+                        address = self.farmer.street;
+                    } else {
+                        address = [NSString stringWithFormat:@"%@, %@", self.farmer.street, self.farmer.city];
+                    }
+                    cell.detailTextLabel.text = address;
+                    break;
                 case CONTACT_EMAIL:
                     cell.textLabel.text = @"E-mail";
-                    cell.detailTextLabel.text = self.farmer.email;
+                    NSString *email;
+                    if ([self.farmer.email isEqualToString:@""]) {
+                        email = DEFAULT_TEXT1;
+                    } else {
+                        email = self.farmer.email;
+                    }
+                    cell.detailTextLabel.text = email;
                     break;
                 case CONTACT_PHONE:
                     cell.textLabel.text = @"Telefon";
-                    cell.detailTextLabel.text = self.farmer.phone;
+                    NSString *phone;
+                    if ([self.farmer.phone isEqualToString:@""]) {
+                        phone = DEFAULT_TEXT1;
+                    } else {
+                        phone = self.farmer.phone;
+                    }
+                    cell.detailTextLabel.text = phone;
                     break;
                 case CONTACT_WEB:
                     cell.textLabel.text = @"Web";
-                    cell.detailTextLabel.text = self.farmer.web;
+                    NSString *web;
+                    if ([self.farmer.email isEqualToString:@""]) {
+                        web = DEFAULT_TEXT1;
+                    } else {
+                        web = self.farmer.email;
+                    }
+                    cell.detailTextLabel.text = web;
                     break;
             }
             break;
         case SECTION_DESCRIPTION:
             cell.textLabel.text = @"Popis";
             cell.detailTextLabel.text = self.farmer.desc;
-            cell.detailTextLabel.numberOfLines = 14;
+            cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
+            cell.detailTextLabel.numberOfLines = 0;
             break;
         case SECTION_PRODUCTION:
             cell.textLabel.text = @"Produkce";
-            NSString *production = @"";
-            NSArray *products = [self.farmer.productFarmer allObjects];
-            int i = 0;
-            for (Product *product in products) {
-                production = [production stringByAppendingString:product.name];
-                if (i < products.count) {
-                    production = [production stringByAppendingString:@", "];
-                }
-                i++;
-            }
             cell.detailTextLabel.text = production;
-            cell.detailTextLabel.numberOfLines = 3;
+            cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
+            cell.detailTextLabel.numberOfLines = 0;
             break;
         default:
             break;
@@ -193,8 +207,6 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     switch (section) {
-        case SECTION_ADDRESS:
-            return @"Adresa";
         case SECTION_CONTACT:
             return @"Kontakt";
         case SECTION_DESCRIPTION:
@@ -209,14 +221,24 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     switch (indexPath.section) {
-        case SECTION_ADDRESS:
-            return 44;
-        case SECTION_CONTACT:
-            return 44;
         case SECTION_DESCRIPTION:
-            return 300;
+        {
+            UIFont *cellFont = [UIFont systemFontOfSize:[UIFont systemFontSize]];
+            CGSize constraintSize = CGSizeMake(207.0f, MAXFLOAT);
+            CGSize labelSize = [self.farmer.desc sizeWithFont:cellFont constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
+            
+            return labelSize.height + 100;
+        }
         case SECTION_PRODUCTION:
-            return 70;
+        {
+            UIFont *cellFont = [UIFont systemFontOfSize:[UIFont systemFontSize]];
+            CGSize constraintSize = CGSizeMake(207.0f, MAXFLOAT);
+            CGSize labelSize = [production sizeWithFont:cellFont constrainedToSize:constraintSize lineBreakMode:UILineBreakModeWordWrap];
+            
+            double height = labelSize.height + 40;
+            
+            return height > 44 ? height : 44;
+        }
         default:
             return 44;
     }
@@ -227,8 +249,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     switch (indexPath.section) {
-        case SECTION_ADDRESS:
-            break;
         case SECTION_CONTACT:
             switch (indexPath.row) {
                 case CONTACT_EMAIL:
@@ -313,6 +333,7 @@
     self.farmer = nil;
     
     [_farmer release];
+    [production release];
     
     [super dealloc];
 }
