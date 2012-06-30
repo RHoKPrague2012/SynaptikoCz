@@ -36,7 +36,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	private HashMap<Long, String> categories = null;
 	
 	private HashMap<Long, String> products = null;
-
+	
 	public DatabaseHelper() {
 		super(appContext, DB_NAME, null, DB_VERSION);
 	}
@@ -86,7 +86,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 				throw new Error("Error copying database");
 			}
 		}
-
 	}
 
 	/**
@@ -194,12 +193,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		return result;
 	}
 	
-	public TreeSet<FarmInfo> getAllFarmsSortedByDistance(Location location) {
+	private List<FarmInfo> getAllFarms()
+	{
+		ArrayList<FarmInfo> res = new ArrayList<FarmInfo>();
+		
 		String[] columns = new String[] { "_id", "name", "gps_lat", "gps_long" };
 		Cursor c = db.query("farm", columns, null, null, null, null, "gps_lat, gps_long");
-		FarmInfoDistanceComparator comparator = new FarmInfoDistanceComparator(location);
-		TreeSet<FarmInfo> result = new TreeSet<FarmInfo>(comparator);
-
 		c.moveToNext();
 		while (!c.isAfterLast()) {
 			FarmInfo farmInfo = new FarmInfo();
@@ -210,11 +209,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 			farmInfo.lon = c.getDouble(3);
 			farmInfo.categories = getCategoriesByFarmId(farmInfo.id);
 			
-			result.add(farmInfo);
+			res.add(farmInfo);
 			c.moveToNext();
 		}
 		c.close();
 		
+		return res;
+	}
+	
+	public TreeSet<FarmInfo> getAllFarmsSortedByDistance(Location location) {
+		FarmInfoDistanceComparator comparator = new FarmInfoDistanceComparator(location);
+		TreeSet<FarmInfo> result = new TreeSet<FarmInfo>(comparator);
+		
+		List<FarmInfo> allFarms = getAllFarms();
+		for (FarmInfo farm : allFarms)
+			result.add(farm);
 		return result;
 	}
 	
@@ -238,6 +247,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	}
 
 	public void fillDetails(FarmInfo info) {
+		if (info.contact != null)
+			return;
+		
 		String[] columns = new String[] { "type", "desc" };
 		String selection = "_id = ?";
 		String[] args = new String[] { Long.toString(info.id) };

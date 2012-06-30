@@ -10,7 +10,7 @@ import android.util.Log;
 public class LocationCache {
 	private static Location location = null;
 	
-	private static Location getCurrentLocation(Context context)
+	public static Location getCurrentLocation(Context context)
 	{
 		LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
 		String provider;
@@ -52,11 +52,6 @@ public class LocationCache {
 	public static void centerOnLocation(Location loc)
 	{
 		LocationCache.location = loc;
-	}
-	
-	public static Location getCurrentLocation()
-	{
-		return getCurrentLocation();
 	}
 		
 	public static Location getCenter()

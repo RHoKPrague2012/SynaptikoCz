@@ -6,7 +6,7 @@ import cz.hnutiduha.bioadresar.data.FarmInfo;
 
 public class MapActivity extends com.google.android.maps.MapActivity {
 	
-	public static String mapNodePropertyName = "farmIdToShow";
+	public static final String mapNodePropertyName = "farmIdToShow";
 	
 	private FarmMapView mapView;
 	
@@ -19,6 +19,7 @@ public class MapActivity extends com.google.android.maps.MapActivity {
         
         mapView = (FarmMapView) findViewById(R.id.mapview);
         mapView.setBuiltInZoomControls(true);
+        
         
         mapView.centerMap();
         mapView.getController().setZoom(10);

@@ -1,7 +1,5 @@
 package cz.hnutiduha.bioadresar.map;
 
-import java.util.Iterator;
-
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.Gravity;
@@ -9,9 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import cz.hnutiduha.bioadresar.R;
 
 
@@ -22,8 +18,6 @@ import cz.hnutiduha.bioadresar.data.FarmInfo;
 public class FarmOverlayView extends FrameLayout {
 
 	private LinearLayout layout;
-	private TextView title;
-	private LinearLayout icons;
 	private FarmInfo data;
 	
 	public FarmOverlayView(Context context, FarmInfo data) {
@@ -50,22 +44,8 @@ public class FarmOverlayView extends FrameLayout {
 		LayoutInflater inflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		View v = inflater.inflate(R.layout.balloon_layout, parent);
-		title = (TextView) v.findViewById(R.id.balloon_item_title);
-		icons = (LinearLayout) v.findViewById(R.id.balloon_item_icons);
 		
-		// TODO: refactor this code outside & reuse in list view
-		// wtf, icons won't align :/
-		title.setText(data.name);
-		Iterator<Long> it = data.categories.iterator();
-		ImageView icon;
-		while (it.hasNext())
-		{	
-			icon = new ImageView(context);
-			icon.setImageResource(context.getResources().getIdentifier("drawable/category_" + it.next(), null, context.getPackageName()));
-		    icons.addView(icon);
-		    
-		}
-		
+		data.fillInfoToView(v, R.id.balloon_item_title, R.id.balloon_item_icons, null, -1);
 	}
 	
 	private class LimitLinearLayout extends LinearLayout {

@@ -1,6 +1,5 @@
 package cz.hnutiduha.bioadresar.list;
 
-import java.util.Iterator;
 import java.util.TreeSet;
 
 import cz.hnutiduha.bioadresar.R;
@@ -12,10 +11,9 @@ import android.content.Context;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 public class ListActivity extends Activity {
 	 TreeSet<FarmInfo> allFarms;
@@ -45,56 +43,41 @@ public class ListActivity extends Activity {
         farmsInitialized = true;
     }
     
+    private void appendFarm(FarmInfo farm, Location centerOfOurUniverse)
+    {
+    	LinearLayout lay = new LinearLayout(context);
+		LayoutInflater inflater = (LayoutInflater) context
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		View v = inflater.inflate(R.layout.list_item_layout, lay);
+		
+		LinearLayout toDetail = (LinearLayout)v.findViewById(R.id.toDetailArea);
+		farm.setToDetailListener(toDetail);
+		LinearLayout toMap = (LinearLayout)v.findViewById(R.id.toMapArea);
+		farm.setToMapListener(toMap);
+		
+		
+		farm.fillInfoToView(v, R.id.farmName, R.id.productionIcons, centerOfOurUniverse, R.id.distance);
+		
+		view.addView(lay);
+    }
+    
     private void addFarms()
     {
         DatabaseHelper defaultDb = DatabaseHelper.getDefaultDb();
 		
         // TODO: get location from map
-        Location loc = LocationCache.getCenter();
+        Location loc = LocationCache.getCurrentLocation(context);
         if (loc == null)
         {
         	Log.e("gps", "can't get location");
         	return;
         }
+
         allFarms =  defaultDb.getAllFarmsSortedByDistance(loc);
+                        
         for (FarmInfo farm : allFarms)
         {
-        	addFarm(farm, farm.getDistance(loc));
+        	appendFarm(farm, loc);
         }
-    }
-    
-    private void addFarm(FarmInfo farm, double distance)
-    {
-
-    	// FIXME: the layouting is ugly, maybe table + adding rows?
-        LinearLayout line = new LinearLayout(context);
-        
-        TextView title = new TextView(context);
-        title.setText(farm.name);
-        
-        // this is how to react to click on title
-        title.setOnClickListener(farm);
-        line.addView(title);
-		// TODO: refactor this code (creating category icons layout) and reuse in  FarmOverlayView
-        // TODO: make this align all to left, no spaces
-        // TODO: size of the icons is too large
-		LinearLayout icons = new LinearLayout(context);
-		Iterator<Long> it = farm.categories.iterator();
-		ImageView icon;
-		while (it.hasNext())
-		{
-			icon = new ImageView(context);
-			icon.setImageResource(context.getResources().getIdentifier("drawable/category_" + it.next(), null, context.getPackageName()));
-		    icons.addView(icon);
-		}
-		line.addView(icons);
-		TextView distanceView = new TextView(context);
-		distanceView.setText(String.valueOf(distance));
-		line.addView(distanceView);
-		
-        line.setVisibility(View.VISIBLE);
-		view.addView(line);
-		
-		// TODO: maybe we would want show on may -> FarmMapView.centerOnGeoPoint(...) & show activity/fire intent
     }
 }

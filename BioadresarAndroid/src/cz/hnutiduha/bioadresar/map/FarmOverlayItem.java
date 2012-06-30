@@ -2,6 +2,7 @@ package cz.hnutiduha.bioadresar.map;
 
 import android.content.Context;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 
 import com.google.android.maps.GeoPoint;
@@ -11,7 +12,7 @@ import cz.hnutiduha.bioadresar.R;
 
 import cz.hnutiduha.bioadresar.data.FarmInfo;
 
-public class FarmOverlayItem extends OverlayItem{
+public class FarmOverlayItem extends OverlayItem implements OnClickListener{
 	protected FarmInfo data;
 	MapView map;
 	FarmOverlayView balloon = null;
@@ -25,20 +26,19 @@ public class FarmOverlayItem extends OverlayItem{
 	
 	public void showDetail()
 	{
-		data.onClick(balloon);
+		data.goToDetail(balloon);
+	}
+	
+	@Override
+	public void onClick(View v) {
+		hideBalloon();
+		showDetail();
 	}
 	
 	private void createBalloon(Context context)
 	{
 		balloon = new FarmOverlayView(context, data);
-		balloon.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				showDetail();
-				hideBalloon();
-			}
-			
-		});
+		balloon.setOnClickListener(this);
 		View closeRegion = (View) balloon.findViewById(R.id.balloon_close);
 		if (closeRegion != null)
 			closeRegion.setVisibility(View.GONE);

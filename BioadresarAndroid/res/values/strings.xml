@@ -14,5 +14,6 @@
     <string name="description">Popis</string>
     <string name="phone">Telefon</string>
     <string name="address">Adresa</string>
+    <string name="eshop">E-shop</string>
 
 </resources>
