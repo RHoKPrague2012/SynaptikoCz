@@ -40,5 +40,8 @@ public class AboutActivity extends Activity {
         Linkify.addLinks((TextView)item, Linkify.WEB_URLS);
         item = this.findViewById(R.id.licenceText);
         Linkify.addLinks((TextView)item, Linkify.WEB_URLS);
+        
+        item = this.findViewById(R.id.betaNoticeText);
+        Linkify.addLinks((TextView)item, Linkify.EMAIL_ADDRESSES);
     }
 }

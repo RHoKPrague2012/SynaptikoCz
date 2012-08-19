@@ -49,5 +49,8 @@ Adresář farmářů, kteří prodávají přímo ze dvora nebo dodávají bio b
     <string name="defaultActivityLabel">Po spuštění přejít na</string>
     <string name="defaultLocationLabel">Defaultní poloha</string>
     <string name="defaultLocationSummary">V případě nedostupnosti polohy zvolí jako střed bod (lat,lon)</string>
+    <string name="renewLocationLabel">Načíst pozici</string>
+    <string name="realLocation">reálná</string>
+    <string name="virtualLocation">zadaná</string>
 
 </resources>

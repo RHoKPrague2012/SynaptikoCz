@@ -41,7 +41,7 @@ public class ListActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.list_layout);
+        setContentView(R.layout.list_view);
         
         view = (LinearLayout) findViewById(R.id.list_main_layout);
         context = view.getContext();

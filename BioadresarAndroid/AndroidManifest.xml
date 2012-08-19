@@ -97,6 +97,10 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".config.ConfigActivity"
+            android:label="@string/config_label" >
+        </activity>
     </application>
 
 </manifest>

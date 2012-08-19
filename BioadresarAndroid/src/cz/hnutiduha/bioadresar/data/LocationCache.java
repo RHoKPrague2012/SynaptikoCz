@@ -18,14 +18,15 @@
 package cz.hnutiduha.bioadresar.data;
 
 import android.content.Context;
-import android.content.pm.ApplicationInfo;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
 public class LocationCache {
 	private static Location location = null;
+	private static boolean realLocation = false;
 	
 	public static Location getCurrentLocation(Context context)
 	{
@@ -39,36 +40,50 @@ public class LocationCache {
 		{
 			Criteria criteria = new Criteria();
 			criteria.setPowerRequirement(Criteria.POWER_HIGH);
-			criteria.setAccuracy(Criteria.ACCURACY_FINE);
+			criteria.setAccuracy(Criteria.ACCURACY_COARSE);
 			provider = locationManager.getBestProvider(criteria, true);
 		}
 		
-		Location currentLocation = locationManager.getLastKnownLocation(provider);
-		if (currentLocation == null)
-		{
-			Log.w("gps", "Location not available");
-		    if ((0 == (context.getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE)))
-				return null;
-		    
-		    Log.d("gps", "faking location...");
-		    currentLocation = new Location(LocationManager.GPS_PROVIDER);
-			currentLocation.setLatitude(49);
-			currentLocation.setLongitude(16);
-			currentLocation.setTime(System.currentTimeMillis());
+		return locationManager.getLastKnownLocation(provider);
+	}
+	
+	public static Location getDefaultLocation(Context context)
+	{
+	    Log.d("gps", "faking location...");
+	    Location currentLocation = new Location(LocationManager.GPS_PROVIDER);
+	    String defaultLocation = PreferenceManager.getDefaultSharedPreferences(context).getString("defaultLocation", "49.8142789,14.65985");
+	    int comma = defaultLocation.indexOf(",");
+	    double lat = Location.convert(defaultLocation.substring(0, comma));
+	    double lon = Location.convert(defaultLocation.substring(comma + 1));
+
+		currentLocation.setLatitude(lat);
+		currentLocation.setLongitude(lon);
+		currentLocation.setTime(System.currentTimeMillis());
 				
-		    
-		}
 		return currentLocation;
+	
 	}
 	
 	public static void centerOnGps(Context context)
 	{
 		location = getCurrentLocation(context);
+		realLocation = true;
+		if (location == null)
+		{
+			realLocation = false;
+			location = getDefaultLocation(context);
+		}
 	}
 	
 	public static void centerOnLocation(Location loc)
 	{
 		LocationCache.location = loc;
+		realLocation = false;
+	}
+	
+	public static boolean hasRealLocation()
+	{
+		return realLocation;
 	}
 		
 	public static Location getCenter()

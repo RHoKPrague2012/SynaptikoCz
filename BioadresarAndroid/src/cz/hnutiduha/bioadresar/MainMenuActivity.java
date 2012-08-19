@@ -18,6 +18,7 @@
 package cz.hnutiduha.bioadresar;
 
 import cz.hnutiduha.bioadresar.about.AboutActivity;
+import cz.hnutiduha.bioadresar.config.ConfigActivity;
 import cz.hnutiduha.bioadresar.data.DatabaseHelper;
 import cz.hnutiduha.bioadresar.data.LocationCache;
 import cz.hnutiduha.bioadresar.list.ListActivity;
@@ -25,15 +26,19 @@ import cz.hnutiduha.bioadresar.map.MapActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.TextView;
 
 public class MainMenuActivity extends Activity implements OnClickListener {
 
+	TextView location;
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
         setContentView(R.layout.main_menu);
         
 	    DatabaseHelper.setContext(this);
@@ -50,12 +55,41 @@ public class MainMenuActivity extends Activity implements OnClickListener {
         item.setOnClickListener(this);
         item = this.findViewById(R.id.aboutLink);
         item.setOnClickListener(this);
+        
+    	location = (TextView)this.findViewById(R.id.locationLabel);
+    	location.setOnClickListener(this);
+        
+        String defaultActivity = PreferenceManager.getDefaultSharedPreferences(this).getString("defaultActivity", "Menu");
+        if (defaultActivity.equals("Mapa"))
+        {
+        	showActivity(R.id.mapLink);
+        }
+        if (defaultActivity.equals("Seznam"))
+        {
+        	showActivity(R.id.listLink);
+        }
     }
-	@Override
-	public void onClick(View v) {
-		// TODO Auto-generated method stub
+    
+    public void onResume()
+    {
+    	super.onResume();
+    	
+    	refreshLocation();
+    }
+    
+    public void refreshLocation()
+    {
+    	LocationCache.centerOnGps(this);
+    	if (LocationCache.hasRealLocation())
+    		location.setText(getString(R.string.renewLocationLabel) + " (" + getString(R.string.realLocation) + ")");
+    	else
+    		location.setText(getString(R.string.renewLocationLabel) + " (" + getString(R.string.virtualLocation) + ")");
+    }
+        
+    private void showActivity(int id)
+    {
 		Intent target = null;
-		switch (v.getId())
+		switch (id)
 		{
 		case R.id.listLink:
 			target = new Intent(this, ListActivity.class);
@@ -64,6 +98,7 @@ public class MainMenuActivity extends Activity implements OnClickListener {
 			target = new Intent(this, MapActivity.class);
 			break;
 		case R.id.configLink:
+			target = new Intent(this, ConfigActivity.class);
 			break;
 		case R.id.aboutLink:
 			target = new Intent(this, AboutActivity.class);
@@ -71,6 +106,18 @@ public class MainMenuActivity extends Activity implements OnClickListener {
 		}
 		
 		if (target != null)
-			startActivity(target);
+			startActivity(target);	
+    }
+	@Override
+	public void onClick(View v) {
+		int id = v.getId();
+		if (id == R.id.locationLabel)
+		{
+			refreshLocation();
+		}
+		else
+		{
+			showActivity(id);
+		}
 	}
 }
