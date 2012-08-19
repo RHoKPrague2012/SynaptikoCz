@@ -16,9 +16,18 @@
     You should have received a copy of the GNU General Public License
     along with BioAdresar.  If not, see <http://www.gnu.org/licenses/>.
 -->
-<cz.hnutiduha.bioadresar.map.FarmMapView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/mapview"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/listview"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:apiKey="0rTL9ClT6Cj9E3Bnxw2iXZ6Giea8xD7xRLmiCBQ"
-    android:clickable="true" />
+    android:layout_height="fill_parent" >
+
+    <!-- maybe this should be table -->
+
+    <LinearLayout
+        android:id="@+id/list_main_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+</ScrollView>
