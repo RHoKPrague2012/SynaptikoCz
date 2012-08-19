@@ -20,7 +20,9 @@ package cz.hnutiduha.bioadresar.data;
 import android.content.Context;
 import android.location.Criteria;
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
@@ -32,18 +34,12 @@ public class LocationCache {
 	{
 		LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
 		String provider;
-		if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER))
-		{
-			provider = LocationManager.GPS_PROVIDER;
-		}
-		else
-		{
-			Criteria criteria = new Criteria();
+		Criteria criteria = new Criteria();
 			criteria.setPowerRequirement(Criteria.POWER_HIGH);
-			criteria.setAccuracy(Criteria.ACCURACY_COARSE);
-			provider = locationManager.getBestProvider(criteria, true);
-		}
-		
+		criteria.setAccuracy(Criteria.ACCURACY_COARSE);
+		provider = locationManager.getBestProvider(criteria, true);
+		Log.d("gps", "location provider is " + provider);
+
 		return locationManager.getLastKnownLocation(provider);
 	}
 	

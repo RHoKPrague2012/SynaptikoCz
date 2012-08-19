@@ -40,7 +40,7 @@ public class MapActivity extends com.google.android.maps.MapActivity {
         
         
         mapView.centerMap();
-        mapView.getController().setZoom(10);
+        mapView.getController().setZoom(11);
         
         Activity parent = this.getParent();
         if (parent == null)
