@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+ This file is part of BioAdresar.
+	Copyright 2012 Jiri Zouhar (zouhar@trilobajt.cz)
+
+    BioAdresar is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    BioAdresar is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with BioAdresar.  If not, see <http://www.gnu.org/licenses/>.
+-->
 <resources>
 
-    <string name="app_name">BioadresarAndroid</string>
+    <string name="app_name">Adresář farmářů</string>
     <string name="contact">Kontakt</string>
     <string name="map_tab_title">Mapa</string>
     <string name="list_tab_title">Seznam</string>
@@ -15,5 +32,16 @@
     <string name="phone">Telefon</string>
     <string name="address">Adresa</string>
     <string name="eshop">E-shop</string>
+    <string name="about_label">O Aplikaci</string>
+    <string name="config_label">Nastavení</string>
+    <string name="homepage">http://trilobajt.cz/adresar</string>
+    <string name="contactMail">adresar@trilobajt.cz</string>
+    <string name="aboutText">Najděte si přímo v terénu nejbližšího farmáře a vychutnejte si čerstvé ovoce či zeleninu z vašeho okolí.<br />
+Adresář farmářů, kteří prodávají přímo ze dvora nebo dodávají bio bedýnky obsahuje přes pět set kontaktů na ekologické farmáře. Ke každému hospodářství adresář uvádí podrobný sortiment, kontakt a informace, co a kam dodávají.</string>
+    <string name="attribution">Aplikaci pro Hnutí DUHA (http://hnutiduha.cz) vytvořili Jiří Prokop, Jiří Zouhar a Tomáš Hanáček v rámci celosvětové akce Random Hacks of Kindness.</string>
+    <string name="licence">Tento program je svobodný software: lze ho distribuovat či modifikovat pod podmínkami GNU General Public Licence verze 3 (https://www.gnu.org/licenses/gpl.txt).</string>
+    <string name="dataLicence">Nakládání s obsahem aplikace, která je chráněna autorským právevm se řídí zákonem č. 121/2000 Sb., autorský zákon v účinném znění. Převzetí obsahu je možné pouze se souhlasem vydavatele dle §34 (1)c).</string>
+    <string name="licenceLabel">Licence</string>
+    <string name="dataLicenceLabel">Licence k datům</string>
 
 </resources>
