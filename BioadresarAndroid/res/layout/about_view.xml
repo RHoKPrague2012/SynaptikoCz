@@ -14,7 +14,7 @@
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with BioAdresar.  If not, see <http://www.gnu.org/licenses/>.
+    along with BioAdresar.  If not, see <http://www.gnu.org/licenses/>.
 -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/detailView"
@@ -54,6 +54,14 @@
                     android:gravity="right"
                     android:src="@drawable/logo_hnuti_duha" />
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/betaNoticeText"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/alert_light_frame"
+                android:gravity="center_vertical"
+                android:text="@string/betaNotice" />
 
             <TextView
                 android:id="@+id/TextView03"
