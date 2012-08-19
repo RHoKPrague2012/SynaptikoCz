@@ -52,5 +52,6 @@ Adresář farmářů, kteří prodávají přímo ze dvora nebo dodávají bio b
     <string name="renewLocationLabel">Načíst pozici</string>
     <string name="realLocation">reálná</string>
     <string name="virtualLocation">zadaná</string>
+    <string name="versionName">Beta 1</string>
 
 </resources>
