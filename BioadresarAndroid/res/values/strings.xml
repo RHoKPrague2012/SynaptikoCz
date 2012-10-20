@@ -38,8 +38,7 @@
     <string name="config_summary">Chování aplikace po startu</string>
     <string name="homepage">http://trilobajt.cz/adresar</string>
     <string name="contactMail">adresar@trilobajt.cz</string>
-    <string name="aboutText">Najděte si přímo v terénu nejbližšího farmáře a vychutnejte si čerstvé ovoce či zeleninu z vašeho okolí.<br />
-Adresář farmářů, kteří prodávají přímo ze dvora nebo dodávají bio bedýnky obsahuje přes pět set kontaktů na ekologické farmáře. Ke každému hospodářství adresář uvádí podrobný sortiment, kontakt a informace, co a kam dodávají.</string>
+    <string name="aboutText">Najděte si přímo v terénu nejbližšího farmáře a vychutnejte si čerstvé ovoce či zeleninu z vašeho okolí.<br />Adresář farmářů, kteří prodávají přímo ze dvora nebo dodávají bio bedýnky obsahuje přes pět set kontaktů na ekologické farmáře. Ke každému hospodářství adresář uvádí podrobný sortiment, kontakt a informace, co a kam dodávají.</string>
     <string name="attribution">Aplikaci pro Hnutí DUHA (http://hnutiduha.cz) vytvořili Jiří Prokop, Jiří Zouhar a Tomáš Hanáček v rámci celosvětové akce Random Hacks of Kindness.</string>
     <string name="licence">Tento program je svobodný software: lze ho distribuovat či modifikovat pod podmínkami GNU General Public Licence verze 3 (https://www.gnu.org/licenses/gpl.txt).</string>
     <string name="dataLicence">Nakládání s obsahem aplikace, která je chráněna autorským právevm se řídí zákonem č. 121/2000 Sb., autorský zákon v účinném znění. Převzetí obsahu je možné pouze se souhlasem vydavatele dle §34 (1)c).</string>
@@ -52,7 +51,7 @@ Adresář farmářů, kteří prodávají přímo ze dvora nebo dodávají bio b
     <string name="renewLocationLabel">Načíst pozici</string>
     <string name="realLocation">reálná</string>
     <string name="virtualLocation">zadaná</string>
-    <string name="versionName">Beta 1</string>
+    <string name="versionName">Beta 2</string>
     <string name="next25">Dalších 25</string>
 
 </resources>

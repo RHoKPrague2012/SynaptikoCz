@@ -85,16 +85,6 @@ public class MainMenuActivity extends Activity implements OnClickListener {
     		location.setText(getString(R.string.renewLocationLabel) + " (" + getString(R.string.realLocation) + ")");
     	else
     		location.setText(getString(R.string.renewLocationLabel) + " (" + getString(R.string.virtualLocation) + ")");
-    	
-    	new AsyncTask<Void, Void, Void>() {
-
-			@Override
-			protected Void doInBackground(Void... params) {
-				DatabaseHelper.getDefaultDb().getAllFarmsSortedByDistance(LocationCache.getCenter());
-				return null;
-			}
-    		
-    	}.execute();
     }
         
     private void showActivity(int id)

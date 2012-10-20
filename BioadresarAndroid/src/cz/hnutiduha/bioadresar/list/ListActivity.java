@@ -93,9 +93,16 @@ class AddNext25 extends AddAllFarms
 	
 	private static TreeSet<FarmInfo> allFarms = null;
 	private static FarmInfo next = null;
+	
+	public static void reset()
+	{
+		allFarms = null;
+		next = null;
+	}
+	
 	protected Boolean doInBackground(Void...voids)
 	{
-		Log.d("list", "loading next 25 famrs");
+		Log.d("list", "loading next 25 farms");
 		
         if (loc == null)
         {
@@ -104,14 +111,13 @@ class AddNext25 extends AddAllFarms
         }
         
         DatabaseHelper defaultDb = DatabaseHelper.getDefaultDb();
-        
-    	TreeSet<FarmInfo> currentFarms =  defaultDb.getAllFarmsSortedByDistance(loc);
+          
     	SortedSet<FarmInfo> tail = null;
-    	if (!currentFarms.equals(allFarms))
+    	if (allFarms == null)
     	{
-    		allFarms = currentFarms;
+    		allFarms = defaultDb.getAllFarmsSortedByDistance(loc);
     		next = allFarms.first();
-    		tail = currentFarms;
+    		tail = allFarms;
     	}
     	else
     		tail = allFarms.tailSet(next);
@@ -134,7 +140,7 @@ class AddNext25 extends AddAllFarms
 	}
 }
 
-class AddFarmsInRectangle extends AddAllFarms implements View.OnClickListener
+class AddFarmsInRectangle extends AddAllFarms
 {
 	public AddFarmsInRectangle(ListActivity activity)
 	{
@@ -169,10 +175,11 @@ class AddFarmsInRectangle extends AddAllFarms implements View.OnClickListener
         // we just don't know...
 		return Boolean.FALSE;
 	}
-	@Override
-	public void onClick(View v) {
-		// TODO Auto-generated method stub
-		
+	
+	protected void onPostExecute(Boolean isDone)
+	{
+		super.onPostExecute(isDone);
+		activity.rectangleLoaded();
 	}
 }
 
@@ -202,9 +209,9 @@ public class ListActivity extends Activity implements View.OnClickListener{
     	if (farmsInitialized)
     		return;
     	
-    	// FIXME: loading all farms is really slow
     	farmsLoader = new AddFarmsInRectangle(this);
     	farmsLoader.execute();
+    	AddNext25.reset();
     }
     
     public void onStop()
@@ -222,7 +229,6 @@ public class ListActivity extends Activity implements View.OnClickListener{
     // backward search - hope new items will go with greater distance
     private int getFarmPos(long farmId, float distance)
     {
-    	Log.d("list", "finding place for distance " + distance);
     	int childCount = view.getChildCount();
     	
     	FarmLinearLayout childAtPos;
@@ -246,7 +252,6 @@ public class ListActivity extends Activity implements View.OnClickListener{
     	if (desiredPos == -1)
     		return;
     	
-    	Log.d("list", "inserting farm " + farm.name + " to pos " + desiredPos);
     	LinearLayout newFarm = new FarmLinearLayout(context, farm, centerOfOurUniverse);
     	
     	view.addView(newFarm, desiredPos);
@@ -256,19 +261,36 @@ public class ListActivity extends Activity implements View.OnClickListener{
     protected void appendFarm(FarmInfo farm, Location centerOfOurUniverse)
     {
 		FarmLinearLayout newFarm = new FarmLinearLayout(context, farm, centerOfOurUniverse);
-		Log.d("list", "inserting farm " + farm.name + " to pos " + view.getChildCount());
 		view.addView(newFarm, view.getChildCount());
     }
+    
 	public void onClick(View v) {
 		if (v.equals(next25Button))
 		{
 			if (farmsLoader == null || farmsLoader.getStatus() == AsyncTask.Status.FINISHED)
 			{
 				showNextButton(false);
+				// TODO: set position to last farm shown
 				farmsLoader = new AddNext25(this);
 				farmsLoader.execute();
 			}
 		}
 	}
+	
+	protected void rectangleLoaded()
+	{
+		// preload all
+    	new AsyncTask<Void, Void, Void>() {
 
+			@Override
+			protected Void doInBackground(Void... params) {
+				DatabaseHelper.getDefaultDb().getAllFarmsSortedByDistance(LocationCache.getCenter());
+				return null;
+			}
+    	}.execute();
+    	
+		// default rectangle is empty, load more...
+		if (view.getChildCount() == 0)
+			onClick(next25Button);
+	}
 }
