@@ -14,11 +14,6 @@ public class ConfigActivity extends PreferenceActivity implements OnPreferenceCh
 		   
 		   this.getPreferenceManager().findPreference("defaultLocation").setOnPreferenceChangeListener(this);
 		}
-	
-	public void onStop()
-	{
-		
-	}
 
 	@Override
 	public boolean onPreferenceChange(Preference preference, Object newValue) {
