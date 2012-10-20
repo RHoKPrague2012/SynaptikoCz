@@ -20,9 +20,7 @@ package cz.hnutiduha.bioadresar.data;
 import android.content.Context;
 import android.location.Criteria;
 import android.location.Location;
-import android.location.LocationListener;
 import android.location.LocationManager;
-import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
@@ -38,14 +36,14 @@ public class LocationCache {
 			criteria.setPowerRequirement(Criteria.POWER_HIGH);
 		criteria.setAccuracy(Criteria.ACCURACY_COARSE);
 		provider = locationManager.getBestProvider(criteria, true);
-		Log.d("gps", "location provider is " + provider);
+		Log.d("location", "location provider is " + provider);
 
 		return locationManager.getLastKnownLocation(provider);
 	}
 	
 	public static Location getDefaultLocation(Context context)
 	{
-	    Log.d("gps", "faking location...");
+	    Log.d("location", "using default location...");
 	    Location currentLocation = new Location(LocationManager.GPS_PROVIDER);
 	    String defaultLocation = PreferenceManager.getDefaultSharedPreferences(context).getString("defaultLocation", "49.8142789,14.65985");
 	    int comma = defaultLocation.indexOf(",");

@@ -210,8 +210,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		return result;
 	}
 	
+	private List<FarmInfo> allFarmsList = null;
+	
 	private List<FarmInfo> getAllFarms()
 	{
+		if (allFarmsList != null)
+			return allFarmsList;
+		
 		ArrayList<FarmInfo> res = new ArrayList<FarmInfo>();
 		
 		String[] columns = new String[] { "_id", "name", "gps_lat", "gps_long" };
@@ -231,16 +236,29 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		}
 		c.close();
 		
+		allFarmsList = res;
+		
 		return res;
 	}
 	
+	private Location lastLocation = null;
+	private TreeSet<FarmInfo> farmsSortedFromLastLocation = null;
+	
 	public TreeSet<FarmInfo> getAllFarmsSortedByDistance(Location location) {
+		
+		if (location.equals(lastLocation) && farmsSortedFromLastLocation != null)
+			return farmsSortedFromLastLocation;
+		
 		FarmInfoDistanceComparator comparator = new FarmInfoDistanceComparator(location);
 		TreeSet<FarmInfo> result = new TreeSet<FarmInfo>(comparator);
 		
 		List<FarmInfo> allFarms = getAllFarms();
 		for (FarmInfo farm : allFarms)
 			result.add(farm);
+		
+		lastLocation = location;
+		farmsSortedFromLastLocation = result;
+		
 		return result;
 	}
 	

@@ -25,6 +25,7 @@ import cz.hnutiduha.bioadresar.list.ListActivity;
 import cz.hnutiduha.bioadresar.map.MapActivity;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
@@ -84,6 +85,16 @@ public class MainMenuActivity extends Activity implements OnClickListener {
     		location.setText(getString(R.string.renewLocationLabel) + " (" + getString(R.string.realLocation) + ")");
     	else
     		location.setText(getString(R.string.renewLocationLabel) + " (" + getString(R.string.virtualLocation) + ")");
+    	
+    	new AsyncTask<Void, Void, Void>() {
+
+			@Override
+			protected Void doInBackground(Void... params) {
+				DatabaseHelper.getDefaultDb().getAllFarmsSortedByDistance(LocationCache.getCenter());
+				return null;
+			}
+    		
+    	}.execute();
     }
         
     private void showActivity(int id)

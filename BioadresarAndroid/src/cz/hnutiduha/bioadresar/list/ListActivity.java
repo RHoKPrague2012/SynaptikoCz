@@ -17,6 +17,7 @@
 
 package cz.hnutiduha.bioadresar.list;
 
+import java.util.Hashtable;
 import java.util.TreeSet;
 
 import cz.hnutiduha.bioadresar.R;
@@ -26,16 +27,91 @@ import cz.hnutiduha.bioadresar.data.LocationCache;
 import android.app.Activity;
 import android.content.Context;
 import android.location.Location;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.LinearLayout;
 
+class AddAllFarms extends AsyncTask<Void, FarmInfo, Void> {
+	ListActivity activity;
+	Location loc;
+	
+	public AddAllFarms(ListActivity activity)
+	{
+		super();
+		this.activity = activity;
+		loc = LocationCache.getCenter();
+	}
+
+	@Override
+	protected Void doInBackground(Void... params) {
+		
+		Log.d("list", "starting background task");
+        DatabaseHelper defaultDb = DatabaseHelper.getDefaultDb();
+		
+        if (loc == null)
+        {
+        	Log.e("list", "can't get location");
+        	return null;
+        }	        
+    	TreeSet<FarmInfo> allFarms =  defaultDb.getAllFarmsSortedByDistance(loc);
+        for (FarmInfo farm : allFarms)
+        {
+        	publishProgress(farm);
+	    }
+		return null;
+	}
+	
+	protected void onProgressUpdate(FarmInfo... farms)
+	{
+		activity.insertFarm(farms[0],  loc);
+	}
+	
+	protected void onPostExecute(Void result) {
+		Log.d("list", "background task finished");
+	}
+}
+
+class AddFarmsInRectangle extends AddAllFarms
+{
+	public AddFarmsInRectangle(ListActivity activity)
+	{
+		super(activity);
+	}
+	@Override
+	protected Void doInBackground(Void... params) {
+		
+		Log.d("list", "starting background task");
+        DatabaseHelper defaultDb = DatabaseHelper.getDefaultDb();
+		
+        // TODO: get location from map
+        loc = LocationCache.getCenter();
+        if (loc == null)
+        {
+        	Log.e("list", "can't get location");
+        	return null;
+        }
+        
+        // NOTE: hardcoded, maybe move somewhere
+        double latOffset = -190520 / 1E6;
+        double lonOffset = +219726 / 1E6;
+        
+        Hashtable<Long, FarmInfo> nearestFarms = defaultDb.getFarmsInRectangle(loc.getLatitude() - latOffset, loc.getLongitude() - lonOffset,
+        		loc.getLatitude() + latOffset, loc.getLongitude() + lonOffset);
+        
+        for (FarmInfo farm : nearestFarms.values())
+        {
+        	publishProgress(farm);
+	    }
+		return null;
+	}
+}
+
 public class ListActivity extends Activity {
-	 TreeSet<FarmInfo> allFarms;
-	 LinearLayout view;
-	 Context context;
+	private static boolean farmsInitialized = false;
+	LinearLayout view;
+	Context context;
+	AsyncTask<Void, FarmInfo, Void> farmsLoader = null;
 	 
     /** Called when the activity is first created. */
     @Override
@@ -47,8 +123,6 @@ public class ListActivity extends Activity {
         context = view.getContext();
     }
     
-    private static boolean farmsInitialized = false;
-    
     public void onStart()
     {
     	super.onStart();
@@ -56,45 +130,58 @@ public class ListActivity extends Activity {
     		return;
     	
     	// FIXME: loading all farms is really slow
-        addFarms();
-        farmsInitialized = true;
+    	farmsLoader = new AddFarmsInRectangle(this);
+    	farmsLoader.execute();
     }
     
-    private void appendFarm(FarmInfo farm, Location centerOfOurUniverse)
+    public void onStop()
     {
-    	LinearLayout lay = new LinearLayout(context);
-		LayoutInflater inflater = (LayoutInflater) context
-				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		View v = inflater.inflate(R.layout.list_item_layout, lay);
-		
-		LinearLayout toDetail = (LinearLayout)v.findViewById(R.id.toDetailArea);
-		farm.setToDetailListener(toDetail);
-		LinearLayout toMap = (LinearLayout)v.findViewById(R.id.toMapArea);
-		farm.setToMapListener(toMap);
-		
-		
-		farm.fillInfoToView(v, R.id.farmName, R.id.productionIcons, centerOfOurUniverse, R.id.distance);
-		
-		view.addView(lay);
+    	super.onStop();
+    	if (farmsLoader != null)
+    		farmsLoader.cancel(true);
     }
     
-    private void addFarms()
+    
+    // backward search - hope new items will go with greater distance
+    private int getFarmPos(long farmId, float distance)
     {
-        DatabaseHelper defaultDb = DatabaseHelper.getDefaultDb();
-		
-        // TODO: get location from map
-        Location loc = LocationCache.getCurrentLocation(context);
-        if (loc == null)
-        {
-        	Log.e("gps", "can't get location");
-        	return;
-        }
-
-        allFarms =  defaultDb.getAllFarmsSortedByDistance(loc);
-                        
-        for (FarmInfo farm : allFarms)
-        {
-        	appendFarm(farm, loc);
-        }
+    	
+    	int childCount = view.getChildCount();
+    	if (childCount == 0)
+    	{
+    		return 0;
+    	}
+    	
+    	FarmLinearLayout childAtPos = (FarmLinearLayout)view.getChildAt(--childCount);
+    	
+    	while (childAtPos.distance > distance && childCount > 0)
+    	{
+    		childAtPos = (FarmLinearLayout) view.getChildAt(--childCount);
+    	}
+    	
+    	if (childAtPos.farmId == farmId)
+    		return -1;
+    	
+    	return childCount;
+    }
+    
+    protected void insertFarm(FarmInfo farm, Location centerOfOurUniverse)
+    {
+    	int desiredPos = getFarmPos(farm.id, farm.getDistance(centerOfOurUniverse));
+    	if (desiredPos == -1)
+    		return;
+    	
+    	Log.d("list", "inserting farm " + farm.name + " to pos " + desiredPos);
+    	LinearLayout newFarm = new FarmLinearLayout(context, farm, centerOfOurUniverse);
+    	
+    	view.addView(newFarm, desiredPos);
+    	
+    }
+    
+    protected void appendFarm(FarmInfo farm, Location centerOfOurUniverse)
+    {
+		FarmLinearLayout newFarm = new FarmLinearLayout(context, farm, centerOfOurUniverse);
+		Log.d("list", "inserting farm " + farm.name + " to pos " + view.getChildCount());
+		view.addView(newFarm, view.getChildCount());
     }
 }
