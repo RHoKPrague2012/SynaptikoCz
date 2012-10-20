@@ -24,10 +24,24 @@
     <!-- maybe this should be table -->
 
     <LinearLayout
-        android:id="@+id/list_main_layout"
+        android:id="@+id/list_uber_layout"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/list_main_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/next_25_button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:text="@string/next25" />
     </LinearLayout>
 
 </ScrollView>

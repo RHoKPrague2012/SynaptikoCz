@@ -244,7 +244,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	private Location lastLocation = null;
 	private TreeSet<FarmInfo> farmsSortedFromLastLocation = null;
 	
-	public TreeSet<FarmInfo> getAllFarmsSortedByDistance(Location location) {
+	public synchronized TreeSet<FarmInfo> getAllFarmsSortedByDistance(Location location) {
 		
 		if (location.equals(lastLocation) && farmsSortedFromLastLocation != null)
 			return farmsSortedFromLastLocation;

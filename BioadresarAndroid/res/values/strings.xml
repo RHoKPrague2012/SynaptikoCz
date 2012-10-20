@@ -53,5 +53,6 @@ Adresář farmářů, kteří prodávají přímo ze dvora nebo dodávají bio b
     <string name="realLocation">reálná</string>
     <string name="virtualLocation">zadaná</string>
     <string name="versionName">Beta 1</string>
+    <string name="next25">Dalších 25</string>
 
 </resources>

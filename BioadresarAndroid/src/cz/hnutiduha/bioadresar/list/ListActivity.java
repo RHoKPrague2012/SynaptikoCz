@@ -18,6 +18,8 @@
 package cz.hnutiduha.bioadresar.list;
 
 import java.util.Hashtable;
+import java.util.Iterator;
+import java.util.SortedSet;
 import java.util.TreeSet;
 
 import cz.hnutiduha.bioadresar.R;
@@ -30,9 +32,11 @@ import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
-class AddAllFarms extends AsyncTask<Void, FarmInfo, Void> {
+class AddAllFarms extends AsyncTask<Void, FarmInfo, Boolean> {
 	ListActivity activity;
 	Location loc;
 	
@@ -44,43 +48,100 @@ class AddAllFarms extends AsyncTask<Void, FarmInfo, Void> {
 	}
 
 	@Override
-	protected Void doInBackground(Void... params) {
-		
-		Log.d("list", "starting background task");
-        DatabaseHelper defaultDb = DatabaseHelper.getDefaultDb();
-		
+	protected Boolean doInBackground(Void... params) {
+		Log.d("list", "loading all farms");
         if (loc == null)
         {
         	Log.e("list", "can't get location");
-        	return null;
-        }	        
+        	return Boolean.FALSE;
+        }
+
+        DatabaseHelper defaultDb = DatabaseHelper.getDefaultDb();
     	TreeSet<FarmInfo> allFarms =  defaultDb.getAllFarmsSortedByDistance(loc);
         for (FarmInfo farm : allFarms)
         {
+        	if (isCancelled())
+        		return Boolean.FALSE;
         	publishProgress(farm);
 	    }
-		return null;
+		return Boolean.TRUE;
 	}
 	
 	protected void onProgressUpdate(FarmInfo... farms)
 	{
-		activity.insertFarm(farms[0],  loc);
+		activity.insertFarm(farms[0], loc);
 	}
 	
-	protected void onPostExecute(Void result) {
-		Log.d("list", "background task finished");
+	protected void onCancelled()
+	{
+		Log.d("list", "loading of farms cancelled");
+		activity.showNextButton(true);
+	}
+	
+	protected void onPostExecute(Boolean isDone) {
+		activity.showNextButton(!isDone.booleanValue());
 	}
 }
 
-class AddFarmsInRectangle extends AddAllFarms
+class AddNext25 extends AddAllFarms
+{
+	
+	public AddNext25(ListActivity activity)
+	{
+		super(activity);
+	}
+	
+	private static TreeSet<FarmInfo> allFarms = null;
+	private static FarmInfo next = null;
+	protected Boolean doInBackground(Void...voids)
+	{
+		Log.d("list", "loading next 25 famrs");
+		
+        if (loc == null)
+        {
+        	Log.e("list", "can't get location");
+        	return Boolean.FALSE;
+        }
+        
+        DatabaseHelper defaultDb = DatabaseHelper.getDefaultDb();
+        
+    	TreeSet<FarmInfo> currentFarms =  defaultDb.getAllFarmsSortedByDistance(loc);
+    	SortedSet<FarmInfo> tail = null;
+    	if (!currentFarms.equals(allFarms))
+    	{
+    		allFarms = currentFarms;
+    		next = allFarms.first();
+    		tail = currentFarms;
+    	}
+    	else
+    		tail = allFarms.tailSet(next);
+    	
+    	Iterator<FarmInfo> iter = tail.iterator();
+    	for (int i = 0; i < 25; i++)
+    	{
+    		if (iter.hasNext())
+    			publishProgress(iter.next());
+    		else
+    			return Boolean.TRUE;
+    	}
+    	if (iter.hasNext())
+    	{
+    		next = iter.next();
+    		return Boolean.FALSE;
+    	}
+    	else
+    		return Boolean.TRUE;
+	}
+}
+
+class AddFarmsInRectangle extends AddAllFarms implements View.OnClickListener
 {
 	public AddFarmsInRectangle(ListActivity activity)
 	{
 		super(activity);
 	}
 	@Override
-	protected Void doInBackground(Void... params) {
-		
+	protected Boolean doInBackground(Void... params) {
 		Log.d("list", "starting background task");
         DatabaseHelper defaultDb = DatabaseHelper.getDefaultDb();
 		
@@ -89,7 +150,7 @@ class AddFarmsInRectangle extends AddAllFarms
         if (loc == null)
         {
         	Log.e("list", "can't get location");
-        	return null;
+        	return Boolean.FALSE;
         }
         
         // NOTE: hardcoded, maybe move somewhere
@@ -101,17 +162,26 @@ class AddFarmsInRectangle extends AddAllFarms
         
         for (FarmInfo farm : nearestFarms.values())
         {
+        	if (isCancelled())
+        		return Boolean.FALSE;
         	publishProgress(farm);
 	    }
-		return null;
+        // we just don't know...
+		return Boolean.FALSE;
+	}
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		
 	}
 }
 
-public class ListActivity extends Activity {
+public class ListActivity extends Activity implements View.OnClickListener{
 	private static boolean farmsInitialized = false;
 	LinearLayout view;
+	Button next25Button;
 	Context context;
-	AsyncTask<Void, FarmInfo, Void> farmsLoader = null;
+	AsyncTask<Void, FarmInfo, Boolean> farmsLoader = null;
 	 
     /** Called when the activity is first created. */
     @Override
@@ -121,6 +191,9 @@ public class ListActivity extends Activity {
         
         view = (LinearLayout) findViewById(R.id.list_main_layout);
         context = view.getContext();
+        
+        next25Button = (Button)findViewById(R.id.next_25_button);
+        next25Button.setOnClickListener(this);
     }
     
     public void onStart()
@@ -141,28 +214,30 @@ public class ListActivity extends Activity {
     		farmsLoader.cancel(true);
     }
     
+    protected void showNextButton(boolean show)
+    {
+    	next25Button.setEnabled(show);
+    }
     
     // backward search - hope new items will go with greater distance
     private int getFarmPos(long farmId, float distance)
     {
-    	
+    	Log.d("list", "finding place for distance " + distance);
     	int childCount = view.getChildCount();
-    	if (childCount == 0)
+    	
+    	FarmLinearLayout childAtPos;
+    	
+    	while(childCount > 0)
     	{
-    		return 0;
+    		childAtPos = (FarmLinearLayout)view.getChildAt(--childCount);
+    		if (childAtPos.farmId == farmId)
+    			return -1;
+    		
+    		if (childAtPos.distance < distance)
+    			return childCount + 1;
     	}
-    	
-    	FarmLinearLayout childAtPos = (FarmLinearLayout)view.getChildAt(--childCount);
-    	
-    	while (childAtPos.distance > distance && childCount > 0)
-    	{
-    		childAtPos = (FarmLinearLayout) view.getChildAt(--childCount);
-    	}
-    	
-    	if (childAtPos.farmId == farmId)
-    		return -1;
-    	
-    	return childCount;
+    	    	
+    	return 0;
     }
     
     protected void insertFarm(FarmInfo farm, Location centerOfOurUniverse)
@@ -184,4 +259,16 @@ public class ListActivity extends Activity {
 		Log.d("list", "inserting farm " + farm.name + " to pos " + view.getChildCount());
 		view.addView(newFarm, view.getChildCount());
     }
+	public void onClick(View v) {
+		if (v.equals(next25Button))
+		{
+			if (farmsLoader == null || farmsLoader.getStatus() == AsyncTask.Status.FINISHED)
+			{
+				showNextButton(false);
+				farmsLoader = new AddNext25(this);
+				farmsLoader.execute();
+			}
+		}
+	}
+
 }
