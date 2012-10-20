@@ -111,11 +111,13 @@ class AddNext25 extends AddAllFarms
         }
         
         DatabaseHelper defaultDb = DatabaseHelper.getDefaultDb();
+        
+        TreeSet<FarmInfo> currentFarms = defaultDb.getAllFarmsSortedByDistance(loc);
           
     	SortedSet<FarmInfo> tail = null;
-    	if (allFarms == null)
+    	if (!currentFarms.equals(allFarms))
     	{
-    		allFarms = defaultDb.getAllFarmsSortedByDistance(loc);
+    		allFarms = currentFarms;
     		next = allFarms.first();
     		tail = allFarms;
     	}
